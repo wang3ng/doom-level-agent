@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local/doom-level-agent/layout.schema.json",
+  "title": "DoomLayoutV0",
+  "type": "object",
+  "required": ["name", "rooms", "connections", "things"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "theme": { "type": "string" },
+    "brief": { "type": "string" },
+    "rooms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "x", "y", "w", "h"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "x": { "type": "integer" },
+          "y": { "type": "integer" },
+          "w": { "type": "integer", "minimum": 64 },
+          "h": { "type": "integer", "minimum": 64 },
+          "floor_height": { "type": "integer", "default": 0 },
+          "ceiling_height": { "type": "integer", "default": 128 },
+          "floor_flat": { "type": "string", "default": "FLOOR0_1" },
+          "ceil_flat": { "type": "string", "default": "CEIL1_1" },
+          "light": { "type": "integer", "minimum": 0, "maximum": 255, "default": 160 }
+        }
+      }
+    },
+    "connections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["a", "b"],
+        "additionalProperties": false,
+        "properties": {
+          "a": { "type": "string" },
+          "b": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": ["corridor", "door", "open"],
+            "default": "open"
+          },
+          "width": { "type": "integer", "minimum": 32, "default": 64 }
+        }
+      }
+    },
+    "things": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "x", "y"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Player1Start",
+              "Zombieman",
+              "ShotgunGuy",
+              "Imp",
+              "HealthBonus",
+              "Clip",
+              "Shotgun",
+              "ArmorBonus",
+              "ExitSwitch"
+            ]
+          },
+          "x": { "type": "integer" },
+          "y": { "type": "integer" },
+          "angle": { "type": "integer", "default": 0 }
+        }
+      }
+    }
+  }
+}

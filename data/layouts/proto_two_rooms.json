@@ -1,0 +1,41 @@
+{
+  "name": "proto_two_rooms",
+  "theme": "techbase",
+  "brief": "Two connected rooms, light opposition, shotgun pickup.",
+  "rooms": [
+    {
+      "id": "start",
+      "x": 0,
+      "y": 0,
+      "w": 256,
+      "h": 256,
+      "floor_height": 0,
+      "ceiling_height": 128,
+      "floor_flat": "FLOOR0_1",
+      "ceil_flat": "CEIL1_1",
+      "light": 180
+    },
+    {
+      "id": "arena",
+      "x": 320,
+      "y": 0,
+      "w": 320,
+      "h": 256,
+      "floor_height": 0,
+      "ceiling_height": 128,
+      "floor_flat": "FLOOR0_1",
+      "ceil_flat": "CEIL1_1",
+      "light": 150
+    }
+  ],
+  "connections": [
+    { "a": "start", "b": "arena", "kind": "corridor", "width": 64 }
+  ],
+  "things": [
+    { "type": "Player1Start", "x": 128, "y": 128, "angle": 0 },
+    { "type": "Shotgun", "x": 200, "y": 128, "angle": 0 },
+    { "type": "Imp", "x": 420, "y": 128, "angle": 180 },
+    { "type": "Zombieman", "x": 480, "y": 160, "angle": 180 },
+    { "type": "HealthBonus", "x": 160, "y": 200, "angle": 0 }
+  ]
+}

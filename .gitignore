@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+data/maps/*.wad
+data/maps/*.txt
+!data/maps/.gitkeep
+data/screenshots/*
+!data/screenshots/.gitkeep
+.DS_Store
+*.pk3
+.netlify/
+proposal/*.aux
+proposal/*.log
+proposal/*.out
+proposal/*.synctex.gz
