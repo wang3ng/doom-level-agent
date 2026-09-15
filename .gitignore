@@ -14,3 +14,4 @@ proposal/*.aux
 proposal/*.log
 proposal/*.out
 proposal/*.synctex.gz
+.cursor/

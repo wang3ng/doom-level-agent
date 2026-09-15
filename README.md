@@ -130,32 +130,6 @@ python scripts/run_pipeline.py --layout data/layouts/proto_two_rooms.json
 
 Outputs land under `data/maps/` (`MAP01.wad` + side-by-side `.txt` UDMF dump).
 
-### Generate a short brief with Ollama (on william)
-
-```bash
-# on william, with Ollama running
-python scripts/generate_brief.py
-# → data/briefs/agent_generated.txt
-```
-
-### Brief → layout JSON → WAD (Ollama)
-
-```bash
-python scripts/run_pipeline.py \
-  --brief data/briefs/proto_two_rooms.txt \
-  --ollama \
-  --concept
-```
-
-Environment overrides:
-
-| Variable | Default | Meaning |
-| --- | --- | --- |
-| `OLLAMA_HOST` | `http://127.0.0.1:11434` | Ollama API base |
-| `LAYOUT_MODEL` | `qwen3-coder:30b` | Stage 2 model |
-
----
-
 ## Layout JSON (v0)
 
 See [`configs/schema/layout.schema.json`](configs/schema/layout.schema.json).
@@ -203,20 +177,3 @@ Source: [`proposal/`](proposal/).
 - Do not commit secrets, ngrok URLs with credentials, or private API keys.
 
 ---
-
-## Development notes (william)
-
-- GPU: NVIDIA GeForce RTX 3060 Laptop (6 GB). Load **one** heavy model at a time (coder vs VLM vs diffusion).
-- Ollama models observed: `qwen3-coder:30b`, `qwen2.5-coder:32b`, `qwen2.5-coder:7b-instruct-q4_K_M`, `deepseek-coder-v2`.
-- Mirror path: `~/projects/doom-level-agent`.
-
----
-
-## Contributing / agent workflow
-
-1. Make the code change.
-2. **Update this README in the same commit** (Status table + Changelog entry at minimum).
-3. Run `python tests/test_build.py` before pushing when touching the builder or schema.
-4. Prefer small, reviewable commits.
-
-Cursor enforces the README habit via [`.cursor/rules/readme-every-commit.mdc`](.cursor/rules/readme-every-commit.mdc).
