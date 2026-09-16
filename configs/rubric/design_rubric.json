@@ -1,0 +1,115 @@
+{
+  "version": "0.2",
+  "scale": { "min": 0, "max": 5 },
+  "description": "Doom level design rubric. Heuristics are strict (v0.2); scores 4-5 need human/VLM.",
+  "categories": {
+    "navigation_and_orientation": {
+      "title": "Navigation and Orientation",
+      "weight": 1.0,
+      "criteria": {
+        "visual_hierarchy": {
+          "title": "Visual Hierarchy",
+          "prompt": "Does the level use lighting, color, or landmarks to draw the eye toward the objective?",
+          "heuristic": true,
+          "needs_vision": true
+        },
+        "signposting": {
+          "title": "Signposting",
+          "prompt": "Are paths clearly defined with visual cues that reduce backtracking?",
+          "heuristic": true,
+          "needs_vision": true
+        },
+        "breadcrumbs": {
+          "title": "Breadcrumbs",
+          "prompt": "Does exploration yield micro-rewards that confirm a valid path?",
+          "heuristic": true,
+          "needs_vision": false
+        }
+      }
+    },
+    "pacing_and_flow": {
+      "title": "Pacing and Flow",
+      "weight": 1.0,
+      "criteria": {
+        "intensity_curve": {
+          "title": "Intensity Curve",
+          "prompt": "Does the level balance high-stress moments with recovery and exploration?",
+          "heuristic": true,
+          "needs_vision": false
+        },
+        "choke_points_and_arenas": {
+          "title": "Choke Points and Arenas",
+          "prompt": "Are spaces sized for their function (cover/flanks in arenas; distinct transitions)?",
+          "heuristic": true,
+          "needs_vision": false
+        },
+        "symmetry_vs_asymmetry": {
+          "title": "Symmetry vs. Asymmetry",
+          "prompt": "For multiplayer, is the map balanced? For single-player, is spatial variety intentional?",
+          "heuristic": true,
+          "needs_vision": false
+        }
+      }
+    },
+    "mechanic_utilization": {
+      "title": "Mechanic Utilization (Teach, Test, Twist)",
+      "weight": 1.0,
+      "criteria": {
+        "introduction": {
+          "title": "Introduction",
+          "prompt": "Does the level safely introduce a new mechanic or hazard?",
+          "heuristic": true,
+          "needs_vision": false
+        },
+        "escalation": {
+          "title": "Escalation",
+          "prompt": "Does it test the mechanic with enemies, motion, or time pressure?",
+          "heuristic": true,
+          "needs_vision": false
+        },
+        "subversion": {
+          "title": "Subversion",
+          "prompt": "Does a late twist force a creative reuse of the mechanic?",
+          "heuristic": false,
+          "needs_vision": true
+        }
+      }
+    },
+    "affordance_and_signifiers": {
+      "title": "Affordance and Signifiers",
+      "weight": 1.0,
+      "criteria": {
+        "readability": {
+          "title": "Readability",
+          "prompt": "Can a player look at an asset and know what it does?",
+          "heuristic": true,
+          "needs_vision": true
+        },
+        "consistency": {
+          "title": "Consistency",
+          "prompt": "Do identical-looking surfaces behave the same across the map?",
+          "heuristic": true,
+          "needs_vision": true
+        }
+      }
+    },
+    "narrative_integration": {
+      "title": "Narrative Integration (Environmental Storytelling)",
+      "weight": 1.0,
+      "criteria": {
+        "sense_of_place": {
+          "title": "Sense of Place",
+          "prompt": "Does the level feel like a lived-in world rather than generic corridors?",
+          "heuristic": true,
+          "needs_vision": true
+        },
+        "showing_vs_telling": {
+          "title": "Showing vs. Telling",
+          "prompt": "Can room history be read from debris, blood, or abandoned items without a text log?",
+          "heuristic": false,
+          "needs_vision": true
+        }
+      }
+    }
+  }
+}

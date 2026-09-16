@@ -1,0 +1,91 @@
+{
+  "id": "doom2_map02_underhalls",
+  "source": "Doom II MAP02 Underhalls (American McGee)",
+  "theme": "sewer_tech_underhalls",
+  "title": "Underhalls",
+  "brief": "Sewer/tech hybrid: branching underhalls, water hazards, a red door progression, and combat in overlapping vertical layers. Teaches non-linear sewer navigation and that lowering floors/water change routes.",
+  "solution_path": [
+    "start_shaft",
+    "branching_halls",
+    "water_rooms",
+    "red_key_loop",
+    "red_door",
+    "upper_overlay_fights",
+    "exit"
+  ],
+  "landmarks": [
+    "grimy underhall lattice",
+    "water/nukage pools",
+    "red door",
+    "stacked floors with grated views"
+  ],
+  "pacing_notes": "More junctiony than Entryway; soft gates via water and red key; fights use height and corners.",
+  "part_designs": [
+    {
+      "id": "start_shaft",
+      "role": "start",
+      "shape": "descent into underhalls",
+      "elevation": "drop or stairs into lower network",
+      "cover": "corners immediately",
+      "mobs": "early shotgun guys in nooks",
+      "triggers": "none",
+      "detail": "You leave the Entryway sun for a stacked underground graph."
+    },
+    {
+      "id": "branching_halls",
+      "role": "hub",
+      "shape": "lattice of mid-width halls with T-junctions",
+      "elevation": "mostly one level with occasional steps",
+      "cover": "door frames, crates, pillar stubs",
+      "mobs": "former humans holding corners",
+      "triggers": "many doors; one locked",
+      "detail": "Branching without spaghetti—junctions are readable; dead ends hold supplies or keys."
+    },
+    {
+      "id": "water_rooms",
+      "role": "hazard",
+      "shape": "pools with rim walkways",
+      "elevation": "safe rim vs damaging/slow water",
+      "cover": "pillars in water",
+      "mobs": "hitscan across water forcing movement",
+      "triggers": "floor lowers that open new routes",
+      "detail": "Hazard reshapes pathing; elevation change is a mechanic, not decoration."
+    },
+    {
+      "id": "red_key_loop",
+      "role": "key",
+      "shape": "side circuit returning to known junction",
+      "elevation": "maybe upper balcony overlook",
+      "cover": "balcony rail / crates",
+      "mobs": "ambush after key",
+      "triggers": "red door back at hub",
+      "detail": "Return-through-known-space after key—Underhalls' clarity trick."
+    },
+    {
+      "id": "stacked_fights",
+      "role": "arena",
+      "shape": "rooms visible through grates to other floors",
+      "elevation": "multi-level with grate teasers",
+      "cover": "vertical + horizontal cover",
+      "mobs": "crossfire from other elevations",
+      "triggers": "monster closets on entry",
+      "detail": "See enemies / items through grates before you can reach them—desire lines."
+    },
+    {
+      "id": "exit",
+      "role": "exit",
+      "shape": "compact end after red progression",
+      "elevation": "step up out of sewers feel",
+      "cover": "light",
+      "mobs": "coda pack",
+      "triggers": "exit",
+      "detail": "Progression pays off; exit is earned by the key loop, not a new maze."
+    }
+  ],
+  "design_lessons": [
+    "Junction hubs with locked progress",
+    "Water/floor motion as routing",
+    "Grate teases across elevations",
+    "Return to known node after key"
+  ]
+}

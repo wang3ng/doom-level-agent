@@ -1,0 +1,40 @@
+{
+  "id": "key_puzzle_hub",
+  "theme": "Star Hub",
+  "brief": "Start in the central hub with three colored wings extending outward. Follow the blue wing to learn key mechanics and collect a blue card. Navigate the yellow wing to face increasing combat challenges and acquire a yellow card. Proceed to the red wing for a boss fight in an arena, then return to the hub for the final exit. The hub landmark remains visible throughout all three visits. The level features clean tech aesthetics with distinct light colors for each wing.",
+  "solution_path": [
+    "Enter central hub",
+    "Travel blue wing to learn mechanics",
+    "Collect blue card at blue wing endpoint",
+    "Return to hub and travel yellow wing",
+    "Face escalating combat in yellow wing",
+    "Collect yellow card at yellow wing endpoint",
+    "Return to hub and travel red wing",
+    "Engage boss fight in red arena",
+    "Defeat boss and return to hub",
+    "Exit through central hub"
+  ],
+  "landmarks": [
+    "Central hub with rotating star symbol",
+    "Blue wing's light-emitting key card display",
+    "Yellow wing's progressive combat challenge markers",
+    "Red wing's boss arena with glowing energy core"
+  ],
+  "pacing_notes": "The level builds tension through escalating combat difficulty while maintaining clear visual navigation through the color-coded wings and persistent hub landmark.",
+  "rubric_hints": {
+    "navigation": "Use the central hub as anchor point for all three wing visits, with each wing's distinct lighting helping orient players",
+    "pacing": "Balance learning in blue wing with escalating challenge in yellow wing before final boss fight",
+    "mechanics": "Blue wing teaches key card collection mechanics, yellow wing introduces combat progression, red wing requires boss-specific strategies",
+    "affordances": "Each colored wing provides unique environmental storytelling through lighting and design elements",
+    "narrative": "The hub serves as a technological center where players progress through different sectors of a starship's control system"
+  },
+  "source_wad": null,
+  "generator": "ollama",
+  "seed": {
+    "id": "key_puzzle_hub",
+    "theme_hint": "star hub with three keyed wings",
+    "structure": "central hub revisited 3 times; blue wing teach; yellow wing escalate; red wing bossy arena then exit in hub",
+    "mechanics": "blue/yellow/red cards; hub landmark must stay readable",
+    "tone": "clean tech, each wing a different light color"
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "id": "brine_pump_station",
+  "author": "cursor_strong_describer",
+  "theme": "Coastal Brine Pump Station",
+  "title": "MAP01: Brine Pump Station",
+  "brief": "Hub-return brine station with micro-design: hallway peek cover, raised hub pillar, yellow key alcove, walk-triggered arena closet, elevated exit bay.",
+  "solution_path": [
+    "locker_start",
+    "service_choke",
+    "pump_hub",
+    "yellow_alcove",
+    "pump_hub",
+    "combat_arena",
+    "exit_bay"
+  ],
+  "landmarks": [
+    "pump stack pillar room (hub)",
+    "green-lit slime wing",
+    "bright yellow key alcove",
+    "yellow-locked door south of hub",
+    "wide combat arena before exit bay"
+  ],
+  "pacing_notes": "Safe teach start; quiet hub; light pressure in slime wing; key detour; peak fight in arena; calm exit bay.",
+  "rubric_design": {
+    "navigation": "Hub landmark + light hierarchy. U-shaped: key north, locked progress south, optional east wing.",
+    "pacing": "No monsters in start/choke/alcove/exit. One zombieman in slime wing. Arena holds the combat peak.",
+    "mechanics": "Teach shotgun in start. Real YellowCard + yellow-locked door forces hub return.",
+    "affordances": "Stock Doom things; BIGDOOR yellow lock; SW1EXIT in exit bay.",
+    "narrative": "Abandoned coastal pump station: lockers, pump stack, toxic wing, keyed hatch to work bay exit."
+  },
+  "layout_constraints": {
+    "n_rooms": "6-8",
+    "axis_aligned": true,
+    "corridor_gaps": true,
+    "sizes_multiple_of_64": true,
+    "graph": "hub_spoke_with_return",
+    "must_include": [
+      "exactly one Player1Start in locker_start",
+      "Shotgun in locker_start",
+      "YellowCard in yellow_alcove",
+      "pump_hub -> combat_arena lock yellow kind door",
+      "no direct yellow_alcove -> combat_arena connection",
+      "Imp x2 and ShotgunGuy in combat_arena",
+      "Zombieman only in slime_wing",
+      "ExitSwitch in exit_bay",
+      "objective_room = exit_bay",
+      "part_designs for every room",
+      "cover_block in service_choke",
+      "pillar in pump_hub",
+      "walk closet arena_ambush on combat_arena east",
+      "elevation steps into arena and exit_bay"
+    ],
+    "room_roles": [
+      {
+        "id": "locker_start",
+        "role": "start",
+        "light": 200
+      },
+      {
+        "id": "service_choke",
+        "role": "corridor_room",
+        "light": 120
+      },
+      {
+        "id": "pump_hub",
+        "role": "hub",
+        "light": 150,
+        "larger": true
+      },
+      {
+        "id": "slime_wing",
+        "role": "optional_teach",
+        "light": 100
+      },
+      {
+        "id": "yellow_alcove",
+        "role": "key",
+        "light": 190,
+        "small": true
+      },
+      {
+        "id": "combat_arena",
+        "role": "arena",
+        "light": 140,
+        "larger": true
+      },
+      {
+        "id": "exit_bay",
+        "role": "exit",
+        "light": 180
+      }
+    ]
+  },
+  "part_designs": [
+    {
+      "id": "locker_start",
+      "role": "start",
+      "shape": "square locker",
+      "elevation": "floor 0 / ceil 128; brightest teach space",
+      "cover": "none \u2014 open teach",
+      "mobs": "none",
+      "triggers": "none",
+      "detail": "Bright safe start with shotgun on the open floor; clear sightline into the darker choke."
+    },
+    {
+      "id": "service_choke",
+      "role": "choke",
+      "shape": "narrow",
+      "elevation": "ceiling dropped to 112 for pressure",
+      "cover": "32x32 mid-hall cover_block for peek shooting",
+      "mobs": "none",
+      "triggers": "none",
+      "detail": "Single-file approach; dim light; clip breadcrumb beside the cover block."
+    },
+    {
+      "id": "pump_hub",
+      "role": "hub",
+      "shape": "hub",
+      "elevation": "tall ceil 160; landmark pillar prop",
+      "cover": "central tall pillar as pump-stack landmark and soft cover",
+      "mobs": "none in hub proper",
+      "triggers": "yellow-locked door south to arena",
+      "detail": "Wide readable hub; return here after key; pillar breaks sightlines without blocking routing."
+    },
+    {
+      "id": "slime_wing",
+      "role": "optional",
+      "shape": "wide",
+      "elevation": "low ceil 96",
+      "cover": "none",
+      "mobs": "one zombieman teach fight",
+      "triggers": "plain door from hub",
+      "detail": "Optional dim nukage wing; door telegraph; return to hub."
+    },
+    {
+      "id": "yellow_alcove",
+      "role": "key",
+      "shape": "alcove",
+      "elevation": "bright ceil 128; raised 16 floor pedestal feel via small cover_block under key",
+      "cover": "small raised pedestal block under YellowCard",
+      "mobs": "none",
+      "triggers": "none",
+      "detail": "Bright key pocket north of hub; forces return before yellow door."
+    },
+    {
+      "id": "combat_arena",
+      "role": "arena",
+      "shape": "arena",
+      "elevation": "floor raised +16 vs hub approach; ceil 144",
+      "cover": "west side cover_block for flank",
+      "mobs": "imps + shotgun guy; east walk-closet releases one more imp",
+      "triggers": "walk-open monster closet on east wall",
+      "detail": "Peak fight after yellow lock; closet ambush when crossing the east half."
+    },
+    {
+      "id": "exit_bay",
+      "role": "exit",
+      "shape": "rect",
+      "elevation": "floor +24 calm step-up from arena",
+      "cover": "none",
+      "mobs": "none",
+      "triggers": "ExitSwitch on far wall",
+      "detail": "Quieter brighter bay; obvious end-of-line with SW1EXIT."
+    }
+  ]
+}

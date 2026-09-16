@@ -44,6 +44,21 @@ def validate_layout(layout: dict[str, Any]) -> list[str]:
     if len(starts) != 1:
         errors.append(f"expected exactly one Player1Start, found {len(starts)}")
 
+    key_colors = {
+        "BlueCard": "blue",
+        "YellowCard": "yellow",
+        "RedCard": "red",
+    }
+    present = {
+        key_colors[t["type"]]
+        for t in layout.get("things", [])
+        if t.get("type") in key_colors
+    }
+    for c in layout.get("connections", []):
+        lock = c.get("lock")
+        if lock and lock not in present:
+            errors.append(f"connection {c.get('a')}->{c.get('b')} locks with {lock} but no matching key thing")
+
     return errors
 
 

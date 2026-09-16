@@ -1,0 +1,35 @@
+{
+  "id": "hell_keep",
+  "theme": "Flesh-Stone Fortress",
+  "brief": "Start on a cliffside overlook with lava below, navigate narrow battlements to a courtyard arena where combat is mandatory, pass through a red skull gate to reach the throne room exit. The path offers no safe retreat after entering the courtyard. Crimson lighting and roaring sounds dominate the atmosphere.",
+  "solution_path": [
+    "cliffside overlook",
+    "narrow battlements",
+    "courtyard arena",
+    "red skull gate",
+    "throne room exit"
+  ],
+  "landmarks": [
+    "lava-filled chasm below overlook",
+    "narrow stone balustrade",
+    "crimson stone courtyard with central pillar",
+    "red skull gate with glowing eyes"
+  ],
+  "pacing_notes": "Build tension through vertical movement and limited retreat options while maintaining oppressive atmosphere.",
+  "rubric_hints": {
+    "navigation": "Use vertical drops and narrow passages to guide player flow",
+    "pacing": "Create escalating danger by removing safe backtracking after courtyard",
+    "mechanics": "Implement red skull as key item for gate access with vertical drop penalties",
+    "affordances": "Provide minimal cover in courtyard but clear sightlines for combat",
+    "narrative": "Establish the fortress as a living entity through flesh-stone textures and lava integration"
+  },
+  "source_wad": null,
+  "generator": "ollama",
+  "seed": {
+    "id": "hell_keep",
+    "theme_hint": "Hell keep carved from flesh-stone and lava",
+    "structure": "cliffside start overlook -> narrow battlements -> courtyard arena -> red skull gate -> throne exit",
+    "mechanics": "red skull; vertical drops; no safe backtrack after courtyard",
+    "tone": "oppressive, crimson lighting, roar ambience"
+  }
+}

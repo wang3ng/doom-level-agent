@@ -1,0 +1,35 @@
+{
+  "id": "vertical_silo",
+  "theme": "Industrial Silo",
+  "brief": "Start in a dimly lit silo shaft with a lift teaching mechanism. Travel upward through stacked metal floors and catwalks, fighting monsters perched on ledges. Reach a bright control room at the top for your exit. The vertical layout creates distinct zones of light and shadow.",
+  "solution_path": [
+    "Enter silo shaft",
+    "Use lift teaching mechanism",
+    "Navigate mid-level catwalks",
+    "Combat ledge monsters",
+    "Reach top control room"
+  ],
+  "landmarks": [
+    "Metal lift shaft with teaching platform",
+    "Catwalk bridge over dark void",
+    "Ledge monster perches",
+    "Bright control room doorway"
+  ],
+  "pacing_notes": "Build tension through vertical progression with increasing light levels and combat intensity.",
+  "rubric_hints": {
+    "navigation": "Use the lift as a teach/test point to orient players to vertical movement mechanics",
+    "pacing": "Progression should alternate between tight catwalk combat and open control room spaces",
+    "mechanics": "Lift teaching platform should demonstrate key vertical traversal skills before combat",
+    "affordances": "Ledge positions provide both tactical advantage and visual cues for monster placement",
+    "narrative": "The contrast between dark shaft and bright top creates a clear story arc of ascending toward light"
+  },
+  "source_wad": null,
+  "generator": "ollama",
+  "seed": {
+    "id": "vertical_silo",
+    "theme_hint": "industrial silo with stacked floors",
+    "structure": "ground start -> lift teach -> mid catwalk fight -> top control room exit",
+    "mechanics": "lift as teach/test; monsters on ledges; health on landings",
+    "tone": "echoing metal, bright top vs dark shaft"
+  }
+}

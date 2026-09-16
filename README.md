@@ -37,11 +37,13 @@ brief (+ optional concept image)
           │
           ▼
 ┌───────────────────┐
-│ Critic            │  connectivity / density metrics · VLM stub
+│ Critic / Scorer   │  design rubric (5 pillars) + density metrics · VLM stub
 └───────────────────┘
 ```
 
 **Design rule:** the LLM does not emit binary WADs. It fills a fixed JSON schema; Python owns geometry.
+
+**Design scorer:** `configs/rubric/design_rubric.json` + `src/critic/scorer.py` scores navigation, pacing, mechanics (teach/test/twist), affordances, and narrative. Heuristics use layout JSON; vision-heavy criteria stay `unavailable` until annotation/VLM.
 
 ---
 
@@ -57,8 +59,9 @@ doom-level-agent/
 │   ├── proposal.md
 │   ├── proposal.tex
 │   └── proposal.pdf          ← Sep 16 one-pager
-├── configs/schema/
-│   └── layout.schema.json    ← DoomLayoutV0
+├── configs/
+│   ├── schema/layout.schema.json    ← DoomLayoutV0
+│   └── rubric/design_rubric.json    ← 5-pillar scorer
 ├── src/
 │   ├── pipeline/
 │   │   ├── stage1_image.py   ← concept image stub
@@ -69,18 +72,22 @@ doom-level-agent/
 │   │   └── writer.py         ← TEXTMAP + minimal PWAD
 │   └── critic/
 │       ├── metrics.py
+│       ├── scorer.py         ← design rubric
 │       └── vlm_critic.py     ← stub
 ├── data/
 │   ├── briefs/               ← text design briefs
 │   ├── layouts/              ← layout JSON
 │   ├── maps/                 ← generated .wad / .txt (often gitignored)
+│   ├── scores/               ← rubric JSON reports (gitignored)
 │   └── screenshots/
 ├── assets/free/              ← free textures / WADs only (no commercial IWADs)
 ├── scripts/
 │   ├── run_pipeline.py
+│   ├── score_level.py
 │   └── generate_brief.py
 ├── tests/
-│   └── test_build.py
+│   ├── test_build.py
+│   └── test_scorer.py
 └── docs/                     ← extra notes as the project grows
 ```
 
@@ -91,16 +98,29 @@ doom-level-agent/
 | Area | Status | Notes |
 | --- | --- | --- |
 | JSON schema + validator | **done** | `configs/schema/layout.schema.json` |
-| UDMF / PWAD writer | **prototype** | Axis-aligned rooms as separate sectors; corridor *stitching* still TODO |
+| UDMF / PWAD writer | **prototype** | Axis-aligned rooms + auto corridor sectors with portal openings |
 | Stage 2 Ollama layout | **wired** | Default `qwen3-coder:30b` on william |
 | Stage 1 concept image | **stub** | SVG placeholder |
+| Design rubric scorer | **v0.2 strict** | Heuristic caps 3.5 / 2.5 vision; gaps count as 1.0; 4–5 need annotation/VLM |
+| Prototype WAD | **built** | `data/maps/proto_techbase_v1.wad` (~1.7/5 scored-only under v0.2) |
 | VLM critic / GZDoom capture | **stub** | |
 | Proposal PDF | **done** | `proposal/proposal.pdf` |
-| Human eval protocol | **planned** | Final term |
+| Human eval protocol | **planned** | Final term; annotations already pluggable |
 | GitHub remote | **this repo** | |
 
 **Changelog (newest first)**
 
+- *Classic design corpus:* detailed part-by-part refs for Entryway, Hangar, Nuclear Plant, Underhalls, House of Pain + design primer; injected into Stage 2 / path describer / strong-brief / corpus card generation (`data/corpus/classic/`, `scripts/dump_classic_guidance.py`, `configs/prompts/strong_describer.md`).
+- *Micro-design:* schema `part_designs` / `props` / `closets`; writer emits cover blocks, elevation, walk-open monster closets; strong brief + Stage 2 must describe each part; brine rebuilt with hallway cover, hub pillar, key pedestal, arena closet.
+- *Keys/locks + hub return:* YellowCard + yellow-locked door; brine critical path forces alcove→hub→arena.
+- *Strong-brief pipeline:* Cursor writes rubric cards; Ollama emits JSON (`build_from_strong_brief.py`); shipped playable `brine_pump_station.wad`.
+- *Corpus v1:* 10 few-shot cards (Project1 + William Ollama briefs + 8 contrasting themes); `generate_corpus_cards.py`; Stage 2 pulls few-shots via `corpus.fewshot`.
+- *Critical path agent:* classic WAD parser + key-aware sector BFS, clarity score, template/Ollama briefs; corpus cards for Project1/William; hooked into `score_layout`.
+- *Author corpus:* copied `Project1.wad` / `William.wad` into `data/corpus/wads/` with stub cards for few-shot briefs.
+- *Scorer v0.2:* stricter heuristics (caps 3.5 / 2.5 vision), complexity penalty for tiny maps, `overall_with_gaps`; proto_techbase ~1.7/5 not ~4.4.
+- *UZDoom local runtime:* `doom/uzdoom.exe` + root `Doom2.wad` (gitignored); `scripts/play_level.py` smoke-loads `proto_techbase_v1.wad`.
+- *Playable corridor stitch:* builder inserts corridor sectors and two-sided openings; shipped `proto_techbase_v1` layout/WAD (~4.37/5 rubric).
+- *Design scorer:* five-pillar rubric (navigation, pacing, teach/test/twist, affordances, narrative) with JSON heuristics + annotation overrides; `scripts/score_level.py` and `--score` on the pipeline.
 - *Initial public scaffold:* schema, UDMF builder, pipeline stubs, proposal TeX/PDF, brief generator, README + Cursor rule to refresh README each commit.
 
 ---
@@ -125,10 +145,55 @@ python -m pip install -r requirements.txt
 
 ```bash
 python tests/test_build.py
-python scripts/run_pipeline.py --layout data/layouts/proto_two_rooms.json
+python scripts/run_pipeline.py --layout data/layouts/proto_techbase_v1.json \
+  --out data/maps/proto_techbase_v1.wad --score
 ```
 
-Outputs land under `data/maps/` (`MAP01.wad` + side-by-side `.txt` UDMF dump).
+Play in GZDoom (Freedoom IWAD), e.g.:
+
+```bash
+gzdoom -iwad path/to/freedoom2.wad -file data/maps/proto_techbase_v1.wad
+```
+
+Or with the local **UZDoom** install (repo-local; not committed):
+
+```bash
+python scripts/play_level.py
+# smoke check (load + quit):
+python scripts/play_level.py --smoke
+```
+
+Defaults: `doom/uzdoom.exe`, `Doom2.wad`, `data/maps/proto_techbase_v1.wad`. Or open the same `.wad` in Ultimate Doom Builder (UDMF).
+
+## Critical path analysis
+
+Extract a standard solution path from a classic WAD or layout JSON, score path clarity, and write a specific brief:
+
+```bash
+python scripts/analyze_path.py --wad data/corpus/wads/Project1.wad --card-out data/corpus/cards/project1.json
+python scripts/analyze_path.py --wad data/corpus/wads/William.wad --card-out data/corpus/cards/william.json
+# richer prose via Ollama (on william):
+python scripts/analyze_path.py --wad data/corpus/wads/Project1.wad --ollama --card-out data/corpus/cards/project1.json
+```
+
+`score_layout()` also reports `critical_path_score` for generated JSON maps.
+
+### Score a layout (design rubric)
+
+```bash
+python tests/test_scorer.py
+python scripts/score_level.py --layout data/layouts/proto_two_rooms.json
+python scripts/run_pipeline.py --layout data/layouts/proto_two_rooms.json --score
+```
+
+Optional human/VLM overrides:
+
+```bash
+python scripts/score_level.py --layout data/layouts/proto_two_rooms.json \
+  --annotations path/to/annotations.json
+```
+
+Annotation shape: `{ "mechanic_utilization": { "subversion": { "score": 4, "notes": "..." } } }` (0–5 scale).
 
 ## Layout JSON (v0)
 

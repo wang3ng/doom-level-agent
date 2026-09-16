@@ -1,0 +1,16 @@
+{
+  "n_cards": 10,
+  "themes": [
+    "Urban Military Base (Project1)",
+    "Castle Keep (William)",
+    "UAC Reactor",
+    "Flesh-Stone Fortress",
+    "Ruined Downtown",
+    "Star Hub",
+    "Industrial Silo",
+    "Crate Ambush",
+    "Toxic Plant",
+    "Fortress Divide"
+  ],
+  "note": "Author WAD cards + 8 seeded Ollama theme cards for few-shot planning."
+}

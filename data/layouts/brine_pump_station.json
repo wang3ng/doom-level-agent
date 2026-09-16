@@ -1,0 +1,268 @@
+{
+  "name": "brine_pump_station",
+  "theme": "Coastal Brine Pump Station",
+  "brief": "Hub-return brine station with micro-design: hallway peek cover, raised hub pillar, yellow key alcove, walk-triggered arena closet, elevated exit bay.",
+  "objective_room": "exit_bay",
+  "part_designs": [
+    {
+      "id": "locker_start",
+      "role": "start",
+      "shape": "square locker",
+      "elevation": "floor 0 / ceil 128; brightest teach space",
+      "cover": "none — open teach",
+      "mobs": "none",
+      "triggers": "none",
+      "detail": "Bright safe start with shotgun on the open floor; clear sightline into the darker choke."
+    },
+    {
+      "id": "service_choke",
+      "role": "choke",
+      "shape": "narrow",
+      "elevation": "ceiling dropped to 112 for pressure",
+      "cover": "32x32 mid-hall cover_block for peek shooting",
+      "mobs": "none",
+      "triggers": "none",
+      "detail": "Single-file approach; dim light; clip breadcrumb beside the cover block."
+    },
+    {
+      "id": "pump_hub",
+      "role": "hub",
+      "shape": "hub",
+      "elevation": "tall ceil 160; landmark pillar prop",
+      "cover": "central tall pillar as pump-stack landmark and soft cover",
+      "mobs": "none in hub proper",
+      "triggers": "yellow-locked door south to arena",
+      "detail": "Wide readable hub; return here after key; pillar breaks sightlines without blocking routing."
+    },
+    {
+      "id": "slime_wing",
+      "role": "optional",
+      "shape": "wide",
+      "elevation": "low ceil 96",
+      "cover": "none",
+      "mobs": "one zombieman teach fight",
+      "triggers": "plain door from hub",
+      "detail": "Optional dim nukage wing; door telegraph; return to hub."
+    },
+    {
+      "id": "yellow_alcove",
+      "role": "key",
+      "shape": "alcove",
+      "elevation": "bright ceil 128; raised 16 floor pedestal feel via small cover_block under key",
+      "cover": "small raised pedestal block under YellowCard",
+      "mobs": "none",
+      "triggers": "none",
+      "detail": "Bright key pocket north of hub; forces return before yellow door."
+    },
+    {
+      "id": "combat_arena",
+      "role": "arena",
+      "shape": "arena",
+      "elevation": "floor raised +16 vs hub approach; ceil 144",
+      "cover": "west side cover_block for flank",
+      "mobs": "imps + shotgun guy; east walk-closet releases one more imp",
+      "triggers": "walk-open monster closet on east wall",
+      "detail": "Peak fight after yellow lock; closet ambush when crossing the east half."
+    },
+    {
+      "id": "exit_bay",
+      "role": "exit",
+      "shape": "rect",
+      "elevation": "floor +24 calm step-up from arena",
+      "cover": "none",
+      "mobs": "none",
+      "triggers": "ExitSwitch on far wall",
+      "detail": "Quieter brighter bay; obvious end-of-line with SW1EXIT."
+    }
+  ],
+  "rooms": [
+    {
+      "id": "locker_start",
+      "x": 0,
+      "y": 128,
+      "w": 192,
+      "h": 192,
+      "floor_height": 0,
+      "ceiling_height": 128,
+      "floor_flat": "FLOOR0_1",
+      "ceil_flat": "CEIL1_1",
+      "light": 200,
+      "role": "start",
+      "shape": "rect",
+      "design": "Bright safe teach locker"
+    },
+    {
+      "id": "service_choke",
+      "x": 256,
+      "y": 128,
+      "w": 128,
+      "h": 192,
+      "floor_height": 0,
+      "ceiling_height": 112,
+      "floor_flat": "FLOOR0_3",
+      "ceil_flat": "CEIL1_1",
+      "light": 120,
+      "role": "choke",
+      "shape": "narrow",
+      "design": "Low ceiling choke with mid-hall cover"
+    },
+    {
+      "id": "pump_hub",
+      "x": 448,
+      "y": 64,
+      "w": 384,
+      "h": 320,
+      "floor_height": 0,
+      "ceiling_height": 160,
+      "floor_flat": "FLOOR1_1",
+      "ceil_flat": "CEIL1_2",
+      "light": 150,
+      "role": "hub",
+      "shape": "hub",
+      "design": "Tall hub with pump-stack pillar"
+    },
+    {
+      "id": "slime_wing",
+      "x": 896,
+      "y": 96,
+      "w": 192,
+      "h": 192,
+      "floor_height": 0,
+      "ceiling_height": 96,
+      "floor_flat": "NUKAGE1",
+      "ceil_flat": "CEIL1_1",
+      "light": 100,
+      "role": "optional",
+      "shape": "wide",
+      "design": "Optional dim slime teach wing"
+    },
+    {
+      "id": "yellow_alcove",
+      "x": 560,
+      "y": 448,
+      "w": 128,
+      "h": 128,
+      "floor_height": 0,
+      "ceiling_height": 128,
+      "floor_flat": "FLOOR0_1",
+      "ceil_flat": "CEIL1_1",
+      "light": 190,
+      "role": "key",
+      "shape": "alcove",
+      "design": "Bright key pocket with pedestal"
+    },
+    {
+      "id": "combat_arena",
+      "x": 448,
+      "y": -320,
+      "w": 384,
+      "h": 256,
+      "floor_height": 16,
+      "ceiling_height": 144,
+      "floor_flat": "FLOOR1_1",
+      "ceil_flat": "CEIL1_2",
+      "light": 140,
+      "role": "arena",
+      "shape": "arena",
+      "design": "Raised arena with flank cover and east closet"
+    },
+    {
+      "id": "exit_bay",
+      "x": 512,
+      "y": -576,
+      "w": 192,
+      "h": 192,
+      "floor_height": 24,
+      "ceiling_height": 128,
+      "floor_flat": "FLOOR0_1",
+      "ceil_flat": "CEIL1_1",
+      "light": 180,
+      "role": "exit",
+      "shape": "rect",
+      "design": "Calm elevated exit bay"
+    }
+  ],
+  "connections": [
+    { "a": "locker_start", "b": "service_choke", "kind": "corridor", "width": 64, "design": "open teach transition" },
+    { "a": "service_choke", "b": "pump_hub", "kind": "corridor", "width": 64, "design": "into hub landmark" },
+    { "a": "pump_hub", "b": "slime_wing", "kind": "door", "width": 64, "design": "optional wing door" },
+    { "a": "pump_hub", "b": "yellow_alcove", "kind": "corridor", "width": 64, "design": "key detour north" },
+    { "a": "pump_hub", "b": "combat_arena", "kind": "door", "lock": "yellow", "width": 96, "design": "yellow lock forces hub return" },
+    { "a": "combat_arena", "b": "exit_bay", "kind": "corridor", "width": 64, "design": "step up into exit" }
+  ],
+  "props": [
+    {
+      "type": "cover_block",
+      "x": 296,
+      "y": 200,
+      "w": 32,
+      "h": 32,
+      "floor_raise": 32,
+      "in_room": "service_choke",
+      "design": "hallway peek cover"
+    },
+    {
+      "type": "pillar",
+      "x": 608,
+      "y": 192,
+      "w": 64,
+      "h": 64,
+      "in_room": "pump_hub",
+      "design": "pump stack landmark"
+    },
+    {
+      "type": "cover_block",
+      "x": 600,
+      "y": 488,
+      "w": 32,
+      "h": 32,
+      "floor_raise": 16,
+      "in_room": "yellow_alcove",
+      "design": "key pedestal"
+    },
+    {
+      "type": "cover_block",
+      "x": 480,
+      "y": -240,
+      "w": 48,
+      "h": 48,
+      "floor_raise": 40,
+      "in_room": "combat_arena",
+      "design": "arena flank cover"
+    }
+  ],
+  "closets": [
+    {
+      "id": "arena_ambush",
+      "attach_room": "combat_arena",
+      "side": "east",
+      "w": 96,
+      "h": 96,
+      "gap": 32,
+      "floor_height": 16,
+      "ceiling_height": 128,
+      "light": 100,
+      "trigger": "walk",
+      "design": "Walk-open east closet releases flanking imp during arena fight",
+      "monsters": [{ "type": "Imp", "dx": 48, "dy": 48, "angle": 180 }]
+    }
+  ],
+  "things": [
+    { "type": "Player1Start", "x": 64, "y": 224, "angle": 0 },
+    { "type": "Shotgun", "x": 128, "y": 200, "angle": 0 },
+    { "type": "HealthBonus", "x": 300, "y": 160, "angle": 0 },
+    { "type": "Clip", "x": 320, "y": 240, "angle": 0 },
+    { "type": "HealthBonus", "x": 520, "y": 200, "angle": 0 },
+    { "type": "Zombieman", "x": 960, "y": 180, "angle": 180 },
+    { "type": "HealthBonus", "x": 1000, "y": 160, "angle": 0 },
+    { "type": "YellowCard", "x": 616, "y": 504, "angle": 0 },
+    { "type": "ArmorBonus", "x": 580, "y": 470, "angle": 0 },
+    { "type": "HealthBonus", "x": 520, "y": -180, "angle": 0 },
+    { "type": "Imp", "x": 600, "y": -160, "angle": 90 },
+    { "type": "Imp", "x": 700, "y": -120, "angle": 90 },
+    { "type": "ShotgunGuy", "x": 640, "y": -80, "angle": 90 },
+    { "type": "ArmorBonus", "x": 760, "y": -220, "angle": 0 },
+    { "type": "HealthBonus", "x": 580, "y": -480, "angle": 0 },
+    { "type": "ExitSwitch", "x": 608, "y": -544, "angle": 0 }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "slime_plant",
+  "theme": "Toxic Plant",
+  "brief": "Start in a locker room with a rad suit to protect against toxic slime hazards. Navigate across a grated bridge over bubbling green slime to reach a pump room key. Proceed through a raised pipe walkway to retrieve the key and activate a mechanism. Exit through a yellow door behind a toxic plant barrier.",
+  "solution_path": [
+    "locker start",
+    "grated bridge over slime",
+    "pump room key",
+    "raised pipe walk",
+    "yellow door exit"
+  ],
+  "landmarks": [
+    "grated bridge with bubbling green slime below",
+    "pump room with key on platform",
+    "raised pipe walkway with toxic plant barrier",
+    "yellow door behind toxic plant"
+  ],
+  "pacing_notes": "Balance hazardous navigation with strategic resource management to maintain momentum through toxic environments.",
+  "rubric_hints": {
+    "navigation": "Use the grated bridge as a safe passage while avoiding direct contact with slime floors",
+    "pacing": "Manage rad suit durability while maintaining forward progress through hazardous areas",
+    "mechanics": "Collect the yellow key in pump room before proceeding to exit door",
+    "affordances": "Utilize raised pipe walkway for safe elevation above slime hazards",
+    "narrative": "Establish the toxic plant theme through sick green lighting and dripping pipes throughout the environment"
+  },
+  "source_wad": null,
+  "generator": "ollama",
+  "seed": {
+    "id": "slime_plant",
+    "theme_hint": "toxic plant with damaging floors and bridges",
+    "structure": "locker start -> grated bridge over slime -> pump room key -> raised pipe walk -> exit behind yellow door",
+    "mechanics": "yellow key; slime as hazard teach with rad suit nearby",
+    "tone": "sick green light, dripping pipes"
+  }
+}

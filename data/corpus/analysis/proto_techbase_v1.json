@@ -1,0 +1,52 @@
+{
+  "path": {
+    "ok": true,
+    "source": "layout_json",
+    "map": "proto_techbase_v1",
+    "reached_exit": false,
+    "start_room": "start",
+    "goal_room": "arena",
+    "path_rooms": [
+      "start",
+      "hub",
+      "arena"
+    ],
+    "path_length": 3,
+    "unique_rooms_on_path": 3,
+    "n_rooms_total": 3,
+    "coverage": 1.0,
+    "avg_branching_on_path": 1.333,
+    "keys_collected": [],
+    "locks_used": []
+  },
+  "critical_path_score": {
+    "score": 1.55,
+    "method": "critical_path",
+    "notes": "no exit reached (exploration path only); short path length 3; line-like branching 1.33; very high coverage 1.00",
+    "evidence": {
+      "path_length": 3,
+      "coverage": 1.0,
+      "reached_exit": false,
+      "keys": []
+    }
+  },
+  "description": {
+    "theme": "from_path_analysis",
+    "brief": "Start in start, follow start -> hub -> arena, objective at arena. Clarity score notes: no exit reached (exploration path only); short path length 3; line-like branching 1.33; very high coverage 1.00",
+    "solution_path": [
+      "Enter start",
+      "Enter hub",
+      "Enter arena"
+    ],
+    "landmarks": [],
+    "pacing_notes": "no exit reached (exploration path only); short path length 3; line-like branching 1.33; very high coverage 1.00",
+    "rubric_hints": {
+      "navigation": "Follow extracted critical path; emphasize landmarks at branch points.",
+      "pacing": "Place quieter sectors early and denser fights near the goal.",
+      "mechanics": "Add a teach beat before the first fight.",
+      "affordances": "Keep door and key colors consistent.",
+      "narrative": "Name one landmark on the critical path."
+    },
+    "generator": "template"
+  }
+}

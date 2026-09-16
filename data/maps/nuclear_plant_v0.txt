@@ -1,0 +1,2790 @@
+namespace = "zdoom";
+// map: nuclear_plant_v0
+// theme: phobos_tech_plant
+// rooms=9 corridors=8 exits=1 doors=6 props=5 tripwires=1 lifts=2
+// linedefs clockwise so front midtex faces into sector
+vertex // 0
+{
+  x = 320.000;
+  y = 160.000;
+}
+vertex // 1
+{
+  x = 0.000;
+  y = 160.000;
+}
+vertex // 2
+{
+  x = 0.000;
+  y = 320.000;
+}
+vertex // 3
+{
+  x = 320.000;
+  y = 320.000;
+}
+vertex // 4
+{
+  x = 320.000;
+  y = 200.000;
+}
+vertex // 5
+{
+  x = 320.000;
+  y = 280.000;
+}
+vertex // 6
+{
+  x = 464.000;
+  y = 64.000;
+}
+vertex // 7
+{
+  x = 384.000;
+  y = 64.000;
+}
+vertex // 8
+{
+  x = 528.000;
+  y = 64.000;
+}
+vertex // 9
+{
+  x = 544.000;
+  y = 64.000;
+}
+vertex // 10
+{
+  x = 640.000;
+  y = 64.000;
+}
+vertex // 11
+{
+  x = 928.000;
+  y = 64.000;
+}
+vertex // 12
+{
+  x = 384.000;
+  y = 200.000;
+}
+vertex // 13
+{
+  x = 384.000;
+  y = 280.000;
+}
+vertex // 14
+{
+  x = 384.000;
+  y = 352.000;
+}
+vertex // 15
+{
+  x = 544.000;
+  y = 352.000;
+}
+vertex // 16
+{
+  x = 608.000;
+  y = 352.000;
+}
+vertex // 17
+{
+  x = 768.000;
+  y = 352.000;
+}
+vertex // 18
+{
+  x = 768.000;
+  y = 224.000;
+}
+vertex // 19
+{
+  x = 928.000;
+  y = 224.000;
+}
+vertex // 20
+{
+  x = 928.000;
+  y = 160.000;
+}
+vertex // 21
+{
+  x = 544.000;
+  y = -128.000;
+}
+vertex // 22
+{
+  x = 448.000;
+  y = -128.000;
+}
+vertex // 23
+{
+  x = 448.000;
+  y = 0.000;
+}
+vertex // 24
+{
+  x = 464.000;
+  y = 0.000;
+}
+vertex // 25
+{
+  x = 528.000;
+  y = 0.000;
+}
+vertex // 26
+{
+  x = 544.000;
+  y = 0.000;
+}
+vertex // 27
+{
+  x = 1120.000;
+  y = 64.000;
+}
+vertex // 28
+{
+  x = 1024.000;
+  y = 64.000;
+}
+vertex // 29
+{
+  x = 1024.000;
+  y = 160.000;
+}
+vertex // 30
+{
+  x = 1024.000;
+  y = 224.000;
+}
+vertex // 31
+{
+  x = 1024.000;
+  y = 320.000;
+}
+vertex // 32
+{
+  x = 1120.000;
+  y = 320.000;
+}
+vertex // 33
+{
+  x = 544.000;
+  y = 416.000;
+}
+vertex // 34
+{
+  x = 512.000;
+  y = 416.000;
+}
+vertex // 35
+{
+  x = 608.000;
+  y = 416.000;
+}
+vertex // 36
+{
+  x = 640.000;
+  y = 416.000;
+}
+vertex // 37
+{
+  x = 512.000;
+  y = 512.000;
+}
+vertex // 38
+{
+  x = 640.000;
+  y = 512.000;
+}
+vertex // 39
+{
+  x = 736.000;
+  y = -384.000;
+}
+vertex // 40
+{
+  x = 448.000;
+  y = -384.000;
+}
+vertex // 41
+{
+  x = 448.000;
+  y = -256.000;
+}
+vertex // 42
+{
+  x = 544.000;
+  y = -256.000;
+}
+vertex // 43
+{
+  x = 640.000;
+  y = -256.000;
+}
+vertex // 44
+{
+  x = 736.000;
+  y = -256.000;
+}
+vertex // 45
+{
+  x = 736.000;
+  y = -352.000;
+}
+vertex // 46
+{
+  x = 736.000;
+  y = -288.000;
+}
+vertex // 47
+{
+  x = 960.000;
+  y = -576.000;
+}
+vertex // 48
+{
+  x = 800.000;
+  y = -576.000;
+}
+vertex // 49
+{
+  x = 800.000;
+  y = -352.000;
+}
+vertex // 50
+{
+  x = 800.000;
+  y = -288.000;
+}
+vertex // 51
+{
+  x = 800.000;
+  y = -224.000;
+}
+vertex // 52
+{
+  x = 1120.000;
+  y = -224.000;
+}
+vertex // 53
+{
+  x = 1120.000;
+  y = -432.000;
+}
+vertex // 54
+{
+  x = 1120.000;
+  y = -448.000;
+}
+vertex // 55
+{
+  x = 1120.000;
+  y = -368.000;
+}
+vertex // 56
+{
+  x = 1120.000;
+  y = -352.000;
+}
+vertex // 57
+{
+  x = 1120.000;
+  y = -288.000;
+}
+vertex // 58
+{
+  x = 960.000;
+  y = -448.000;
+}
+vertex // 59
+{
+  x = 1312.000;
+  y = -400.000;
+}
+vertex // 60
+{
+  x = 1184.000;
+  y = -400.000;
+}
+vertex // 61
+{
+  x = 1184.000;
+  y = -352.000;
+}
+vertex // 62
+{
+  x = 1184.000;
+  y = -288.000;
+}
+vertex // 63
+{
+  x = 1184.000;
+  y = -240.000;
+}
+vertex // 64
+{
+  x = 1312.000;
+  y = -240.000;
+}
+vertex // 65
+{
+  x = 1248.000;
+  y = -448.000;
+}
+vertex // 66
+{
+  x = 1152.000;
+  y = -448.000;
+}
+vertex // 67
+{
+  x = 1152.000;
+  y = -432.000;
+}
+vertex // 68
+{
+  x = 1152.000;
+  y = -368.000;
+}
+vertex // 69
+{
+  x = 1152.000;
+  y = -352.000;
+}
+vertex // 70
+{
+  x = 1248.000;
+  y = -352.000;
+}
+vertex // 71
+{
+  x = 152.000;
+  y = 200.000;
+}
+vertex // 72
+{
+  x = 120.000;
+  y = 200.000;
+}
+vertex // 73
+{
+  x = 120.000;
+  y = 232.000;
+}
+vertex // 74
+{
+  x = 152.000;
+  y = 232.000;
+}
+vertex // 75
+{
+  x = 592.000;
+  y = 176.000;
+}
+vertex // 76
+{
+  x = 528.000;
+  y = 176.000;
+}
+vertex // 77
+{
+  x = 528.000;
+  y = 240.000;
+}
+vertex // 78
+{
+  x = 592.000;
+  y = 240.000;
+}
+vertex // 79
+{
+  x = 584.000;
+  y = 440.000;
+}
+vertex // 80
+{
+  x = 552.000;
+  y = 440.000;
+}
+vertex // 81
+{
+  x = 552.000;
+  y = 472.000;
+}
+vertex // 82
+{
+  x = 584.000;
+  y = 472.000;
+}
+vertex // 83
+{
+  x = 508.000;
+  y = -340.000;
+}
+vertex // 84
+{
+  x = 468.000;
+  y = -340.000;
+}
+vertex // 85
+{
+  x = 468.000;
+  y = -300.000;
+}
+vertex // 86
+{
+  x = 508.000;
+  y = -300.000;
+}
+vertex // 87
+{
+  x = 868.000;
+  y = -360.000;
+}
+vertex // 88
+{
+  x = 820.000;
+  y = -360.000;
+}
+vertex // 89
+{
+  x = 820.000;
+  y = -312.000;
+}
+vertex // 90
+{
+  x = 868.000;
+  y = -312.000;
+}
+vertex // 91
+{
+  x = 1096.000;
+  y = -368.000;
+}
+vertex // 92
+{
+  x = 1096.000;
+  y = -432.000;
+}
+sector // 0
+{
+  heightfloor = 0;
+  heightceiling = 128;
+  texturefloor = "FLOOR0_1";
+  textureceiling = "CEIL1_1";
+  lightlevel = 255;
+}
+sector // 1
+{
+  heightfloor = 0;
+  heightceiling = 176;
+  texturefloor = "FLOOR1_1";
+  textureceiling = "CEIL1_2";
+  lightlevel = 160;
+}
+sector // 2
+{
+  heightfloor = -24;
+  heightceiling = 112;
+  texturefloor = "FLOOR0_3";
+  textureceiling = "FLAT5_5";
+  lightlevel = 110;
+}
+sector // 3
+{
+  heightfloor = 0;
+  heightceiling = 88;
+  texturefloor = "FLOOR0_3";
+  textureceiling = "FLAT5_4";
+  lightlevel = 64;
+  special = 17;
+}
+sector // 4
+{
+  heightfloor = 0;
+  heightceiling = 128;
+  texturefloor = "FLOOR4_8";
+  textureceiling = "CEIL3_5";
+  lightlevel = 224;
+}
+sector // 5
+{
+  heightfloor = 0;
+  heightceiling = 112;
+  texturefloor = "NUKAGE1";
+  textureceiling = "FLAT5_4";
+  lightlevel = 96;
+}
+sector // 6
+{
+  heightfloor = 16;
+  heightceiling = 152;
+  texturefloor = "FLOOR1_1";
+  textureceiling = "CEIL1_2";
+  lightlevel = 140;
+}
+sector // 7
+{
+  heightfloor = 32;
+  heightceiling = 128;
+  texturefloor = "FLOOR0_1";
+  textureceiling = "CEIL1_1";
+  lightlevel = 200;
+}
+sector // 8
+{
+  heightfloor = 0;
+  heightceiling = 128;
+  texturefloor = "FLOOR0_1";
+  textureceiling = "CEIL1_1";
+  lightlevel = 207;
+}
+sector // 9
+{
+  heightfloor = 0;
+  heightceiling = 112;
+  texturefloor = "FLOOR0_3";
+  textureceiling = "FLAT5_4";
+  lightlevel = 135;
+  id = 1501;
+}
+sector // 10
+{
+  heightfloor = 0;
+  heightceiling = 0;
+  texturefloor = "FLOOR1_1";
+  textureceiling = "FLAT5_4";
+  lightlevel = 112;
+  id = 1002;
+}
+sector // 11
+{
+  heightfloor = 0;
+  heightceiling = 128;
+  texturefloor = "FLOOR1_1";
+  textureceiling = "CEIL1_2";
+  lightlevel = 192;
+}
+sector // 12
+{
+  heightfloor = 0;
+  heightceiling = 0;
+  texturefloor = "NUKAGE1";
+  textureceiling = "FLAT5_4";
+  lightlevel = 128;
+  id = 1004;
+}
+sector // 13
+{
+  heightfloor = 0;
+  heightceiling = 112;
+  texturefloor = "NUKAGE1";
+  textureceiling = "FLAT5_4";
+  lightlevel = 118;
+}
+sector // 14
+{
+  heightfloor = 16;
+  heightceiling = 128;
+  texturefloor = "FLOOR1_1";
+  textureceiling = "CEIL1_2";
+  lightlevel = 170;
+}
+sector // 15
+{
+  heightfloor = 16;
+  heightceiling = 16;
+  texturefloor = "FLOOR1_1";
+  textureceiling = "FLAT5_4";
+  lightlevel = 80;
+  id = 2000;
+}
+sector // 16
+{
+  heightfloor = 16;
+  heightceiling = 128;
+  texturefloor = "FLOOR1_1";
+  textureceiling = "CEIL1_2";
+  lightlevel = 80;
+}
+sector // 17
+{
+  heightfloor = 32;
+  heightceiling = 128;
+  texturefloor = "FLOOR0_1";
+  textureceiling = "CEIL1_1";
+  lightlevel = 235;
+}
+sector // 18
+{
+  heightfloor = 96;
+  heightceiling = 176;
+  texturefloor = "CEIL5_2";
+  textureceiling = "CEIL1_2";
+  lightlevel = 140;
+}
+sector // 19
+{
+  heightfloor = 16;
+  heightceiling = 128;
+  texturefloor = "FLOOR4_8";
+  textureceiling = "CEIL3_5";
+  lightlevel = 204;
+}
+sector // 20
+{
+  heightfloor = 32;
+  heightceiling = 112;
+  texturefloor = "NUKAGE1";
+  textureceiling = "FLAT5_4";
+  lightlevel = 80;
+}
+sector // 21
+{
+  heightfloor = 56;
+  heightceiling = 152;
+  texturefloor = "FLOOR1_1";
+  textureceiling = "CEIL1_2";
+  lightlevel = 120;
+}
+sidedef // 0
+{
+  sector = 0;
+  texturetop = "-";
+  texturemiddle = "STARTAN3";
+  texturebottom = "-";
+}
+sidedef // 1
+{
+  sector = 0;
+  texturetop = "-";
+  texturemiddle = "STARTAN3";
+  texturebottom = "-";
+}
+sidedef // 2
+{
+  sector = 0;
+  texturetop = "-";
+  texturemiddle = "STARTAN3";
+  texturebottom = "-";
+}
+sidedef // 3
+{
+  sector = 0;
+  texturetop = "-";
+  texturemiddle = "STARTAN3";
+  texturebottom = "-";
+}
+sidedef // 4
+{
+  sector = 0;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 5
+{
+  sector = 8;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 6
+{
+  sector = 0;
+  texturetop = "-";
+  texturemiddle = "STARTAN3";
+  texturebottom = "-";
+}
+sidedef // 7
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 8
+{
+  sector = 1;
+  texturetop = "BROWN96";
+  texturemiddle = "-";
+  texturebottom = "STEP2";
+}
+sidedef // 9
+{
+  sector = 9;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "STEP2";
+}
+sidedef // 10
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 11
+{
+  sector = 1;
+  texturetop = "BIGDOOR2";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 12
+{
+  sector = 12;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 13
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 14
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 15
+{
+  sector = 1;
+  texturetop = "BROWN96";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 16
+{
+  sector = 8;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 17
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 18
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 19
+{
+  sector = 1;
+  texturetop = "BROWN96";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 20
+{
+  sector = 11;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 21
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 22
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 23
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 24
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 25
+{
+  sector = 1;
+  texturetop = "BIGDOOR2";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 26
+{
+  sector = 10;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 27
+{
+  sector = 2;
+  texturetop = "-";
+  texturemiddle = "BROWN1";
+  texturebottom = "-";
+}
+sidedef // 28
+{
+  sector = 2;
+  texturetop = "-";
+  texturemiddle = "BROWN1";
+  texturebottom = "-";
+}
+sidedef // 29
+{
+  sector = 2;
+  texturetop = "-";
+  texturemiddle = "BROWN1";
+  texturebottom = "-";
+}
+sidedef // 30
+{
+  sector = 2;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "STEP2";
+}
+sidedef // 31
+{
+  sector = 9;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "STEP2";
+}
+sidedef // 32
+{
+  sector = 2;
+  texturetop = "-";
+  texturemiddle = "BROWN1";
+  texturebottom = "-";
+}
+sidedef // 33
+{
+  sector = 2;
+  texturetop = "-";
+  texturemiddle = "BROWN1";
+  texturebottom = "-";
+}
+sidedef // 34
+{
+  sector = 3;
+  texturetop = "-";
+  texturemiddle = "SLADWALL";
+  texturebottom = "-";
+}
+sidedef // 35
+{
+  sector = 3;
+  texturetop = "-";
+  texturemiddle = "SLADWALL";
+  texturebottom = "-";
+}
+sidedef // 36
+{
+  sector = 3;
+  texturetop = "BIGDOOR2";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 37
+{
+  sector = 10;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 38
+{
+  sector = 3;
+  texturetop = "-";
+  texturemiddle = "SLADWALL";
+  texturebottom = "-";
+}
+sidedef // 39
+{
+  sector = 3;
+  texturetop = "-";
+  texturemiddle = "SLADWALL";
+  texturebottom = "-";
+}
+sidedef // 40
+{
+  sector = 3;
+  texturetop = "-";
+  texturemiddle = "SLADWALL";
+  texturebottom = "-";
+}
+sidedef // 41
+{
+  sector = 4;
+  texturetop = "-";
+  texturemiddle = "STARBR2";
+  texturebottom = "-";
+}
+sidedef // 42
+{
+  sector = 4;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 43
+{
+  sector = 11;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 44
+{
+  sector = 4;
+  texturetop = "-";
+  texturemiddle = "STARBR2";
+  texturebottom = "-";
+}
+sidedef // 45
+{
+  sector = 4;
+  texturetop = "-";
+  texturemiddle = "STARBR2";
+  texturebottom = "-";
+}
+sidedef // 46
+{
+  sector = 4;
+  texturetop = "-";
+  texturemiddle = "STARBR2";
+  texturebottom = "-";
+}
+sidedef // 47
+{
+  sector = 4;
+  texturetop = "-";
+  texturemiddle = "STARBR2";
+  texturebottom = "-";
+}
+sidedef // 48
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "GSTONE1";
+  texturebottom = "-";
+}
+sidedef // 49
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "GSTONE1";
+  texturebottom = "-";
+}
+sidedef // 50
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "GSTONE1";
+  texturebottom = "-";
+}
+sidedef // 51
+{
+  sector = 5;
+  texturetop = "BIGDOOR2";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 52
+{
+  sector = 12;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 53
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "GSTONE1";
+  texturebottom = "-";
+}
+sidedef // 54
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "GSTONE1";
+  texturebottom = "-";
+}
+sidedef // 55
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 56
+{
+  sector = 13;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 57
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "GSTONE1";
+  texturebottom = "-";
+}
+sidedef // 58
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 59
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 60
+{
+  sector = 6;
+  texturetop = "STARTAN2";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 61
+{
+  sector = 13;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "STEP2";
+}
+sidedef // 62
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 63
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 64
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 65
+{
+  sector = 6;
+  texturetop = "BIGDOOR2";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 66
+{
+  sector = 15;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 67
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 68
+{
+  sector = 6;
+  texturetop = "STARTAN2";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 69
+{
+  sector = 14;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 70
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 71
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 72
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 73
+{
+  sector = 7;
+  texturetop = "-";
+  texturemiddle = "COMPSPAN";
+  texturebottom = "-";
+}
+sidedef // 74
+{
+  sector = 7;
+  texturetop = "-";
+  texturemiddle = "COMPSPAN";
+  texturebottom = "-";
+}
+sidedef // 75
+{
+  sector = 7;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 76
+{
+  sector = 14;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "STEP2";
+}
+sidedef // 77
+{
+  sector = 7;
+  texturetop = "-";
+  texturemiddle = "COMPSPAN";
+  texturebottom = "-";
+}
+sidedef // 78
+{
+  sector = 7;
+  texturetop = "-";
+  texturemiddle = "SW1EXIT";
+  texturebottom = "-";
+}
+sidedef // 79
+{
+  sector = 7;
+  texturetop = "-";
+  texturemiddle = "COMPSPAN";
+  texturebottom = "-";
+}
+sidedef // 80
+{
+  sector = 16;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 81
+{
+  sector = 16;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 82
+{
+  sector = 16;
+  texturetop = "BIGDOOR2";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 83
+{
+  sector = 15;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 84
+{
+  sector = 16;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 85
+{
+  sector = 16;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 86
+{
+  sector = 16;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 87
+{
+  sector = 8;
+  texturetop = "-";
+  texturemiddle = "STARTAN3";
+  texturebottom = "-";
+}
+sidedef // 88
+{
+  sector = 8;
+  texturetop = "-";
+  texturemiddle = "STARTAN3";
+  texturebottom = "-";
+}
+sidedef // 89
+{
+  sector = 9;
+  texturetop = "-";
+  texturemiddle = "SUPPORT3";
+  texturebottom = "-";
+}
+sidedef // 90
+{
+  sector = 9;
+  texturetop = "-";
+  texturemiddle = "SUPPORT3";
+  texturebottom = "-";
+}
+sidedef // 91
+{
+  sector = 10;
+  texturetop = "-";
+  texturemiddle = "DOORTRAK";
+  texturebottom = "-";
+}
+sidedef // 92
+{
+  sector = 10;
+  texturetop = "-";
+  texturemiddle = "DOORTRAK";
+  texturebottom = "-";
+}
+sidedef // 93
+{
+  sector = 11;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 94
+{
+  sector = 11;
+  texturetop = "-";
+  texturemiddle = "BROWN96";
+  texturebottom = "-";
+}
+sidedef // 95
+{
+  sector = 12;
+  texturetop = "-";
+  texturemiddle = "DOORTRAK";
+  texturebottom = "-";
+}
+sidedef // 96
+{
+  sector = 12;
+  texturetop = "-";
+  texturemiddle = "DOORTRAK";
+  texturebottom = "-";
+}
+sidedef // 97
+{
+  sector = 13;
+  texturetop = "-";
+  texturemiddle = "GSTONE1";
+  texturebottom = "-";
+}
+sidedef // 98
+{
+  sector = 13;
+  texturetop = "-";
+  texturemiddle = "GSTONE1";
+  texturebottom = "-";
+}
+sidedef // 99
+{
+  sector = 14;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 100
+{
+  sector = 14;
+  texturetop = "-";
+  texturemiddle = "STARTAN2";
+  texturebottom = "-";
+}
+sidedef // 101
+{
+  sector = 15;
+  texturetop = "-";
+  texturemiddle = "DOORTRAK";
+  texturebottom = "-";
+}
+sidedef // 102
+{
+  sector = 15;
+  texturetop = "-";
+  texturemiddle = "DOORTRAK";
+  texturebottom = "-";
+}
+sidedef // 103
+{
+  sector = 17;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 104
+{
+  sector = 0;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 105
+{
+  sector = 17;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 106
+{
+  sector = 0;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 107
+{
+  sector = 17;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 108
+{
+  sector = 0;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 109
+{
+  sector = 17;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 110
+{
+  sector = 0;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 111
+{
+  sector = 18;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 112
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "METAL";
+}
+sidedef // 113
+{
+  sector = 18;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 114
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "METAL";
+}
+sidedef // 115
+{
+  sector = 18;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 116
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "METAL";
+}
+sidedef // 117
+{
+  sector = 18;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 118
+{
+  sector = 1;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "METAL";
+}
+sidedef // 119
+{
+  sector = 19;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 120
+{
+  sector = 4;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 121
+{
+  sector = 19;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 122
+{
+  sector = 4;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 123
+{
+  sector = 19;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 124
+{
+  sector = 4;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 125
+{
+  sector = 19;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 126
+{
+  sector = 4;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 127
+{
+  sector = 20;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 128
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 129
+{
+  sector = 20;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 130
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 131
+{
+  sector = 20;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 132
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 133
+{
+  sector = 20;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 134
+{
+  sector = 5;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 135
+{
+  sector = 21;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 136
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 137
+{
+  sector = 21;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 138
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 139
+{
+  sector = 21;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 140
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 141
+{
+  sector = 21;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 142
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "SUPPORT3";
+}
+sidedef // 143
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+sidedef // 144
+{
+  sector = 6;
+  texturetop = "-";
+  texturemiddle = "-";
+  texturebottom = "-";
+}
+linedef // 0
+{
+  v1 = 0;
+  v2 = 1;
+  sidefront = 0;
+  blocking = true;
+}
+linedef // 1
+{
+  v1 = 1;
+  v2 = 2;
+  sidefront = 1;
+  blocking = true;
+}
+linedef // 2
+{
+  v1 = 2;
+  v2 = 3;
+  sidefront = 2;
+  blocking = true;
+}
+linedef // 3
+{
+  v1 = 4;
+  v2 = 0;
+  sidefront = 3;
+  blocking = true;
+}
+linedef // 4
+{
+  v1 = 5;
+  v2 = 4;
+  sidefront = 4;
+  sideback = 5;
+  twosided = true;
+}
+linedef // 5
+{
+  v1 = 3;
+  v2 = 5;
+  sidefront = 6;
+  blocking = true;
+}
+linedef // 6
+{
+  v1 = 6;
+  v2 = 7;
+  sidefront = 7;
+  blocking = true;
+}
+linedef // 7
+{
+  v1 = 8;
+  v2 = 6;
+  sidefront = 8;
+  sideback = 9;
+  twosided = true;
+  special = 206;
+  arg0 = 1501;
+  arg1 = 32;
+  arg2 = 105;
+  arg3 = 0;
+  playercross = true;
+  repeatspecial = true;
+}
+linedef // 8
+{
+  v1 = 9;
+  v2 = 8;
+  sidefront = 10;
+  blocking = true;
+}
+linedef // 9
+{
+  v1 = 10;
+  v2 = 9;
+  sidefront = 11;
+  sideback = 12;
+  twosided = true;
+  special = 13;
+  arg0 = 1004;
+  arg1 = 16;
+  arg2 = 150;
+  arg3 = 1;
+  playeruse = true;
+  repeatspecial = true;
+}
+linedef // 10
+{
+  v1 = 11;
+  v2 = 10;
+  sidefront = 13;
+  blocking = true;
+}
+linedef // 11
+{
+  v1 = 7;
+  v2 = 12;
+  sidefront = 14;
+  blocking = true;
+}
+linedef // 12
+{
+  v1 = 12;
+  v2 = 13;
+  sidefront = 15;
+  sideback = 16;
+  twosided = true;
+}
+linedef // 13
+{
+  v1 = 13;
+  v2 = 14;
+  sidefront = 17;
+  blocking = true;
+}
+linedef // 14
+{
+  v1 = 14;
+  v2 = 15;
+  sidefront = 18;
+  blocking = true;
+}
+linedef // 15
+{
+  v1 = 15;
+  v2 = 16;
+  sidefront = 19;
+  sideback = 20;
+  twosided = true;
+}
+linedef // 16
+{
+  v1 = 16;
+  v2 = 17;
+  sidefront = 21;
+  blocking = true;
+}
+linedef // 17
+{
+  v1 = 17;
+  v2 = 18;
+  sidefront = 22;
+  blocking = true;
+}
+linedef // 18
+{
+  v1 = 18;
+  v2 = 19;
+  sidefront = 23;
+  blocking = true;
+}
+linedef // 19
+{
+  v1 = 20;
+  v2 = 11;
+  sidefront = 24;
+  blocking = true;
+}
+linedef // 20
+{
+  v1 = 19;
+  v2 = 20;
+  sidefront = 25;
+  sideback = 26;
+  twosided = true;
+  special = 12;
+  arg0 = 1002;
+  arg1 = 16;
+  arg2 = 150;
+  playeruse = true;
+  repeatspecial = true;
+}
+linedef // 21
+{
+  v1 = 21;
+  v2 = 22;
+  sidefront = 27;
+  blocking = true;
+}
+linedef // 22
+{
+  v1 = 22;
+  v2 = 23;
+  sidefront = 28;
+  blocking = true;
+}
+linedef // 23
+{
+  v1 = 23;
+  v2 = 24;
+  sidefront = 29;
+  blocking = true;
+}
+linedef // 24
+{
+  v1 = 24;
+  v2 = 25;
+  sidefront = 30;
+  sideback = 31;
+  twosided = true;
+  special = 206;
+  arg0 = 1501;
+  arg1 = 32;
+  arg2 = 105;
+  arg3 = 0;
+  playercross = true;
+  repeatspecial = true;
+}
+linedef // 25
+{
+  v1 = 25;
+  v2 = 26;
+  sidefront = 32;
+  blocking = true;
+}
+linedef // 26
+{
+  v1 = 26;
+  v2 = 21;
+  sidefront = 33;
+  blocking = true;
+}
+linedef // 27
+{
+  v1 = 27;
+  v2 = 28;
+  sidefront = 34;
+  blocking = true;
+}
+linedef // 28
+{
+  v1 = 28;
+  v2 = 29;
+  sidefront = 35;
+  blocking = true;
+}
+linedef // 29
+{
+  v1 = 29;
+  v2 = 30;
+  sidefront = 36;
+  sideback = 37;
+  twosided = true;
+  special = 12;
+  arg0 = 1002;
+  arg1 = 16;
+  arg2 = 150;
+  playeruse = true;
+  repeatspecial = true;
+}
+linedef // 30
+{
+  v1 = 30;
+  v2 = 31;
+  sidefront = 38;
+  blocking = true;
+}
+linedef // 31
+{
+  v1 = 31;
+  v2 = 32;
+  sidefront = 39;
+  blocking = true;
+}
+linedef // 32
+{
+  v1 = 32;
+  v2 = 27;
+  sidefront = 40;
+  blocking = true;
+}
+linedef // 33
+{
+  v1 = 33;
+  v2 = 34;
+  sidefront = 41;
+  blocking = true;
+}
+linedef // 34
+{
+  v1 = 35;
+  v2 = 33;
+  sidefront = 42;
+  sideback = 43;
+  twosided = true;
+}
+linedef // 35
+{
+  v1 = 36;
+  v2 = 35;
+  sidefront = 44;
+  blocking = true;
+}
+linedef // 36
+{
+  v1 = 34;
+  v2 = 37;
+  sidefront = 45;
+  blocking = true;
+}
+linedef // 37
+{
+  v1 = 37;
+  v2 = 38;
+  sidefront = 46;
+  blocking = true;
+}
+linedef // 38
+{
+  v1 = 38;
+  v2 = 36;
+  sidefront = 47;
+  blocking = true;
+}
+linedef // 39
+{
+  v1 = 39;
+  v2 = 40;
+  sidefront = 48;
+  blocking = true;
+}
+linedef // 40
+{
+  v1 = 40;
+  v2 = 41;
+  sidefront = 49;
+  blocking = true;
+}
+linedef // 41
+{
+  v1 = 41;
+  v2 = 42;
+  sidefront = 50;
+  blocking = true;
+}
+linedef // 42
+{
+  v1 = 42;
+  v2 = 43;
+  sidefront = 51;
+  sideback = 52;
+  twosided = true;
+  special = 13;
+  arg0 = 1004;
+  arg1 = 16;
+  arg2 = 150;
+  arg3 = 1;
+  playeruse = true;
+  repeatspecial = true;
+}
+linedef // 43
+{
+  v1 = 43;
+  v2 = 44;
+  sidefront = 53;
+  blocking = true;
+}
+linedef // 44
+{
+  v1 = 45;
+  v2 = 39;
+  sidefront = 54;
+  blocking = true;
+}
+linedef // 45
+{
+  v1 = 46;
+  v2 = 45;
+  sidefront = 55;
+  sideback = 56;
+  twosided = true;
+}
+linedef // 46
+{
+  v1 = 44;
+  v2 = 46;
+  sidefront = 57;
+  blocking = true;
+}
+linedef // 47
+{
+  v1 = 47;
+  v2 = 48;
+  sidefront = 58;
+  blocking = true;
+}
+linedef // 48
+{
+  v1 = 48;
+  v2 = 49;
+  sidefront = 59;
+  blocking = true;
+}
+linedef // 49
+{
+  v1 = 49;
+  v2 = 50;
+  sidefront = 60;
+  sideback = 61;
+  twosided = true;
+}
+linedef // 50
+{
+  v1 = 50;
+  v2 = 51;
+  sidefront = 62;
+  blocking = true;
+}
+linedef // 51
+{
+  v1 = 51;
+  v2 = 52;
+  sidefront = 63;
+  blocking = true;
+}
+linedef // 52
+{
+  v1 = 53;
+  v2 = 54;
+  sidefront = 64;
+  blocking = true;
+}
+linedef // 53
+{
+  v1 = 55;
+  v2 = 53;
+  sidefront = 65;
+  sideback = 66;
+  twosided = true;
+}
+linedef // 54
+{
+  v1 = 56;
+  v2 = 55;
+  sidefront = 67;
+  blocking = true;
+}
+linedef // 55
+{
+  v1 = 57;
+  v2 = 56;
+  sidefront = 68;
+  sideback = 69;
+  twosided = true;
+}
+linedef // 56
+{
+  v1 = 52;
+  v2 = 57;
+  sidefront = 70;
+  blocking = true;
+}
+linedef // 57
+{
+  v1 = 54;
+  v2 = 58;
+  sidefront = 71;
+  blocking = true;
+}
+linedef // 58
+{
+  v1 = 58;
+  v2 = 47;
+  sidefront = 72;
+  blocking = true;
+}
+linedef // 59
+{
+  v1 = 59;
+  v2 = 60;
+  sidefront = 73;
+  blocking = true;
+}
+linedef // 60
+{
+  v1 = 60;
+  v2 = 61;
+  sidefront = 74;
+  blocking = true;
+}
+linedef // 61
+{
+  v1 = 61;
+  v2 = 62;
+  sidefront = 75;
+  sideback = 76;
+  twosided = true;
+}
+linedef // 62
+{
+  v1 = 62;
+  v2 = 63;
+  sidefront = 77;
+  blocking = true;
+}
+linedef // 63
+{
+  v1 = 63;
+  v2 = 64;
+  sidefront = 78;
+  blocking = true;
+  special = 243;
+  playeruse = true;
+}
+linedef // 64
+{
+  v1 = 64;
+  v2 = 59;
+  sidefront = 79;
+  blocking = true;
+}
+linedef // 65
+{
+  v1 = 65;
+  v2 = 66;
+  sidefront = 80;
+  blocking = true;
+}
+linedef // 66
+{
+  v1 = 66;
+  v2 = 67;
+  sidefront = 81;
+  blocking = true;
+}
+linedef // 67
+{
+  v1 = 67;
+  v2 = 68;
+  sidefront = 82;
+  sideback = 83;
+  twosided = true;
+}
+linedef // 68
+{
+  v1 = 68;
+  v2 = 69;
+  sidefront = 84;
+  blocking = true;
+}
+linedef // 69
+{
+  v1 = 69;
+  v2 = 70;
+  sidefront = 85;
+  blocking = true;
+}
+linedef // 70
+{
+  v1 = 70;
+  v2 = 65;
+  sidefront = 86;
+  blocking = true;
+}
+linedef // 71
+{
+  v1 = 12;
+  v2 = 4;
+  sidefront = 87;
+  blocking = true;
+}
+linedef // 72
+{
+  v1 = 5;
+  v2 = 13;
+  sidefront = 88;
+  blocking = true;
+}
+linedef // 73
+{
+  v1 = 24;
+  v2 = 6;
+  sidefront = 89;
+  blocking = true;
+}
+linedef // 74
+{
+  v1 = 8;
+  v2 = 25;
+  sidefront = 90;
+  blocking = true;
+}
+linedef // 75
+{
+  v1 = 29;
+  v2 = 20;
+  sidefront = 91;
+  blocking = true;
+}
+linedef // 76
+{
+  v1 = 19;
+  v2 = 30;
+  sidefront = 92;
+  blocking = true;
+}
+linedef // 77
+{
+  v1 = 15;
+  v2 = 33;
+  sidefront = 93;
+  blocking = true;
+}
+linedef // 78
+{
+  v1 = 35;
+  v2 = 16;
+  sidefront = 94;
+  blocking = true;
+}
+linedef // 79
+{
+  v1 = 42;
+  v2 = 9;
+  sidefront = 95;
+  blocking = true;
+}
+linedef // 80
+{
+  v1 = 10;
+  v2 = 43;
+  sidefront = 96;
+  blocking = true;
+}
+linedef // 81
+{
+  v1 = 49;
+  v2 = 45;
+  sidefront = 97;
+  blocking = true;
+}
+linedef // 82
+{
+  v1 = 46;
+  v2 = 50;
+  sidefront = 98;
+  blocking = true;
+}
+linedef // 83
+{
+  v1 = 61;
+  v2 = 56;
+  sidefront = 99;
+  blocking = true;
+}
+linedef // 84
+{
+  v1 = 57;
+  v2 = 62;
+  sidefront = 100;
+  blocking = true;
+}
+linedef // 85
+{
+  v1 = 67;
+  v2 = 53;
+  sidefront = 101;
+  blocking = true;
+}
+linedef // 86
+{
+  v1 = 55;
+  v2 = 68;
+  sidefront = 102;
+  blocking = true;
+}
+linedef // 87
+{
+  v1 = 71;
+  v2 = 72;
+  sidefront = 103;
+  sideback = 104;
+  twosided = true;
+}
+linedef // 88
+{
+  v1 = 72;
+  v2 = 73;
+  sidefront = 105;
+  sideback = 106;
+  twosided = true;
+}
+linedef // 89
+{
+  v1 = 73;
+  v2 = 74;
+  sidefront = 107;
+  sideback = 108;
+  twosided = true;
+}
+linedef // 90
+{
+  v1 = 74;
+  v2 = 71;
+  sidefront = 109;
+  sideback = 110;
+  twosided = true;
+}
+linedef // 91
+{
+  v1 = 75;
+  v2 = 76;
+  sidefront = 111;
+  sideback = 112;
+  twosided = true;
+}
+linedef // 92
+{
+  v1 = 76;
+  v2 = 77;
+  sidefront = 113;
+  sideback = 114;
+  twosided = true;
+}
+linedef // 93
+{
+  v1 = 77;
+  v2 = 78;
+  sidefront = 115;
+  sideback = 116;
+  twosided = true;
+}
+linedef // 94
+{
+  v1 = 78;
+  v2 = 75;
+  sidefront = 117;
+  sideback = 118;
+  twosided = true;
+}
+linedef // 95
+{
+  v1 = 79;
+  v2 = 80;
+  sidefront = 119;
+  sideback = 120;
+  twosided = true;
+}
+linedef // 96
+{
+  v1 = 80;
+  v2 = 81;
+  sidefront = 121;
+  sideback = 122;
+  twosided = true;
+}
+linedef // 97
+{
+  v1 = 81;
+  v2 = 82;
+  sidefront = 123;
+  sideback = 124;
+  twosided = true;
+}
+linedef // 98
+{
+  v1 = 82;
+  v2 = 79;
+  sidefront = 125;
+  sideback = 126;
+  twosided = true;
+}
+linedef // 99
+{
+  v1 = 83;
+  v2 = 84;
+  sidefront = 127;
+  sideback = 128;
+  twosided = true;
+}
+linedef // 100
+{
+  v1 = 84;
+  v2 = 85;
+  sidefront = 129;
+  sideback = 130;
+  twosided = true;
+}
+linedef // 101
+{
+  v1 = 85;
+  v2 = 86;
+  sidefront = 131;
+  sideback = 132;
+  twosided = true;
+}
+linedef // 102
+{
+  v1 = 86;
+  v2 = 83;
+  sidefront = 133;
+  sideback = 134;
+  twosided = true;
+}
+linedef // 103
+{
+  v1 = 87;
+  v2 = 88;
+  sidefront = 135;
+  sideback = 136;
+  twosided = true;
+}
+linedef // 104
+{
+  v1 = 88;
+  v2 = 89;
+  sidefront = 137;
+  sideback = 138;
+  twosided = true;
+}
+linedef // 105
+{
+  v1 = 89;
+  v2 = 90;
+  sidefront = 139;
+  sideback = 140;
+  twosided = true;
+}
+linedef // 106
+{
+  v1 = 90;
+  v2 = 87;
+  sidefront = 141;
+  sideback = 142;
+  twosided = true;
+}
+linedef // 107
+{
+  v1 = 91;
+  v2 = 92;
+  sidefront = 143;
+  sideback = 144;
+  twosided = true;
+  special = 11;
+  arg0 = 2000;
+  arg1 = 16;
+  playercross = true;
+}
+thing // 0
+{
+  type = 1;
+  x = 64;
+  y = 240;
+  angle = 0;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 1
+{
+  type = 3004;
+  x = 200;
+  y = 240;
+  angle = 180;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 2
+{
+  type = 2007;
+  x = 240;
+  y = 180;
+  angle = 0;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 3
+{
+  type = 2014;
+  x = 420;
+  y = 200;
+  angle = 0;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 4
+{
+  type = 2001;
+  x = 480;
+  y = -64;
+  angle = 0;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 5
+{
+  type = 3001;
+  x = 500;
+  y = -40;
+  angle = 90;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 6
+{
+  type = 3004;
+  x = 990;
+  y = 120;
+  angle = 180;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 7
+{
+  type = 3004;
+  x = 1000;
+  y = 220;
+  angle = 180;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 8
+{
+  type = 2014;
+  x = 980;
+  y = 180;
+  angle = 0;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 9
+{
+  type = 13;
+  x = 568;
+  y = 456;
+  angle = 0;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 10
+{
+  type = 2015;
+  x = 530;
+  y = 430;
+  angle = 0;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 11
+{
+  type = 3001;
+  x = 580;
+  y = -320;
+  angle = 90;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 12
+{
+  type = 2014;
+  x = 520;
+  y = -300;
+  angle = 0;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 13
+{
+  type = 3001;
+  x = 920;
+  y = -320;
+  angle = 180;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 14
+{
+  type = 3001;
+  x = 1000;
+  y = -280;
+  angle = 180;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 15
+{
+  type = 9;
+  x = 960;
+  y = -240;
+  angle = 180;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 16
+{
+  type = 2015;
+  x = 880;
+  y = -400;
+  angle = 0;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 17
+{
+  type = 2014;
+  x = 1220;
+  y = -340;
+  angle = 0;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}
+thing // 18
+{
+  type = 3001;
+  x = 1200;
+  y = -400;
+  angle = 180;
+  skill1 = true;
+  skill2 = true;
+  skill3 = true;
+  skill4 = true;
+  skill5 = true;
+  single = true;
+  coop = true;
+  dm = true;
+}

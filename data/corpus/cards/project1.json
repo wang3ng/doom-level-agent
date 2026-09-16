@@ -1,0 +1,37 @@
+{
+  "id": "project1",
+  "source_wad": "data/corpus/wads/Project1.wad",
+  "theme": "Urban Military Base",
+  "brief": "Start in a guarded control room with no keys required for the shortest exit route. Push through corridors and storage into a central hub with multiple exits, then an armory and final chamber. Exit is at the end of a long corridor behind a large door. Blue and red keycards exist off the critical path for optional / locked side areas.",
+  "solution_path": [
+    "control room",
+    "corridor A",
+    "storage area",
+    "central hub",
+    "corridor B",
+    "armory",
+    "final chamber",
+    "exit corridor"
+  ],
+  "landmarks": [
+    "central hub with multiple exits",
+    "large door at end of final corridor",
+    "guarded control room entrance"
+  ],
+  "pacing_notes": "Steady combat along a mostly linear spine; side keys are optional pressure, not mandatory gating.",
+  "rubric_hints": {
+    "navigation": "Hub is the main landmark; keep the exit corridor visually distinct.",
+    "pacing": "Quiet-ish start room, denser fights toward the final chamber.",
+    "mechanics": "Optional blue/red cards off-path; critical path can stay keyless.",
+    "affordances": "Military doors and keycard colors stay consistent.",
+    "narrative": "Occupied base: storage and armory read as lived-in spaces."
+  },
+  "critical_path_score": 3.5,
+  "path_meta": {
+    "reached_exit": true,
+    "path_length": 10,
+    "coverage": 0.139,
+    "keys_collected": [],
+    "keys_off_path": ["blue_card", "red_card"]
+  }
+}

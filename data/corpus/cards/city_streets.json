@@ -1,0 +1,35 @@
+{
+  "id": "city_streets",
+  "theme": "Ruined Downtown",
+  "brief": "Players spawn on a main street with broken storefronts and scattered debris. The route leads through narrow alleyways with breadcrumb ammo drops, then into an open courtyard where enemies engage in crossfire combat. A sewer access point provides a shortcut, and the exit is a rooftop switch that opens the final door. Neon signs and broken streetlights serve as key landmarks throughout. The path requires careful navigation through urban wreckage.",
+  "solution_path": [
+    "street spawn",
+    "alley breadcrumb ammo",
+    "courtyard crossfire",
+    "sewer shortcut",
+    "rooftop exit switch"
+  ],
+  "landmarks": [
+    "neon sign for 'Downtown Cafe'",
+    "broken streetlight post",
+    "collapsed brick wall",
+    "yellow door with armor inside"
+  ],
+  "pacing_notes": "Balances open combat with tight corridor navigation, building tension through varied vertical and horizontal movement.",
+  "rubric_hints": {
+    "navigation": "Use alleyways as natural chokepoints for enemy placement",
+    "pacing": "Control flow between open courtyard and confined sewer sections",
+    "mechanics": "Yellow door provides early armor to encourage risk-taking in sewers",
+    "affordances": "Sewer access point creates optional path that rewards exploration",
+    "narrative": "Neon signs suggest a once-busy downtown area now abandoned by the city"
+  },
+  "source_wad": null,
+  "generator": "ollama",
+  "seed": {
+    "id": "city_streets",
+    "theme_hint": "ruined downtown streets and alley loops",
+    "structure": "street spawn -> alley breadcrumb ammo -> courtyard crossfire -> sewer shortcut -> rooftop exit switch",
+    "mechanics": "optional sewer secret; yellow door for early armor",
+    "tone": "gray daylight, neon signs as landmarks"
+  }
+}

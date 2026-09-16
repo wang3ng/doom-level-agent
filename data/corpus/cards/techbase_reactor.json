@@ -1,0 +1,36 @@
+{
+  "id": "techbase_reactor",
+  "theme": "UAC Reactor",
+  "brief": "Start in a sterile white corridor with fluorescent lighting before entering a narrow chokepoint. Follow the path through a central hub containing a blue key door, then descend into dark service tunnels. Battle through enemy packs in a circular reactor chamber with glowing blue energy. Exit through a reinforced door back to the main facility.",
+  "solution_path": [
+    "start room",
+    "choke corridor",
+    "hub with blue key",
+    "dark service tunnels",
+    "reactor arena",
+    "exit corridor"
+  ],
+  "landmarks": [
+    "glowing blue reactor core",
+    "blue key door",
+    "fluorescent ceiling lights",
+    "reinforced exit door"
+  ],
+  "pacing_notes": "Build tension through lighting changes from sterile white to red alert, with combat teaching early and increasing enemy density toward the reactor arena.",
+  "rubric_hints": {
+    "navigation": "Corridors are axis-aligned with clear directional flow; key door requires specific item collection",
+    "pacing": "Slow build-up through safe zones, then rapid escalation into combat-heavy sections",
+    "mechanics": "Blue key door introduces a resource management element; shotgun teaching provides weapon familiarity",
+    "affordances": "Reactor core provides visual guidance and dynamic lighting effects for atmosphere",
+    "narrative": "UAC facility progression from sterile security to critical reactor zone, with red alert tone conveying urgency"
+  },
+  "source_wad": null,
+  "generator": "ollama",
+  "seed": {
+    "id": "techbase_reactor",
+    "theme_hint": "UAC techbase with a glowing reactor landmark",
+    "structure": "safe start -> choke corridor -> hub with blue key -> dark service tunnels -> reactor arena -> exit",
+    "mechanics": "blue key door; shotgun teach before first Imp pack",
+    "tone": "cold fluorescent then red alert"
+  }
+}

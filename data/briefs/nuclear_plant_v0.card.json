@@ -1,0 +1,133 @@
+{
+  "id": "nuclear_plant_v0",
+  "author": "classic_corpus_compile",
+  "theme": "phobos_tech_plant",
+  "title": "MAP01: Nuclear Plant (v0 homage)",
+  "brief": "Homage to Doom E1M2 Nuclear Plant compressed for DoomLayoutV0: bright start hall with pillar cover into a tall plant hub landmark. Shotgun nook teaches a lowered alcove ambush. Optional dark maze wing east of hub. Red key north of hub forces return, then red-locked door south into a nukage walkway hero room, a raised drop arena with walk-closet ambush, and a tight bright exit bay.",
+  "solution_path": [
+    "start_hall",
+    "plant_hub",
+    "shotgun_nook",
+    "plant_hub",
+    "red_key_alcove",
+    "plant_hub",
+    "nukage_walk",
+    "drop_arena",
+    "exit_bay"
+  ],
+  "landmarks": [
+    "central plant hub pillar",
+    "lowered shotgun nook",
+    "optional dark maze",
+    "nukage walkway",
+    "drop arena with east closet"
+  ],
+  "pacing_notes": "Safe-ish bright start; hub read; shotgun teach; optional maze; key return; nukage hero; arena peak; tight exit.",
+  "part_designs": [
+    {
+      "id": "start_hall",
+      "role": "start",
+      "shape": "medium tech room with mid pillar",
+      "elevation": "floor 0 / ceil 128",
+      "cover": "32x32 cover_block near center",
+      "mobs": "one zombieman behind pillar",
+      "triggers": "corridor into hub",
+      "light": "200 bright sterile",
+      "textures": "FLOOR0_1 / CEIL1_1 tech",
+      "detail": "Bright teach with soft cover; shotgun not here yet."
+    },
+    {
+      "id": "plant_hub",
+      "role": "hub",
+      "shape": "large hub",
+      "elevation": "tall ceil 160; landmark pillar",
+      "cover": "64x64 pump pillar",
+      "mobs": "none in hub proper",
+      "triggers": "branches to nook/maze/key; red lock south",
+      "light": "150",
+      "textures": "FLOOR1_1 / CEIL1_2",
+      "detail": "Landmark you return to after key and optional maze."
+    },
+    {
+      "id": "shotgun_nook",
+      "role": "teach",
+      "shape": "narrow alcove",
+      "elevation": "floor -16 surprise drop",
+      "cover": "tight walls",
+      "mobs": "one imp",
+      "triggers": "corridor from hub",
+      "light": "120",
+      "detail": "Weapon + vertical surprise; return to hub."
+    },
+    {
+      "id": "dark_maze",
+      "role": "optional",
+      "shape": "wide dark pocket",
+      "elevation": "low ceil 96",
+      "cover": "none",
+      "mobs": "two zombiemen",
+      "triggers": "door from hub",
+      "light": "80 strobing-feel dim",
+      "textures": "FLOOR0_3",
+      "detail": "Optional pressure; skippable for exit."
+    },
+    {
+      "id": "red_key_alcove",
+      "role": "key",
+      "shape": "small bright alcove",
+      "elevation": "pedestal cover_block under RedCard",
+      "cover": "16-raise pedestal",
+      "mobs": "none",
+      "triggers": "none",
+      "light": "190",
+      "detail": "Key off-path north; must return through hub."
+    },
+    {
+      "id": "nukage_walk",
+      "role": "hazard",
+      "shape": "long nukage room",
+      "elevation": "floor 0; ceil 112",
+      "cover": "side cover_block on safe rim feel",
+      "mobs": "one imp as turret threat",
+      "triggers": "entered only via red lock from hub",
+      "light": "110",
+      "textures": "NUKAGE1 floor",
+      "detail": "Hero hazard room after key gate."
+    },
+    {
+      "id": "drop_arena",
+      "role": "arena",
+      "shape": "wide arena",
+      "elevation": "floor +16 vs nukage; ceil 144",
+      "cover": "west cover_block flank",
+      "mobs": "two imps + shotgun guy; east walk closet releases imp",
+      "triggers": "walk closet east",
+      "light": "130",
+      "detail": "Peak fight; closet ambush on approach to east wall."
+    },
+    {
+      "id": "exit_bay",
+      "role": "exit",
+      "shape": "tight rect",
+      "elevation": "floor +24 step-up",
+      "cover": "none",
+      "mobs": "none",
+      "triggers": "ExitSwitch far wall",
+      "light": "180",
+      "detail": "Tight coda; readable exit switch."
+    }
+  ],
+  "layout_constraints": {
+    "n_rooms": "8",
+    "graph": "hub_spoke_with_return",
+    "classic_source": "doom_e1m2_nuclear_plant",
+    "must_include": [
+      "RedCard in red_key_alcove",
+      "plant_hub -> nukage_walk lock red",
+      "no direct red_key_alcove -> nukage_walk",
+      "Shotgun in shotgun_nook",
+      "ExitSwitch in exit_bay",
+      "walk closet on drop_arena east"
+    ]
+  }
+}

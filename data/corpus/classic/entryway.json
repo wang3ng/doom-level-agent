@@ -1,0 +1,94 @@
+{
+  "id": "doom2_map01_entryway",
+  "source": "Doom II MAP01 Entryway (Sandy Petersen)",
+  "theme": "techbase_entry_tutorial",
+  "title": "Entryway",
+  "brief": "Short outdoor-tech teach map: spawn facing a triangular stair overlook into a yard, clear light zombies, optional side rooms for shotgun and secrets, then a compact indoor exit. Almost no gating—learn doors, stairs, pickups, peek fights, and curiosity rewards.",
+  "solution_path": [
+    "spawn_overlook",
+    "yard_stairs",
+    "central_yard",
+    "optional_side_rooms",
+    "indoor_exit_hall",
+    "exit"
+  ],
+  "landmarks": [
+    "triangular outdoor staircase",
+    "open yard with sky",
+    "green armor / shotgun side pockets",
+    "obvious exit door"
+  ],
+  "pacing_notes": "Lowest intensity map: safe visual read, light former-humans, secrets for explorers, exit within 30s par.",
+  "part_designs": [
+    {
+      "id": "spawn_overlook",
+      "role": "start",
+      "shape": "small elevated ledge looking down a triangle of stairs",
+      "elevation": "spawn floor above yard; stairs step down in clear STEP textures",
+      "cover": "none at spawn—full sightline into the lesson space",
+      "mobs": "zombiemen already visible in the yard (threat telegraph)",
+      "triggers": "none",
+      "light": "bright outdoor",
+      "textures": "tech / outdoor rock; sky ceiling on yard",
+      "audio_props": "open sky feel; Running from Evil",
+      "detail": "First frame teaches height + stairs + enemies in view before the player moves."
+    },
+    {
+      "id": "yard_stairs",
+      "role": "transition",
+      "shape": "wide triangular stair wedge, not a choke",
+      "elevation": "multi-step drop using dedicated STEP risers",
+      "cover": "stair geometry itself soft-breaks sightlines",
+      "mobs": "none on stairs; fights wait in yard",
+      "triggers": "none",
+      "detail": "Stairs are the landmark and the path; elevation is readable and rewarded with STEPs."
+    },
+    {
+      "id": "central_yard",
+      "role": "hub",
+      "shape": "open rectangular outdoor court",
+      "elevation": "flat low floor under sky",
+      "cover": "minimal; pillars/door frames only",
+      "mobs": "scattered zombiemen, easy strafing",
+      "triggers": "doors to optional rooms",
+      "detail": "Breathing room after spawn; player chooses which door to sample."
+    },
+    {
+      "id": "shotgun_side",
+      "role": "optional",
+      "shape": "small indoor alcove off yard",
+      "elevation": "same floor as yard or one step",
+      "cover": "door frame only",
+      "mobs": "one or two easy guards",
+      "triggers": "manual door",
+      "detail": "Weapon teach without forcing combat peak; optional but strongly signaled."
+    },
+    {
+      "id": "secret_pockets",
+      "role": "secret",
+      "shape": "misaligned walls / jump-onto-decoration tricks",
+      "elevation": "sometimes raised ledges",
+      "cover": "n/a",
+      "mobs": "usually none or trivial",
+      "triggers": "use on dissimilar wall, or jump secret",
+      "detail": "Rewards curiosity; Entryway seeds the idea that not every wall is honest."
+    },
+    {
+      "id": "exit_hall",
+      "role": "exit",
+      "shape": "short indoor corridor to exit door/switch",
+      "elevation": "indoor ceil lower than sky yard for contrast",
+      "cover": "none needed",
+      "mobs": "light resistance then calm",
+      "triggers": "exit door / switch",
+      "detail": "Clear end-of-line read: leave outdoor landmark, enter tighter tech, finish."
+    }
+  ],
+  "design_lessons": [
+    "Landmark visible from spawn",
+    "Threat before movement",
+    "Optional side content without soft-locking",
+    "Secrets as curiosity, not mandatory keys",
+    "Contrast outdoor sky vs indoor ceil"
+  ]
+}

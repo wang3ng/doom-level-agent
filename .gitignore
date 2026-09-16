@@ -5,8 +5,16 @@ venv/
 data/maps/*.wad
 data/maps/*.txt
 !data/maps/.gitkeep
+!data/maps/proto_techbase_v1.wad
+!data/maps/proto_techbase_v1.txt
+!data/maps/brine_pump_station.wad
+!data/maps/brine_pump_station.txt
+!data/maps/nuclear_plant_v0.wad
+!data/maps/nuclear_plant_v0.txt
 data/screenshots/*
 !data/screenshots/.gitkeep
+data/scores/*
+!data/scores/.gitkeep
 .DS_Store
 *.pk3
 .netlify/
@@ -15,3 +23,9 @@ proposal/*.log
 proposal/*.out
 proposal/*.synctex.gz
 .cursor/
+doom/
+Doom2.wad
+doom2.wad
+DOOM2.WAD
+*.exe
+!scripts/**/*.py

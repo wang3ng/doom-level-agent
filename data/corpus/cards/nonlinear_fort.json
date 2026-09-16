@@ -1,0 +1,36 @@
+{
+  "id": "nonlinear_fort",
+  "theme": "Fortress Divide",
+  "brief": "Player begins at a gatehouse with two distinct paths leading away. The left route through barracks demands combat skills and weapon management, while the right path through courtyard offers stealth opportunities and ammo caches. Both paths converge at the keep's exit. A secret tower provides alternative access to the final chamber. The environment shifts from bright daylight yard to dim torch-lit halls.",
+  "solution_path": [
+    "Enter gatehouse",
+    "Take left barracks path",
+    "Take right courtyard path",
+    "Merge at keep exit",
+    "Access secret tower if needed",
+    "Reach final exit"
+  ],
+  "landmarks": [
+    "Stone gatehouse with banner displays",
+    "Barracks with weapon racks",
+    "Courtyard with torch sconces",
+    "Keep entrance with iron doors"
+  ],
+  "pacing_notes": "Balanced progression between combat and stealth elements with branching paths that allow player choice without forcing unnecessary backtracking.",
+  "rubric_hints": {
+    "navigation": "Clear visual cues guide players along both routes while maintaining distinct path identity",
+    "pacing": "Combat-heavy path offers natural tension spikes, stealth path provides strategic breathing room",
+    "mechanics": "Branching paths with merge point create logical flow without requiring key management",
+    "affordances": "Both routes provide meaningful choices that feel impactful to player decisions",
+    "narrative": "Environment storytelling through banners and torch lighting reinforces the fortress theme while contrasting day vs night zones"
+  },
+  "source_wad": null,
+  "generator": "ollama",
+  "seed": {
+    "id": "nonlinear_fort",
+    "theme_hint": "small fortress with two valid routes to the exit",
+    "structure": "gatehouse start; left barracks path (combat heavy); right courtyard path (stealth/ammo); paths merge at keep exit",
+    "mechanics": "no keys; branching then merge; one secret tower",
+    "tone": "stone and banners, daylight yard vs torch halls"
+  }
+}

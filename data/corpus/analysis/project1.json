@@ -1,0 +1,85 @@
+{
+  "path": {
+    "ok": true,
+    "source": "classic_wad",
+    "map": "MAP01",
+    "reached_exit": true,
+    "start_sector": 0,
+    "goal_sector": 49,
+    "start_xy": {
+      "x": 672,
+      "y": 608
+    },
+    "path_sectors": [
+      0,
+      2,
+      6,
+      67,
+      65,
+      66,
+      37,
+      36,
+      38,
+      49
+    ],
+    "path_length": 10,
+    "unique_sectors_on_path": 10,
+    "keys_collected": [],
+    "locks_used": [],
+    "n_sectors_total": 72,
+    "coverage": 0.139,
+    "avg_branching_on_path": 3.5,
+    "exit_sector_count": 1,
+    "key_things": [
+      {
+        "type": "red_card",
+        "x": 2688,
+        "y": 992
+      },
+      {
+        "type": "blue_card",
+        "x": 736,
+        "y": 4608
+      }
+    ]
+  },
+  "critical_path_score": {
+    "score": 3.5,
+    "method": "critical_path",
+    "notes": "reaches exit; path length 10; moderate branching 3.50",
+    "evidence": {
+      "path_length": 10,
+      "coverage": 0.139,
+      "reached_exit": true,
+      "keys": []
+    }
+  },
+  "description": {
+    "theme": "Urban Military Base",
+    "brief": "Start in a guarded control room with no immediate keys needed. Follow the path through corridors and storage areas, encountering standard military enemies. The route leads through a central hub with multiple exits before reaching the final chamber. No locks or keys are required to progress, and the exit is located at the end of a long corridor with a large door.",
+    "solution_path": [
+      "control room",
+      "corridor A",
+      "storage area",
+      "central hub",
+      "corridor B",
+      "armory",
+      "final chamber",
+      "exit corridor"
+    ],
+    "landmarks": [
+      "central hub with multiple exits",
+      "large door at end of final corridor",
+      "guarded control room entrance"
+    ],
+    "pacing_notes": "The level maintains steady combat intensity with varied enemy placement and clear sightlines throughout the path.",
+    "rubric_hints": {
+      "navigation": "Clear visual cues guide players along the predetermined path with no branching decisions required.",
+      "pacing": "Combat beats are evenly spaced with natural pauses at corridor intersections and room transitions.",
+      "mechanics": "No key or lock mechanics are needed, keeping player focus on movement and combat.",
+      "affordances": "All sectors provide clear sightlines and movement options without hidden paths or secret areas.",
+      "narrative": "The linear path supports a straightforward military base exploration narrative with no story elements requiring specific sector visits."
+    },
+    "generator": "ollama"
+  }
+}

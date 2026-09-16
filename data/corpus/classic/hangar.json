@@ -1,0 +1,93 @@
+{
+  "id": "doom_e1m1_hangar",
+  "source": "Doom E1M1 Hangar (John Romero)",
+  "theme": "phobos_hangar_intro",
+  "title": "Hangar",
+  "brief": "Episode opener: zigzag armor room, outdoor courtyard with imps on ledges, secret rocket launcher path, computer room, and a clean exit. Teaches movement, secrets, outdoor vs indoor, and that ledges you see are often reachable later.",
+  "solution_path": [
+    "zigzag_start",
+    "armor_room",
+    "courtyard",
+    "ledge_imps",
+    "computer_halls",
+    "secret_rocket_optional",
+    "exit"
+  ],
+  "landmarks": [
+    "zigzag green armor corridor",
+    "outdoor courtyard with sky",
+    "imps on raised ledges",
+    "computer panels",
+    "exit switch room"
+  ],
+  "pacing_notes": "Gentle escalate: empty-ish start, courtyard introduction of vertical enemies, secrets for explorers, short exit.",
+  "part_designs": [
+    {
+      "id": "zigzag_start",
+      "role": "start",
+      "shape": "bent corridor forcing turns (not a straight tube)",
+      "elevation": "flat",
+      "cover": "corners act as soft cover",
+      "mobs": "none or trivial",
+      "triggers": "none",
+      "detail": "Zigzag prevents spawn camping sightlines and makes the hangar feel built, not extruded."
+    },
+    {
+      "id": "armor_room",
+      "role": "teach",
+      "shape": "small room with green armor focal pickup",
+      "elevation": "flat",
+      "cover": "doorway",
+      "mobs": "light",
+      "triggers": "door to courtyard",
+      "detail": "Pickup as waypoint; armor signals upcoming damage without a cutscene."
+    },
+    {
+      "id": "courtyard",
+      "role": "arena",
+      "shape": "open outdoor rectangle",
+      "elevation": "ground floor vs high ledges",
+      "cover": "crates / door mouths",
+      "mobs": "imps above as turrets; ground threats",
+      "triggers": "doors into tech wings",
+      "light": "bright sky",
+      "detail": "First vertical combat lesson: look up; ledges create desire to explore upward paths/secrets."
+    },
+    {
+      "id": "computer_halls",
+      "role": "transition",
+      "shape": "tech corridors with panel textures",
+      "elevation": "occasional steps",
+      "cover": "alcoves",
+      "mobs": "zombies in niches",
+      "triggers": "doors",
+      "detail": "Theme reinforcement via COMPUTE textures; niches invite checking every corner."
+    },
+    {
+      "id": "secret_rocket",
+      "role": "secret",
+      "shape": "hidden path to early rocket launcher",
+      "elevation": "often involves outdoor ledge route",
+      "cover": "n/a",
+      "mobs": "guards on claim",
+      "triggers": "misaligned wall / outdoor climb",
+      "detail": "Power fantasy for explorers; still skippable for critical path."
+    },
+    {
+      "id": "exit",
+      "role": "exit",
+      "shape": "compact switch room",
+      "elevation": "flat",
+      "cover": "none",
+      "mobs": "token resistance",
+      "triggers": "exit switch",
+      "detail": "Readable end; no fake complexity after the courtyard lesson."
+    }
+  ],
+  "design_lessons": [
+    "Bent corridors > endless straight halls",
+    "Vertical enemies early",
+    "Secrets teach map literacy",
+    "Outdoor landmark contrast"
+  ]
+}

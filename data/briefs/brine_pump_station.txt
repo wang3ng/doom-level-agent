@@ -1,0 +1,21 @@
+Coastal Brine Pump Station (authoritative creative brief — Cursor strong describer)
+
+THEME: Abandoned coastal UAC brine / pump station.
+
+CRITICAL PATH:
+locker_start -> service_choke -> pump_hub -> slime_wing -> pump_hub -> yellow_alcove -> yellow_door_corridor -> combat_arena -> exit_bay
+
+FIVE PILLARS:
+1) Navigation: Pump hub is the landmark (larger room, mid light). Light hierarchy guides the eye: bright locker (200) -> dark choke (120) -> hub (150) -> green-dim slime wing (100) -> bright yellow alcove (190) -> arena (140) -> brighter exit bay (180). Tree-shaped connections; player returns through the hub before the final door corridor.
+2) Pacing: Zero combat in start, choke, alcove, exit. One Zombieman in slime wing (teach peek). Combat peak only in arena (2 Imps + 1 ShotgunGuy). Exit bay is calm.
+3) Mechanics (teach / test / twist-lite): Teach shotgun in locker with no enemies. Test with the slime-wing zombieman after the hub is known. Twist-lite: grab "yellow key" proxy (ArmorBonus) in bright alcove, then take the door-kind corridor into the arena (builder may not hard-lock yet; still encode kind=door).
+4) Affordances: Only catalog things (Player1Start, Shotgun, HealthBonus, Clip, ArmorBonus, Zombieman, Imp, ShotgunGuy). Door corridor uses connection kind "door". No mystery props.
+5) Narrative: Lived-in station — lockers, pump stack hub, toxic side wing, then a work bay that reads as the end of the line.
+
+GEOMETRY RULES FOR THE JSON BUILDER:
+- 7 named rooms: locker_start, service_choke, pump_hub, slime_wing, yellow_alcove, combat_arena, exit_bay
+- Axis-aligned rectangles; sizes multiples of 64; leave gaps between rooms so corridors can be inserted
+- Exactly one Player1Start in locker_start
+- objective_room: exit_bay
+- HealthBonus breadcrumbs in service_choke and near arena entrance
+- Connected graph; slime_wing and yellow_alcove both attach to pump_hub

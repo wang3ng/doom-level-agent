@@ -1,0 +1,35 @@
+{
+  "id": "ambush_warehouse",
+  "theme": "Crate Ambush",
+  "brief": "Players enter a quiet loading bay with minimal visual interest. A breadcrumb trail of overturned crates leads into a maze where enemies hide behind cover. A fake dead end closet reveals itself as an ambush point after the player picks up a shotgun. The final open arena exit allows for a conclusive battle against multiple enemies.",
+  "solution_path": [
+    "Start in loading bay",
+    "Follow crate breadcrumbs",
+    "Pickup shotgun in closet",
+    "Avoid ambush",
+    "Reach open arena"
+  ],
+  "landmarks": [
+    "Overturned crates",
+    "Fake dead end closet",
+    "Shotgun pickup spot",
+    "Open loading arena"
+  ],
+  "pacing_notes": "Build tension through quiet sections before sudden ambushes and explosive combat.",
+  "rubric_hints": {
+    "navigation": "Use crate maze to obscure player path while maintaining clear sightlines for enemies",
+    "pacing": "Balance quiet exploration with sudden combat moments to maintain player engagement",
+    "mechanics": "Position closet ambush to require player to interact with environment before combat",
+    "affordances": "Ensure crates provide cover and closet offers hiding spot that appears safe but is not",
+    "narrative": "Establish a sense of discovery through the dusty, abandoned warehouse setting"
+  },
+  "source_wad": null,
+  "generator": "ollama",
+  "seed": {
+    "id": "ambush_warehouse",
+    "theme_hint": "warehouse crates and closet ambushes",
+    "structure": "quiet loading bay -> crate maze breadcrumbs -> fake dead end closet release -> open loading arena exit",
+    "mechanics": "monster closet after shotgun pickup; crate cover",
+    "tone": "dusty browns, sudden noise after silence"
+  }
+}

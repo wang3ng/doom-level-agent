@@ -9,6 +9,28 @@
     "name": { "type": "string", "minLength": 1, "maxLength": 64 },
     "theme": { "type": "string" },
     "brief": { "type": "string" },
+    "objective_room": { "type": "string" },
+    "part_designs": {
+      "type": "array",
+      "description": "Per-room micro-design notes the strong describer / planner must honor.",
+      "items": {
+        "type": "object",
+        "required": ["id", "detail"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "role": { "type": "string" },
+          "shape": { "type": "string" },
+          "elevation": { "type": "string" },
+          "cover": { "type": "string" },
+          "mobs": { "type": "string" },
+          "triggers": { "type": "string" },
+          "light": { "type": "string" },
+          "textures": { "type": "string" },
+          "detail": { "type": "string" }
+        }
+      }
+    },
     "rooms": {
       "type": "array",
       "minItems": 1,
@@ -26,7 +48,34 @@
           "ceiling_height": { "type": "integer", "default": 128 },
           "floor_flat": { "type": "string", "default": "FLOOR0_1" },
           "ceil_flat": { "type": "string", "default": "CEIL1_1" },
-          "light": { "type": "integer", "minimum": 0, "maximum": 255, "default": 160 }
+          "light": { "type": "integer", "minimum": 0, "maximum": 255, "default": 160 },
+          "light_special": {
+            "type": "integer",
+            "description": "Doom sector light special (e.g. 1 random blink, 8 glow, 17 flicker)."
+          },
+          "wall_texture": { "type": "string", "default": "STARTAN2" },
+          "role": { "type": "string" },
+          "shape": {
+            "type": "string",
+            "enum": [
+              "rect",
+              "narrow",
+              "wide",
+              "L",
+              "U",
+              "alcove",
+              "arena",
+              "hub",
+              "dogleg"
+            ]
+          },
+          "wing_side": {
+            "type": "string",
+            "enum": ["north", "south", "east", "west"]
+          },
+          "wing_w": { "type": "integer", "minimum": 64 },
+          "wing_h": { "type": "integer", "minimum": 64 },
+          "design": { "type": "string" }
         }
       }
     },
@@ -41,10 +90,71 @@
           "b": { "type": "string" },
           "kind": {
             "type": "string",
-            "enum": ["corridor", "door", "open"],
+            "enum": ["corridor", "door", "open", "lift"],
             "default": "open"
           },
-          "width": { "type": "integer", "minimum": 32, "default": 64 }
+          "lock": {
+            "type": "string",
+            "enum": ["blue", "yellow", "red"]
+          },
+          "width": { "type": "integer", "minimum": 32, "default": 64 },
+          "design": { "type": "string" }
+        }
+      }
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "x", "y", "w", "h"],
+        "additionalProperties": false,
+        "properties": {
+          "type": { "type": "string", "enum": ["cover_block", "pillar"] },
+          "x": { "type": "integer" },
+          "y": { "type": "integer" },
+          "w": { "type": "integer", "minimum": 16 },
+          "h": { "type": "integer", "minimum": 16 },
+          "floor_raise": { "type": "integer", "default": 32 },
+          "in_room": { "type": "string" },
+          "design": { "type": "string" }
+        }
+      }
+    },
+    "closets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "attach_room", "side"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "attach_room": { "type": "string" },
+          "side": { "type": "string", "enum": ["north", "south", "east", "west"] },
+          "w": { "type": "integer", "minimum": 64, "default": 96 },
+          "h": { "type": "integer", "minimum": 64, "default": 96 },
+          "gap": { "type": "integer", "minimum": 16, "default": 32 },
+          "floor_height": { "type": "integer", "default": 0 },
+          "ceiling_height": { "type": "integer", "default": 128 },
+          "light": { "type": "integer", "default": 110 },
+          "trigger": { "type": "string", "enum": ["walk", "use"], "default": "walk" },
+          "design": { "type": "string" },
+          "monsters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["type"],
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["Zombieman", "ShotgunGuy", "Imp"]
+                },
+                "dx": { "type": "integer", "default": 32 },
+                "dy": { "type": "integer", "default": 32 },
+                "angle": { "type": "integer", "default": 0 }
+              }
+            }
+          }
         }
       }
     },
@@ -67,6 +177,9 @@
               "Clip",
               "Shotgun",
               "ArmorBonus",
+              "BlueCard",
+              "YellowCard",
+              "RedCard",
               "ExitSwitch"
             ]
           },

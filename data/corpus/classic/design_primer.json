@@ -1,0 +1,49 @@
+{
+  "id": "classic_design_primer",
+  "title": "Classic Doom micro-design vocabulary",
+  "purpose": "Use this vocabulary when writing part_designs for new levels. Prefer concrete verbs and measurable contrasts over vague adjectives.",
+    "global_rules": [
+      "Every major space gets its own part_design with NUMERIC light, NAMED textures, and aspect ratios.",
+      "Wall textures must change by zone (tech STAR*, brown BROWN*, slime SLAD*, stone GSTONE*, exit COMP*).",
+      "Shapes must vary: wide 2:1 halls, narrow 1:3 shafts, L hubs/arenas — not a chain of 256x256 squares.",
+      "Light hierarchy: start>=220, hub~150-170, maze<=80 (+flicker), key>=200, hazard~90-110, exit~190-210.",
+      "Height changes between rooms use kind=lift OR visible STEP risers — never an unmarked cliff.",
+      "Critical path should revisit at least one landmark (hub return).",
+      "One real gate (key/switch) beats three flavor doors.",
+      "Optional content must be skippable without soft-lock.",
+      "Warn before peaks: medkits/shells or a sightline into the arena.",
+      "Exit calmer/tighter than the peak fight.",
+      "Monster closets: closed door + walk tripwire in the fight space.",
+      "Cover is geometry (pillar/cover_block/dogleg), not only monster placement."
+    ],
+  "part_fields": {
+    "id": "stable room/part name",
+    "role": "start|teach|choke|hub|key|hazard|arena|secret|optional|transition|exit|closet",
+    "shape": "narrow, dogleg, L/U, wide hub, square arena, alcove, irregular organic, lattice junction",
+    "elevation": "floor/ceiling deltas vs neighbors; stairs; lifts; sunken pits; pedestals",
+    "cover": "pillar, cover_block, crates, dogleg corner, balcony, none (state why)",
+    "mobs": "who, where, vertical vs ground, closet timing",
+    "triggers": "door, locked door+color, walk closet, lift, switch, exit, secret use-wall",
+    "light": "numeric or relative (bright/dim/strobing)",
+    "textures": "theme family (STAR tech, nukage, SKIN/flesh, outdoor sky)",
+    "detail": "one concrete sentence of player experience"
+  },
+  "contrast_pairs": [
+    "cramped choke vs open yard",
+    "bright locker vs dim service",
+    "safe teach vs peek fight",
+    "optional maze vs mandatory hero walkway",
+    "see-through window tease vs later claim",
+    "wide peak arena vs tight exit coda"
+  ],
+    "anti_patterns": [
+      "Left-to-right chain of identical boxes",
+      "All rooms share STARTAN2 / same flats / light~160",
+      "Vague elevation ('a bit lower') with no lift/STEP",
+      "Key in the same room as its door with no return",
+      "Arena with no cover and no vertical layer",
+      "Secret required for exit",
+      "Closet door with walk trigger on the impassable door face",
+      "Theme only in the title string, not in shapes/textures/light"
+    ]
+}

@@ -16,8 +16,7 @@
 {\small Fall 2026 \quad$\cdot$\quad Due Sep~16}
 \end{center}
 
-\noindent\textbf{Team members:} TBD\\
-\textbf{External collaborators:} none
+\noindent\textbf{Team members:} Xuyang Wang, Shreyas Phegade\\
 
 \vspace{0.4em}
 \noindent\textbf{Abstract.}
@@ -29,19 +28,18 @@ Stage~1 is local image generation.
 Stage~2 is an Ollama coding or vision--language model that fills a fixed room--connection--thing schema.
 Stage~3 is code, not another sample: validated JSON becomes sectors, linedefs, and things.
 A critic scores connectivity, player start, and monster density, and can later judge top-down rasters or GZDoom screenshots with a local VLM before asking for repair edits.
-Inference stays on our workstation (william; RTX~3060 Laptop, 6\,GB), with models loaded one at a time, using free assets such as Freedoom.
+Inference stays on our workstation (RTX~5070, 16\,GB), with models loaded one at a time, using free assets such as Freedoom.
 By the mid checkpoint we will show a closed loop on axis-aligned rooms and corridors, with automatic metrics and UDB/GZDoom demos.
 The final study adds ablations (text-only vs.\ text plus concept image; with vs.\ without critic repair), rule-based and LLM-JSON baselines, and a small human preference study on playability, clarity, and style fit.
 We track schema-valid compile rate, geometric proxies, and human ratings.
 
 \vspace{0.15em}
-{\small\textit{Word count (abstract body): $\approx$ 255.}}
 
 \vspace{0.45em}
 \noindent\textbf{Planned mid deliverables (Oct~19)}
 \begin{itemize}
   \item JSON layout schema, validator, and UDMF/PWAD builder for axis-aligned rooms (corridors as rooms or stitched openings).
-  \item Stage~2 layout generation from text briefs via Ollama on william (\texttt{qwen3-coder} family); concept-image stub or a first local diffusion pass if VRAM allows.
+  \item Stage~2 layout generation from text briefs via Ollama (\texttt{qwen3-coder} family); concept-image stub or a first local diffusion pass if VRAM allows.
   \item Automatic metrics (connectivity, player start, density) on at least 10 layouts, plus a short failure gallery.
   \item End-to-end demo: brief $\rightarrow$ JSON $\rightarrow$ \texttt{.wad} in UDB and GZDoom (Freedoom).
   \item Mid report (NeurIPS 2026 format, $\leq$4 pages) and in-class presentation.
@@ -52,7 +50,6 @@ We track schema-valid compile rate, geometric proxies, and human ratings.
 \begin{itemize}
   \item Full generate--critique--repair loop with a VLM critic on layout images and/or GZDoom screenshots.
   \item Ablations, baselines, and a human preference study (Likert scores and pairwise comparisons).
-  \item Documented free-asset pack and reproducible scripts on william.
   \item Final poster and NeurIPS-style report ($\leq$8 pages main text).
 \end{itemize}
 

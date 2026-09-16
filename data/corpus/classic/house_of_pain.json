@@ -1,0 +1,92 @@
+{
+  "id": "doom_e3m4_house_of_pain",
+  "source": "Doom E3M4 House of Pain (Sandy Petersen)",
+  "theme": "inferno_organic_fortress",
+  "title": "House of Pain",
+  "brief": "Inferno fortress whose footprint vaguely echoes organs (lungs/stomach). Dense combat, organic/flesh/marble contrast vs Phobos tech, overlapping rooms, and oppressive mood. Navigation relies on memorable grotesque shapes more than clean hubs.",
+  "solution_path": [
+    "entry_throat",
+    "lung_wings",
+    "stomach_court",
+    "key_or_switch_organs",
+    "dense_interiors",
+    "exit"
+  ],
+  "landmarks": [
+    "bilateral wing rooms (lungs)",
+    "central gut / court",
+    "flesh and marble contrasts",
+    "blood/lava accents"
+  ],
+  "pacing_notes": "Higher skill ceiling: packs in irregular rooms, less 'safe teach', more relentless Inferno pressure with shape-based orientation.",
+  "part_designs": [
+    {
+      "id": "entry_throat",
+      "role": "start",
+      "shape": "narrow organic throat into wider body",
+      "elevation": "uneven; occasional blood channels",
+      "cover": "ribs / pillars",
+      "mobs": "immediate demons/imps—no long safe foyer",
+      "triggers": "doors that feel like sphincters/hatches",
+      "light": "dim crimson",
+      "textures": "SKIN / flesh / marble mix",
+      "detail": "Tone shift from techbase: shape and texture tell the story before any text."
+    },
+    {
+      "id": "lung_wings",
+      "role": "branch",
+      "shape": "paired side chambers left/right of a center axis",
+      "elevation": "mirrored-ish but not identical combat scripts",
+      "cover": "organic columns",
+      "mobs": "symmetric pressure then asymmetric reinforcement",
+      "triggers": "wing clears feed center progress",
+      "detail": "Bilateral layout is the landmark; player mentally maps 'left lung / right lung'."
+    },
+    {
+      "id": "stomach_court",
+      "role": "hub",
+      "shape": "irregular central cavity, not a rectangle",
+      "elevation": "pits and rises inside the gut",
+      "cover": "messy pillars; unsafe middle",
+      "mobs": "multi-angle packs",
+      "triggers": "exits to deeper organs",
+      "detail": "Hub by silhouette, not by clean tech lighting—still readable as 'the middle'."
+    },
+    {
+      "id": "keyed_organs",
+      "role": "key",
+      "shape": "dead-end pockets holding skull keys / switches",
+      "elevation": "raised altars or sunken pits",
+      "cover": "altar blocks",
+      "mobs": "ambush on pickup",
+      "triggers": "skull doors elsewhere in the body",
+      "detail": "Gating still exists; presentation is hellish, not yellow-door-tech."
+    },
+    {
+      "id": "dense_interiors",
+      "role": "arena",
+      "shape": "overlapping rooms, diagonal sightlines, odd angles",
+      "elevation": "frequent small height tricks",
+      "cover": "broken symmetry creates flanks",
+      "mobs": "layered denser than E1",
+      "triggers": "closet releases common",
+      "detail": "Complexity from shape + monster closet timing, not from longer corridors."
+    },
+    {
+      "id": "exit",
+      "role": "exit",
+      "shape": "final chamber with clear but hostile end switch",
+      "elevation": "dramatic step or platform",
+      "cover": "scarce",
+      "mobs": "last surge",
+      "triggers": "exit",
+      "detail": "Mood stays Inferno to the last frame; exit is a relief valve, not a bright lobby."
+    }
+  ],
+  "design_lessons": [
+    "Theme via silhouette and texture, not only monsters",
+    "Irregular rooms for Inferno; orthogonality for tech",
+    "Closet timing over hallway length",
+    "Landmarks can be grotesque shapes"
+  ]
+}

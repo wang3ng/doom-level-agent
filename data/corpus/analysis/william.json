@@ -1,0 +1,84 @@
+{
+  "path": {
+    "ok": true,
+    "source": "classic_wad",
+    "map": "MAP01",
+    "reached_exit": true,
+    "start_sector": 0,
+    "goal_sector": 49,
+    "start_xy": {
+      "x": 681,
+      "y": 659
+    },
+    "path_sectors": [
+      0,
+      2,
+      6,
+      67,
+      65,
+      66,
+      37,
+      36,
+      38,
+      49
+    ],
+    "path_length": 10,
+    "unique_sectors_on_path": 10,
+    "keys_collected": [],
+    "locks_used": [],
+    "n_sectors_total": 100,
+    "coverage": 0.1,
+    "avg_branching_on_path": 3.5,
+    "exit_sector_count": 1,
+    "key_things": [
+      {
+        "type": "red_card",
+        "x": 2688,
+        "y": 992
+      },
+      {
+        "type": "blue_card",
+        "x": 736,
+        "y": 4608
+      }
+    ]
+  },
+  "critical_path_score": {
+    "score": 3.5,
+    "method": "critical_path",
+    "notes": "reaches exit; path length 10; moderate branching 3.50",
+    "evidence": {
+      "path_length": 10,
+      "coverage": 0.1,
+      "reached_exit": true,
+      "keys": []
+    }
+  },
+  "description": {
+    "theme": "Castle Keep",
+    "brief": "Start in the main hall with no keys needed, then proceed through a series of interconnected corridors and chambers to reach the red card door. The path includes a key lock that requires the blue card, which is found in a high chamber. Combat beats include encounters with demons in the central corridor and a boss fight near the exit. The landmark is a tall stone pillar with a skull carved into it. Exit through a doorway marked with a red key symbol.",
+    "solution_path": [
+      "start in main hall",
+      "follow corridor to red card door",
+      "climb to blue card chamber",
+      "use blue card on lock",
+      "continue through guarded area",
+      "fight boss at exit"
+    ],
+    "landmarks": [
+      "tall stone pillar with skull carving",
+      "blue card chamber with spiral staircase",
+      "central corridor with demon encounters",
+      "boss room with red key exit"
+    ],
+    "pacing_notes": "The level maintains moderate combat intensity with clear visual cues guiding the player through branching paths while keeping the objective focused on collecting and using keys.",
+    "rubric_hints": {
+      "navigation": "Clear sector-based path with distinct landmarks and visual markers",
+      "pacing": "Balanced mix of exploration, combat, and key collection with moderate difficulty progression",
+      "mechanics": "Key-based locks require strategic resource management and path planning",
+      "affordances": "Multiple routes available but all lead to the same exit through required key sequence",
+      "narrative": "The castle setting provides natural story context for the key collection and door unlocking mechanics"
+    },
+    "generator": "ollama"
+  }
+}

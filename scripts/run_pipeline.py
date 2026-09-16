@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from critic.metrics import summarize  # noqa: E402
+from critic.scorer import format_score_report, score_layout  # noqa: E402
 from pipeline.stage1_image import generate_concept_image  # noqa: E402
 from pipeline.stage2_layout import brief_to_layout  # noqa: E402
 from pipeline.stage3_build import build_map  # noqa: E402
@@ -24,6 +25,7 @@ def main() -> int:
     p.add_argument("--out", type=Path, default=ROOT / "data" / "maps" / "MAP01.wad")
     p.add_argument("--ollama", action="store_true", help="Call Ollama for stage 2")
     p.add_argument("--concept", action="store_true", help="Write stage-1 concept stub")
+    p.add_argument("--score", action="store_true", help="Run design rubric scorer")
     args = p.parse_args()
 
     if args.layout:
@@ -46,6 +48,13 @@ def main() -> int:
         )
 
     print("metrics:", json.dumps(summarize(layout), indent=2))
+    if args.score:
+        report = score_layout(layout)
+        print(format_score_report(report))
+        score_path = ROOT / "data" / "scores" / f"{layout.get('name', 'layout')}.json"
+        score_path.parent.mkdir(parents=True, exist_ok=True)
+        score_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+        print(f"score report: {score_path}")
     wad = build_map(layout, args.out)
     print(f"wrote {wad}")
     print(f"udmf text: {wad.with_suffix('.txt')}")

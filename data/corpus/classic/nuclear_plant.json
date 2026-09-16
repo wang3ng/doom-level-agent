@@ -1,0 +1,154 @@
+{
+  "id": "doom_e1m2_nuclear_plant",
+  "source": "Doom E1M2 Nuclear Plant (John Romero)",
+  "theme": "phobos_tech_plant",
+  "title": "Nuclear Plant",
+  "brief": "Proper follow-up to Hangar: central plant landmark, bright-to-dark contrast, red-key detour with return, nukage hazard walkway, maze optional, chainsaw secret tease through a window, then a drop-in arena and tight exit fight. Revisiting space makes the plant feel like a place.",
+  "solution_path": [
+    "start_hall",
+    "central_plant_core",
+    "shotgun_lift_nook",
+    "red_door_approach",
+    "nukage_switch_room",
+    "dark_maze_optional",
+    "chainsaw_window_tease",
+    "nukage_walkway",
+    "drop_arena",
+    "split_paths_to_exit",
+    "exit_pit"
+  ],
+  "landmarks": [
+    "central raised construction / plant core",
+    "strobing dark maze",
+    "nukage walkway with matched ceiling ribs",
+    "chainsaw on pedestal seen through window",
+    "exit with outdoor windows"
+  ],
+  "pacing_notes": "Teach plant reading early; maze is optional pressure; walkway is hero space; drop arena is peak; exit is tight coda.",
+  "part_designs": [
+    {
+      "id": "start_hall",
+      "role": "start",
+      "shape": "medium tech corridor into a larger first room",
+      "elevation": "flat; tall enough to feel industrial",
+      "cover": "central construction / pillars create soft flanks",
+      "mobs": "zombiemen and imps using pillars",
+      "triggers": "doors onward",
+      "light": "bright sterile start",
+      "textures": "STAR / tech panels; clean flats",
+      "detail": "First room already has a mid-structure so the player strafes around cover, not a empty box."
+    },
+    {
+      "id": "central_plant_core",
+      "role": "hub",
+      "shape": "large room with a built object / passageway through the middle",
+      "elevation": "core may sit higher; side floors lower",
+      "cover": "the core itself is the landmark and cover",
+      "mobs": "packed on UV near north edge—south edge softer",
+      "triggers": "west lift to shotgun; routes branching out",
+      "detail": "Hub you recognize later; geometry teaches 'go around' and 'go up'."
+    },
+    {
+      "id": "shotgun_lift_nook",
+      "role": "teach",
+      "shape": "narrow lift alcove off the core",
+      "elevation": "fast lift down to shotgun",
+      "cover": "tight walls; ambush-friendly",
+      "mobs": "imp (and more on high skills) hard to see with status bar",
+      "triggers": "lift",
+      "detail": "Weapon reward paired with a vertical surprise—classic Romero teach/test."
+    },
+    {
+      "id": "red_key_circuit",
+      "role": "key",
+      "shape": "side rooms leading to red card, then return to red door",
+      "elevation": "varies; some nukage pits",
+      "cover": "crates / walls for peek",
+      "mobs": "escalate vs start",
+      "triggers": "red door after return",
+      "detail": "Key is off the straight line; player must reread the hub to progress."
+    },
+    {
+      "id": "nukage_switch_room",
+      "role": "mechanic",
+      "shape": "room with switch island in acid",
+      "elevation": "safe rim vs damaging floor",
+      "cover": "minimal—commitment space",
+      "mobs": "guards on approach",
+      "triggers": "switch opens maze door across the hall",
+      "detail": "Hazard + switch = agency; also opens optional maze (choice)."
+    },
+    {
+      "id": "dark_maze",
+      "role": "optional",
+      "shape": "convoluted low-light corridor graph",
+      "elevation": "mostly flat; oppressive low light",
+      "cover": "corners only",
+      "mobs": "many former-humans on UV; audio hunting",
+      "triggers": "secret walls with metal-strip frames",
+      "light": "strobing / very dark",
+      "detail": "Optional ammo/secret pressure cooker; automap and sound matter; not required for exit."
+    },
+    {
+      "id": "chainsaw_window_tease",
+      "role": "secret",
+      "shape": "pedestal room seen through window before reachable",
+      "elevation": "chainsaw on raised pillar in acid that later drains",
+      "cover": "n/a",
+      "mobs": "guards when claiming",
+      "triggers": "switch elsewhere drains acid / lowers pillar",
+      "detail": "See-it-before-you-get-it desire line; window is the affordance."
+    },
+    {
+      "id": "nukage_walkway",
+      "role": "landmark",
+      "shape": "long grated / walkway over acid; orthogonal outer shell",
+      "elevation": "walkway above hazard; ceiling ribs echo the path",
+      "cover": "thin; movement is the defense",
+      "mobs": "imps as turret threats along the run",
+      "triggers": "none mandatory",
+      "textures": "nukage flats; poison signage; tech borders",
+      "detail": "Hero room: height contrast, hazard literacy, memorable silhouette."
+    },
+    {
+      "id": "drop_arena",
+      "role": "arena",
+      "shape": "sunken fight pit with upper ledges",
+      "elevation": "elevator drop into pit; ledges hold turret imps",
+      "cover": "pit pillars / corners; upper pickups after",
+      "mobs": "ground zombies+imps plus ledge turrets",
+      "triggers": "lever at back opens flanking exits",
+      "detail": "Peak fight after breadcrumb medkits warn you; vertical threat layers."
+    },
+    {
+      "id": "split_exit_paths",
+      "role": "transition",
+      "shape": "two lit doorways after lever—converge downstairs",
+      "elevation": "wide descending stair",
+      "cover": "none needed",
+      "mobs": "light",
+      "triggers": "lever-opened walls",
+      "light": "bright door mouths vs dark pit",
+      "detail": "False choice that still feels generous; lighting sells the portals."
+    },
+    {
+      "id": "exit_room",
+      "role": "exit",
+      "shape": "tight room, exit switch centered, windows out",
+      "elevation": "flat; claustrophobic vs prior stair",
+      "cover": "barrel + medkit as tools",
+      "mobs": "zombie pack + imp; possible jump-scare at switch",
+      "triggers": "exit switch",
+      "detail": "Coda fight in a smaller volume; outdoor windows keep Phobos place-identity."
+    }
+  ],
+  "design_lessons": [
+    "Hub landmark you return to",
+    "Key off-path then locked progress",
+    "Optional maze vs mandatory hero walkway",
+    "Window teases for secrets/weapons",
+    "Warn with supplies before a drop fight",
+    "Exit is tighter than the peak arena",
+    "Light hierarchy: bright start, dark maze, lit portals"
+  ]
+}
