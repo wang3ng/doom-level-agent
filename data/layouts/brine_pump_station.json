@@ -9,7 +9,7 @@
       "role": "start",
       "shape": "square locker",
       "elevation": "floor 0 / ceil 128; brightest teach space",
-      "cover": "none — open teach",
+      "cover": "none \u2014 open teach",
       "mobs": "none",
       "triggers": "none",
       "detail": "Bright safe start with shotgun on the open floor; clear sightline into the darker choke."
@@ -183,23 +183,60 @@
     }
   ],
   "connections": [
-    { "a": "locker_start", "b": "service_choke", "kind": "corridor", "width": 64, "design": "open teach transition" },
-    { "a": "service_choke", "b": "pump_hub", "kind": "corridor", "width": 64, "design": "into hub landmark" },
-    { "a": "pump_hub", "b": "slime_wing", "kind": "door", "width": 64, "design": "optional wing door" },
-    { "a": "pump_hub", "b": "yellow_alcove", "kind": "corridor", "width": 64, "design": "key detour north" },
-    { "a": "pump_hub", "b": "combat_arena", "kind": "door", "lock": "yellow", "width": 96, "design": "yellow lock forces hub return" },
-    { "a": "combat_arena", "b": "exit_bay", "kind": "corridor", "width": 64, "design": "step up into exit" }
+    {
+      "a": "locker_start",
+      "b": "service_choke",
+      "kind": "corridor",
+      "width": 64,
+      "design": "open teach transition"
+    },
+    {
+      "a": "service_choke",
+      "b": "pump_hub",
+      "kind": "corridor",
+      "width": 64,
+      "design": "into hub landmark"
+    },
+    {
+      "a": "pump_hub",
+      "b": "slime_wing",
+      "kind": "door",
+      "width": 64,
+      "design": "optional wing door"
+    },
+    {
+      "a": "pump_hub",
+      "b": "yellow_alcove",
+      "kind": "corridor",
+      "width": 64,
+      "design": "key detour north"
+    },
+    {
+      "a": "pump_hub",
+      "b": "combat_arena",
+      "kind": "door",
+      "lock": "yellow",
+      "width": 96,
+      "design": "yellow lock forces hub return"
+    },
+    {
+      "a": "combat_arena",
+      "b": "exit_bay",
+      "kind": "corridor",
+      "width": 64,
+      "design": "step up into exit"
+    }
   ],
   "props": [
     {
       "type": "cover_block",
       "x": 296,
-      "y": 200,
+      "y": 144,
       "w": 32,
       "h": 32,
       "floor_raise": 32,
       "in_room": "service_choke",
-      "design": "hallway peek cover"
+      "design": "hallway peek cover (south of corridor lane)"
     },
     {
       "type": "pillar",
@@ -244,25 +281,112 @@
       "light": 100,
       "trigger": "walk",
       "design": "Walk-open east closet releases flanking imp during arena fight",
-      "monsters": [{ "type": "Imp", "dx": 48, "dy": 48, "angle": 180 }]
+      "monsters": [
+        {
+          "type": "Imp",
+          "dx": 48,
+          "dy": 48,
+          "angle": 180
+        }
+      ]
     }
   ],
   "things": [
-    { "type": "Player1Start", "x": 64, "y": 224, "angle": 0 },
-    { "type": "Shotgun", "x": 128, "y": 200, "angle": 0 },
-    { "type": "HealthBonus", "x": 300, "y": 160, "angle": 0 },
-    { "type": "Clip", "x": 320, "y": 240, "angle": 0 },
-    { "type": "HealthBonus", "x": 520, "y": 200, "angle": 0 },
-    { "type": "Zombieman", "x": 960, "y": 180, "angle": 180 },
-    { "type": "HealthBonus", "x": 1000, "y": 160, "angle": 0 },
-    { "type": "YellowCard", "x": 616, "y": 504, "angle": 0 },
-    { "type": "ArmorBonus", "x": 580, "y": 470, "angle": 0 },
-    { "type": "HealthBonus", "x": 520, "y": -180, "angle": 0 },
-    { "type": "Imp", "x": 600, "y": -160, "angle": 90 },
-    { "type": "Imp", "x": 700, "y": -120, "angle": 90 },
-    { "type": "ShotgunGuy", "x": 640, "y": -80, "angle": 90 },
-    { "type": "ArmorBonus", "x": 760, "y": -220, "angle": 0 },
-    { "type": "HealthBonus", "x": 580, "y": -480, "angle": 0 },
-    { "type": "ExitSwitch", "x": 608, "y": -544, "angle": 0 }
+    {
+      "type": "Player1Start",
+      "x": 64,
+      "y": 224,
+      "angle": 0
+    },
+    {
+      "type": "Shotgun",
+      "x": 128,
+      "y": 200,
+      "angle": 0
+    },
+    {
+      "type": "HealthBonus",
+      "x": 300,
+      "y": 160,
+      "angle": 0
+    },
+    {
+      "type": "Clip",
+      "x": 320,
+      "y": 240,
+      "angle": 0
+    },
+    {
+      "type": "HealthBonus",
+      "x": 520,
+      "y": 200,
+      "angle": 0
+    },
+    {
+      "type": "Zombieman",
+      "x": 960,
+      "y": 180,
+      "angle": 180
+    },
+    {
+      "type": "HealthBonus",
+      "x": 1000,
+      "y": 160,
+      "angle": 0
+    },
+    {
+      "type": "YellowCard",
+      "x": 616,
+      "y": 504,
+      "angle": 0
+    },
+    {
+      "type": "ArmorBonus",
+      "x": 580,
+      "y": 470,
+      "angle": 0
+    },
+    {
+      "type": "HealthBonus",
+      "x": 520,
+      "y": -180,
+      "angle": 0
+    },
+    {
+      "type": "Imp",
+      "x": 600,
+      "y": -160,
+      "angle": 90
+    },
+    {
+      "type": "Imp",
+      "x": 700,
+      "y": -120,
+      "angle": 90
+    },
+    {
+      "type": "ShotgunGuy",
+      "x": 640,
+      "y": -80,
+      "angle": 90
+    },
+    {
+      "type": "ArmorBonus",
+      "x": 760,
+      "y": -220,
+      "angle": 0
+    },
+    {
+      "type": "HealthBonus",
+      "x": 580,
+      "y": -480,
+      "angle": 0
+    },
+    {
+      "type": "ExitSwitch",
+      "x": 608,
+      "y": -544,
+      "angle": 0
+    }
   ]
 }

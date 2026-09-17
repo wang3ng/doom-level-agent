@@ -9,12 +9,12 @@
       "role": "start",
       "shape": "wide 320x160 rectangle (aspect ~2:1), not a square",
       "elevation": "floor 0 / ceil 128; STEP2 into hub if needed",
-      "cover": "32x32 SUPPORT3 cover_block at (120,200)",
+      "cover": "32x32 SUPPORT3 cover_block at (120,168) south of spawn lane",
       "mobs": "1 zombieman east of cover",
       "triggers": "open corridor east to hub",
       "light": "255 (brightest teach)",
       "textures": "walls STARTAN3; floor FLOOR0_1; ceil CEIL1_1",
-      "detail": "Sterile bright hangar teach — wall family must differ from hub BROWN96."
+      "detail": "Sterile bright hangar teach \u2014 wall family must differ from hub BROWN96."
     },
     {
       "id": "plant_hub",
@@ -33,12 +33,12 @@
       "role": "teach",
       "shape": "narrow 96x128 alcove (aspect ~0.75)",
       "elevation": "floor -24; reached by lift plat from hub floor 0",
-      "cover": "none — walls are the pressure",
+      "cover": "none \u2014 walls are the pressure",
       "mobs": "1 imp",
       "triggers": "kind=lift connection from hub",
       "light": "110",
       "textures": "walls STEP4 / BROWN1; floor FLOOR0_3; ceil FLAT5_5",
-      "detail": "Real elevator plat, not a permanent drop — walk on lift, it lowers, grab shotgun, ride back."
+      "detail": "Real elevator plat, not a permanent drop \u2014 walk on lift, it lowers, grab shotgun, ride back."
     },
     {
       "id": "dark_maze",
@@ -50,7 +50,7 @@
       "triggers": "door from hub wing",
       "light": "64 with light_special 17 flicker",
       "textures": "walls SLADWALL; floor FLOOR0_3; ceil FLAT5_4",
-      "detail": "Skippable flicker shaft — darkest space; different wall family."
+      "detail": "Skippable flicker shaft \u2014 darkest space; different wall family."
     },
     {
       "id": "red_key_alcove",
@@ -74,7 +74,7 @@
       "triggers": "red-locked door from hub",
       "light": "96 green gloom",
       "textures": "walls GSTONE1; floor NUKAGE1; ceil FLAT5_4",
-      "detail": "Hero hazard — nukage flat + greenstone walls, not STAR tech."
+      "detail": "Hero hazard \u2014 nukage flat + greenstone walls, not STAR tech."
     },
     {
       "id": "drop_arena",
@@ -98,7 +98,7 @@
       "triggers": "ExitSwitch north wall",
       "light": "200 calm bright coda",
       "textures": "walls COMPSPAN; floor FLOOR0_1; ceil CEIL1_1",
-      "detail": "Computer-span exit — distinct from combat STARTAN."
+      "detail": "Computer-span exit \u2014 distinct from combat STARTAN."
     }
   ],
   "rooms": [
@@ -223,7 +223,7 @@
     },
     {
       "id": "exit_bay",
-      "x": 1184,
+      "x": 1280,
       "y": -400,
       "w": 128,
       "h": 160,
@@ -239,24 +239,67 @@
     }
   ],
   "connections": [
-    { "a": "start_hall", "b": "plant_hub", "kind": "corridor", "width": 80, "design": "bright-to-brown transition" },
-    { "a": "plant_hub", "b": "shotgun_nook", "kind": "lift", "width": 64, "design": "SUPPORT3 elevator to shotgun" },
-    { "a": "plant_hub", "b": "dark_maze", "kind": "door", "width": 64, "design": "optional maze door from L-wing" },
-    { "a": "plant_hub", "b": "red_key_alcove", "kind": "corridor", "width": 64, "design": "key detour" },
-    { "a": "plant_hub", "b": "nukage_walk", "kind": "door", "lock": "red", "width": 96, "design": "red lock to nukage" },
-    { "a": "nukage_walk", "b": "drop_arena", "kind": "corridor", "width": 64, "design": "STEP up into arena" },
-    { "a": "drop_arena", "b": "exit_bay", "kind": "corridor", "width": 64, "design": "STEP up to exit" }
+    {
+      "a": "start_hall",
+      "b": "plant_hub",
+      "kind": "corridor",
+      "width": 80,
+      "design": "bright-to-brown transition"
+    },
+    {
+      "a": "plant_hub",
+      "b": "shotgun_nook",
+      "kind": "lift",
+      "width": 64,
+      "design": "SUPPORT3 elevator to shotgun"
+    },
+    {
+      "a": "plant_hub",
+      "b": "dark_maze",
+      "kind": "door",
+      "width": 64,
+      "design": "optional maze door from L-wing"
+    },
+    {
+      "a": "plant_hub",
+      "b": "red_key_alcove",
+      "kind": "corridor",
+      "width": 64,
+      "design": "key detour"
+    },
+    {
+      "a": "plant_hub",
+      "b": "nukage_walk",
+      "kind": "door",
+      "lock": "red",
+      "width": 96,
+      "design": "red lock to nukage"
+    },
+    {
+      "a": "nukage_walk",
+      "b": "drop_arena",
+      "kind": "corridor",
+      "width": 64,
+      "design": "STEP up into arena"
+    },
+    {
+      "a": "drop_arena",
+      "b": "exit_bay",
+      "kind": "corridor",
+      "width": 64,
+      "design": "STEP up to exit"
+    }
   ],
   "props": [
     {
       "type": "cover_block",
       "x": 120,
-      "y": 200,
+      "y": 168,
       "w": 32,
       "h": 32,
       "floor_raise": 32,
       "in_room": "start_hall",
-      "design": "STARTAN hall peek cover"
+      "design": "STARTAN hall peek cover (south of spawn lane)"
     },
     {
       "type": "pillar",
@@ -311,28 +354,130 @@
       "light": 80,
       "trigger": "walk",
       "design": "Walk-open east closet",
-      "monsters": [{ "type": "Imp", "dx": 48, "dy": 48, "angle": 180 }]
+      "monsters": [
+        {
+          "type": "Imp",
+          "dx": 48,
+          "dy": 48,
+          "angle": 180
+        }
+      ]
     }
   ],
   "things": [
-    { "type": "Player1Start", "x": 64, "y": 240, "angle": 0 },
-    { "type": "Zombieman", "x": 200, "y": 240, "angle": 180 },
-    { "type": "Clip", "x": 240, "y": 180, "angle": 0 },
-    { "type": "HealthBonus", "x": 420, "y": 200, "angle": 0 },
-    { "type": "Shotgun", "x": 480, "y": -64, "angle": 0 },
-    { "type": "Imp", "x": 500, "y": -40, "angle": 90 },
-    { "type": "Zombieman", "x": 990, "y": 120, "angle": 180 },
-    { "type": "Zombieman", "x": 1000, "y": 220, "angle": 180 },
-    { "type": "HealthBonus", "x": 980, "y": 180, "angle": 0 },
-    { "type": "RedCard", "x": 568, "y": 456, "angle": 0 },
-    { "type": "ArmorBonus", "x": 530, "y": 430, "angle": 0 },
-    { "type": "Imp", "x": 580, "y": -320, "angle": 90 },
-    { "type": "HealthBonus", "x": 520, "y": -300, "angle": 0 },
-    { "type": "Imp", "x": 920, "y": -320, "angle": 180 },
-    { "type": "Imp", "x": 1000, "y": -280, "angle": 180 },
-    { "type": "ShotgunGuy", "x": 960, "y": -240, "angle": 180 },
-    { "type": "ArmorBonus", "x": 880, "y": -400, "angle": 0 },
-    { "type": "HealthBonus", "x": 1220, "y": -340, "angle": 0 },
-    { "type": "ExitSwitch", "x": 1248, "y": -280, "angle": 0 }
+    {
+      "type": "Player1Start",
+      "x": 64,
+      "y": 240,
+      "angle": 0
+    },
+    {
+      "type": "Zombieman",
+      "x": 200,
+      "y": 240,
+      "angle": 180
+    },
+    {
+      "type": "Clip",
+      "x": 240,
+      "y": 180,
+      "angle": 0
+    },
+    {
+      "type": "HealthBonus",
+      "x": 420,
+      "y": 200,
+      "angle": 0
+    },
+    {
+      "type": "Shotgun",
+      "x": 480,
+      "y": -64,
+      "angle": 0
+    },
+    {
+      "type": "Imp",
+      "x": 500,
+      "y": -40,
+      "angle": 90
+    },
+    {
+      "type": "Zombieman",
+      "x": 990,
+      "y": 120,
+      "angle": 180
+    },
+    {
+      "type": "Zombieman",
+      "x": 1000,
+      "y": 220,
+      "angle": 180
+    },
+    {
+      "type": "HealthBonus",
+      "x": 980,
+      "y": 180,
+      "angle": 0
+    },
+    {
+      "type": "RedCard",
+      "x": 568,
+      "y": 456,
+      "angle": 0
+    },
+    {
+      "type": "ArmorBonus",
+      "x": 530,
+      "y": 430,
+      "angle": 0
+    },
+    {
+      "type": "Imp",
+      "x": 580,
+      "y": -320,
+      "angle": 90
+    },
+    {
+      "type": "HealthBonus",
+      "x": 520,
+      "y": -300,
+      "angle": 0
+    },
+    {
+      "type": "Imp",
+      "x": 920,
+      "y": -320,
+      "angle": 180
+    },
+    {
+      "type": "Imp",
+      "x": 1000,
+      "y": -280,
+      "angle": 180
+    },
+    {
+      "type": "ShotgunGuy",
+      "x": 960,
+      "y": -240,
+      "angle": 180
+    },
+    {
+      "type": "ArmorBonus",
+      "x": 880,
+      "y": -400,
+      "angle": 0
+    },
+    {
+      "type": "HealthBonus",
+      "x": 1316,
+      "y": -340,
+      "angle": 0
+    },
+    {
+      "type": "ExitSwitch",
+      "x": 1344,
+      "y": -280,
+      "angle": 0
+    }
   ]
 }

@@ -81,8 +81,10 @@ doom-level-agent/
 │   ├── scores/               ← rubric JSON reports (gitignored)
 │   └── screenshots/
 ├── assets/free/              ← free textures / WADs only (no commercial IWADs)
+├── patches/                  ← playtest writer / hull notes
 ├── scripts/
 │   ├── run_pipeline.py
+│   ├── hull_audit.py         ← geometry hull + portal/void probes
 │   ├── score_level.py
 │   └── generate_brief.py
 ├── tests/
@@ -98,11 +100,12 @@ doom-level-agent/
 | Area | Status | Notes |
 | --- | --- | --- |
 | JSON schema + validator | **done** | `configs/schema/layout.schema.json` |
-| UDMF / PWAD writer | **prototype** | Axis-aligned rooms + auto corridor sectors with portal openings |
+| UDMF / PWAD writer | **playtested** | STEP door bottoms, self-ref solid props, L-outline portal punch |
 | Stage 2 Ollama layout | **wired** | Default `qwen3-coder:30b` on william |
 | Stage 1 concept image | **stub** | SVG placeholder |
 | Design rubric scorer | **v0.2 strict** | Heuristic caps 3.5 / 2.5 vision; gaps count as 1.0; 4–5 need annotation/VLM |
-| Prototype WAD | **built** | `data/maps/proto_techbase_v1.wad` (~1.7/5 scored-only under v0.2) |
+| Hull audit | **done** | `scripts/hull_audit.py` (HALF_PORTAL_APPEARANCE, portal punch, prop void) |
+| Prototype WAD | **built** | `proto_techbase_v1` + playable `brine_pump_station` / `nuclear_plant_v0` |
 | VLM critic / GZDoom capture | **stub** | |
 | Proposal PDF | **done** | `proposal/proposal.pdf` |
 | Human eval protocol | **planned** | Final term; annotations already pluggable |
@@ -110,6 +113,7 @@ doom-level-agent/
 
 **Changelog (newest first)**
 
+- *Playtest writer / hull:* keep STEP bottoms on height-mismatched doors; tall cover/pillars as self-ref solids (no hollow one-sided void); L-outline portal punch (not AABB) for full doors on wing faces; layout: brine choke cover off corridor, nuclear start cover off spawn lane, nuclear `exit_bay` clear of arena closet. `scripts/hull_audit.py` PASS on brine (29/29) and nuclear (33/33). Notes in `patches/`.
 - *Classic design corpus:* detailed part-by-part refs for Entryway, Hangar, Nuclear Plant, Underhalls, House of Pain + design primer; injected into Stage 2 / path describer / strong-brief / corpus card generation (`data/corpus/classic/`, `scripts/dump_classic_guidance.py`, `configs/prompts/strong_describer.md`).
 - *Micro-design:* schema `part_designs` / `props` / `closets`; writer emits cover blocks, elevation, walk-open monster closets; strong brief + Stage 2 must describe each part; brine rebuilt with hallway cover, hub pillar, key pedestal, arena closet.
 - *Keys/locks + hub return:* YellowCard + yellow-locked door; brine critical path forces alcove→hub→arena.
@@ -147,6 +151,11 @@ python -m pip install -r requirements.txt
 python tests/test_build.py
 python scripts/run_pipeline.py --layout data/layouts/proto_techbase_v1.json \
   --out data/maps/proto_techbase_v1.wad --score
+python scripts/run_pipeline.py --layout data/layouts/brine_pump_station.json \
+  --out data/maps/brine_pump_station.wad
+python scripts/run_pipeline.py --layout data/layouts/nuclear_plant_v0.json \
+  --out data/maps/nuclear_plant_v0.wad
+python scripts/hull_audit.py
 ```
 
 Play in GZDoom (Freedoom IWAD), e.g.:

@@ -204,10 +204,27 @@ def _apply_door_linedefs(
                 sidedefs[sdi]["texturemiddle"] = DEFAULT_OPEN
             face_sd = ld["sidefront"] if sf != door_sid else ld["sideback"]
             sidedefs[face_sd]["texturetop"] = DOOR_FACE_TEX
-            # Inside of door sector: blank uppers
+            # Inside of door sector: blank uppers (door track is on one-sided walls).
             door_sd = ld["sideback"] if face_sd == ld["sidefront"] else ld["sidefront"]
             sidedefs[door_sd]["texturetop"] = DEFAULT_OPEN
-            sidedefs[door_sd]["texturebottom"] = DEFAULT_OPEN
+            # Preserve / restore lower (step) textures when neighboring floors differ.
+            # Blanking bottoms caused HOM/black void on height-mismatched door portals
+            # (e.g. hub floor 0 <-> arena floor 16 through yellow lock).
+            door_floor = sectors[door_sid].floor_height
+            other_sid = sb if sf == door_sid else sf
+            other_floor = sectors[other_sid].floor_height
+            if door_floor < other_floor:
+                delta = other_floor - door_floor
+                sidedefs[door_sd]["texturebottom"] = (
+                    STEPTOP_TEX if delta >= 48 else STEP_TEX
+                )
+            else:
+                sidedefs[door_sd]["texturebottom"] = DEFAULT_OPEN
+            if other_floor < door_floor:
+                delta = door_floor - other_floor
+                sidedefs[face_sd]["texturebottom"] = (
+                    STEPTOP_TEX if delta >= 48 else STEP_TEX
+                )
 
             if room.get("_closet_release"):
                 # Special lives on the tripwire, not on these faces.
@@ -483,6 +500,68 @@ def _edge_side(x1: int, y1: int, x2: int, y2: int) -> tuple[str, int, int, int] 
     return None
 
 
+def _room_outline_edges(room: dict[str, Any]) -> list[tuple[int, int, int, int]]:
+    """Directed clockwise outline edges for rect or L rooms."""
+    if room.get("shape") == "L":
+        return _l_outline_edges(room)
+    x0, y0, x1, y1 = _room_bounds(room)
+    return _rect_outline_edges(x0, y0, x1, y1)
+
+
+def _side_span_at(
+    room: dict[str, Any], side: str, const: int
+) -> tuple[int, int] | None:
+    """Merged [lo, hi) along `side` where outline const == edge coordinate.
+
+    L-rooms expose multiple segments per cardinal direction (inner notch +
+    outer wing). Corridor attachment must use the segment that actually sits
+    on the shared AABB face (e.g. east-wing right at x=aabb_right), not the
+    full AABB side length — otherwise openings pack flush into a wing corner
+    and look like a half-door, or corridors overhang into void past the wing.
+    """
+    spans: list[tuple[int, int]] = []
+    for ex1, ey1, ex2, ey2 in _room_outline_edges(room):
+        meta = _edge_side(ex1, ey1, ex2, ey2)
+        if meta is None:
+            continue
+        s, lo, hi, c = meta
+        if s == side and c == const and hi > lo:
+            spans.append((lo, hi))
+    if not spans:
+        return None
+    spans.sort()
+    merged_lo, merged_hi = spans[0]
+    for lo, hi in spans[1:]:
+        if lo <= merged_hi:
+            merged_hi = max(merged_hi, hi)
+        else:
+            # Disjoint segments on same face — keep the longest for joining.
+            if hi - lo > merged_hi - merged_lo:
+                merged_lo, merged_hi = lo, hi
+    return merged_lo, merged_hi
+
+
+def _place_opening(
+    overlap: tuple[int, int], width: int
+) -> tuple[int, int] | None:
+    """Center `width` inside overlap; fall back to max available (>=32)."""
+    lo, hi = overlap
+    avail = hi - lo
+    if avail < 32:
+        return None
+    w = min(width, avail)
+    mid = (lo + hi) // 2
+    a = max(lo, mid - w // 2)
+    b = min(hi, a + w)
+    if b - a < w and a > lo:
+        a = max(lo, b - w)
+    if b - a < 32:
+        a, b = lo, min(hi, lo + width)
+    if b - a < 32:
+        return None
+    return a, b
+
+
 def materialize_shapes(layout: dict[str, Any]) -> dict[str, Any]:
     """L rooms stay one sector; outline comes from _l_outline_edges. No wing split."""
     return copy.deepcopy(layout)
@@ -519,6 +598,9 @@ def _door_fields(
             "ceiling_height": open_ceil,
         }
     tag = 1000 + index
+    # Door pad sits at the lower floor. The higher room gets a step-up through the
+    # open door; _apply_door_linedefs must keep STEP lower textures on that face
+    # (do not blank texturebottom unconditionally).
     fields: dict[str, Any] = {
         "floor_height": lo,
         "ceiling_height": lo,  # closed door
@@ -616,14 +698,18 @@ def materialize_corridors(layout: dict[str, Any]) -> dict[str, Any]:
             gap = bx0 - ax1
             if gap <= 0:
                 continue
-            oy = _overlap_1d(ay0, ay1, by0, by1)
+            # Join on real outline faces (L-wing), not full AABB height.
+            a_span = _side_span_at(a, "right", ax1)
+            b_span = _side_span_at(b, "left", bx0)
+            if not a_span or not b_span:
+                continue
+            oy = _overlap_1d(a_span[0], a_span[1], b_span[0], b_span[1])
             if not oy:
                 continue
-            mid = (oy[0] + oy[1]) // 2
-            y0 = max(oy[0], mid - width // 2)
-            y1 = min(oy[1], y0 + width)
-            if y1 - y0 < 32:
-                y0, y1 = oy[0], min(oy[1], oy[0] + width)
+            placed = _place_opening(oy, width)
+            if not placed:
+                continue
+            y0, y1 = placed
             _add(
                 ax1,
                 y0,
@@ -640,14 +726,17 @@ def materialize_corridors(layout: dict[str, Any]) -> dict[str, Any]:
             gap = ax0 - bx1
             if gap <= 0:
                 continue
-            oy = _overlap_1d(ay0, ay1, by0, by1)
+            a_span = _side_span_at(a, "left", ax0)
+            b_span = _side_span_at(b, "right", bx1)
+            if not a_span or not b_span:
+                continue
+            oy = _overlap_1d(a_span[0], a_span[1], b_span[0], b_span[1])
             if not oy:
                 continue
-            mid = (oy[0] + oy[1]) // 2
-            y0 = max(oy[0], mid - width // 2)
-            y1 = min(oy[1], y0 + width)
-            if y1 - y0 < 32:
-                y0, y1 = oy[0], min(oy[1], oy[0] + width)
+            placed = _place_opening(oy, width)
+            if not placed:
+                continue
+            y0, y1 = placed
             _add(
                 bx1,
                 y0,
@@ -664,14 +753,17 @@ def materialize_corridors(layout: dict[str, Any]) -> dict[str, Any]:
             gap = by0 - ay1
             if gap <= 0:
                 continue
-            ox = _overlap_1d(ax0, ax1, bx0, bx1)
+            a_span = _side_span_at(a, "top", ay1)
+            b_span = _side_span_at(b, "bottom", by0)
+            if not a_span or not b_span:
+                continue
+            ox = _overlap_1d(a_span[0], a_span[1], b_span[0], b_span[1])
             if not ox:
                 continue
-            mid = (ox[0] + ox[1]) // 2
-            x0 = max(ox[0], mid - width // 2)
-            x1 = min(ox[1], x0 + width)
-            if x1 - x0 < 32:
-                x0, x1 = ox[0], min(ox[1], ox[0] + width)
+            placed = _place_opening(ox, width)
+            if not placed:
+                continue
+            x0, x1 = placed
             _add(
                 x0,
                 ay1,
@@ -688,14 +780,17 @@ def materialize_corridors(layout: dict[str, Any]) -> dict[str, Any]:
             gap = ay0 - by1
             if gap <= 0:
                 continue
-            ox = _overlap_1d(ax0, ax1, bx0, bx1)
+            a_span = _side_span_at(a, "bottom", ay0)
+            b_span = _side_span_at(b, "top", by1)
+            if not a_span or not b_span:
+                continue
+            ox = _overlap_1d(a_span[0], a_span[1], b_span[0], b_span[1])
             if not ox:
                 continue
-            mid = (ox[0] + ox[1]) // 2
-            x0 = max(ox[0], mid - width // 2)
-            x1 = min(ox[1], x0 + width)
-            if x1 - x0 < 32:
-                x0, x1 = ox[0], min(ox[1], ox[0] + width)
+            placed = _place_opening(ox, width)
+            if not placed:
+                continue
+            x0, x1 = placed
             _add(
                 x0,
                 by1,
@@ -857,7 +952,11 @@ def materialize_closets(layout: dict[str, Any]) -> dict[str, Any]:
 def _openings_for_room(
     room: dict[str, Any], corridors: list[dict[str, Any]]
 ) -> dict[str, list[tuple[int, int]]]:
-    """Map side -> list of [lo, hi) opening intervals along that side."""
+    """Map side -> list of [lo, hi) opening intervals along that side.
+
+    Intervals are clipped to the real outline span on the AABB face so a
+    corridor that overhangs an L-wing cannot punch past the wing into void.
+    """
     rid = room["id"]
     x0, y0, x1, y1 = _room_bounds(room)
     openings: dict[str, list[tuple[int, int]]] = {
@@ -866,16 +965,25 @@ def _openings_for_room(
         "bottom": [],
         "top": [],
     }
+
+    def _clip(side: str, const: int, a: int, b: int) -> None:
+        span = _side_span_at(room, side, const)
+        if not span:
+            return
+        lo, hi = max(a, span[0]), min(b, span[1])
+        if hi > lo:
+            openings[side].append((lo, hi))
+
     for corr in corridors:
         cx0, cy0, cx1, cy1 = _room_bounds(corr)
         if corr.get("_portal_left") == rid and cx0 == x1:
-            openings["right"].append((cy0, cy1))
+            _clip("right", x1, cy0, cy1)
         if corr.get("_portal_right") == rid and cx1 == x0:
-            openings["left"].append((cy0, cy1))
+            _clip("left", x0, cy0, cy1)
         if corr.get("_portal_bottom") == rid and cy0 == y1:
-            openings["top"].append((cx0, cx1))
+            _clip("top", y1, cx0, cx1)
         if corr.get("_portal_top") == rid and cy1 == y0:
-            openings["bottom"].append((cx0, cx1))
+            _clip("bottom", y0, cx0, cx1)
     for side in openings:
         openings[side] = sorted(openings[side])
     return openings
@@ -1072,46 +1180,96 @@ def _emit_cover_props(
             raise_h = int(prop.get("floor_raise", 32))
         floor = parent_sec.floor_height + raise_h
         ceil = parent_sec.ceiling_height
-        prop_sid = len(sectors)
-        sectors.append(
-            Sector(
-                floor_height=floor,
-                ceiling_height=ceil,
-                floor_flat="CEIL5_2" if prop["type"] == "pillar" else parent_sec.floor_flat,
-                ceil_flat=parent_sec.ceil_flat,
-                light=max(80, parent_sec.light - 20),
-                wall_texture=METAL_TEX if prop["type"] == "pillar" else SUPPORT_TEX,
-            )
-        )
-        # Clockwise edges so front faces into prop sector; back is parent room.
-        edges = [
-            (x1, y0, x0, y0),  # bottom
-            (x0, y0, x0, y1),  # left
-            (x0, y1, x1, y1),  # top
-            (x1, y1, x1, y0),  # right
-        ]
         prop_wall = METAL_TEX if prop["type"] == "pillar" else SUPPORT_TEX
-        for ax, ay, bx, by in edges:
-            before = len(linedefs)
-            _emit_edge(
-                vertices=vertices,
-                vindex=vindex,
-                sidedefs=sidedefs,
-                linedefs=linedefs,
-                sectors=sectors,
-                x1=ax,
-                y1=ay,
-                x2=bx,
-                y2=by,
-                front_sector=prop_sid,
-                back_sector=parent_sid,
-                wall=prop_wall,
+        # Pillars and tall cover (>Doom maxstep 24) must not be walk-through
+        # raised platforms. Emit as self-referencing blocking solids (not
+        # one-sided hollows — those are true void if the player corner-clips).
+        # Short cover_blocks (<=24) stay raised steppable platforms.
+        #
+        # Inset by 1 mu so prop edges are not colinear with room/corridor walls.
+        # Colinear one-sided (or raised) edges that share a portal corner
+        # coordinate (e.g. cover south at y=200 with corridor south at y=200)
+        # make that portal impassable in GZDoom while still drawing the far
+        # floor — the start_hall→plant_hub "blue floor threshold" bug.
+        if x1 - x0 > 2 and y1 - y0 > 2:
+            x0, y0, x1, y1 = x0 + 1, y0 + 1, x1 - 1, y1 - 1
+        solid = prop["type"] == "pillar" or raise_h > 24
+        if solid:
+            # Self-referencing solid: two-sided linedefs with BOTH sides = parent
+            # sector and blocking=true. Classic Doom pillar trick — impassable,
+            # textured midtex, and NO hollow void interior (one-sided solids let
+            # corner-clips / noclip drop the player into true OOB black void).
+            edges = [
+                (x0, y0, x1, y0),  # bottom
+                (x1, y0, x1, y1),  # right
+                (x1, y1, x0, y1),  # top
+                (x0, y1, x0, y0),  # left
+            ]
+            for ax, ay, bx, by in edges:
+                before = len(linedefs)
+                _emit_edge(
+                    vertices=vertices,
+                    vindex=vindex,
+                    sidedefs=sidedefs,
+                    linedefs=linedefs,
+                    sectors=sectors,
+                    x1=ax,
+                    y1=ay,
+                    x2=bx,
+                    y2=by,
+                    front_sector=parent_sid,
+                    back_sector=parent_sid,
+                    wall=prop_wall,
+                )
+                ld = linedefs[before]
+                ld["blocking"] = True
+                # Force visible midtex on both faces (emit blanks mid on 2-sided).
+                for sdi in (ld["sidefront"], ld["sideback"]):
+                    sidedefs[sdi]["texturemiddle"] = prop_wall
+                    sidedefs[sdi]["texturetop"] = DEFAULT_OPEN
+                    sidedefs[sdi]["texturebottom"] = DEFAULT_OPEN
+        else:
+            prop_sid = len(sectors)
+            sectors.append(
+                Sector(
+                    floor_height=floor,
+                    ceiling_height=ceil,
+                    floor_flat=parent_sec.floor_flat,
+                    ceil_flat=parent_sec.ceil_flat,
+                    light=max(80, parent_sec.light - 20),
+                    wall_texture=prop_wall,
+                )
             )
-            # Raised props: show METAL/SUPPORT on the room-facing lower, not generic STEP.
-            ld = linedefs[before]
-            if "sideback" in ld:
-                sidedefs[ld["sideback"]]["texturebottom"] = prop_wall
-                sidedefs[ld["sidefront"]]["texturebottom"] = DEFAULT_OPEN
+            # Clockwise edges so front faces into prop sector; back is parent room.
+            edges = [
+                (x1, y0, x0, y0),  # bottom
+                (x0, y0, x0, y1),  # left
+                (x0, y1, x1, y1),  # top
+                (x1, y1, x1, y0),  # right
+            ]
+            for ax, ay, bx, by in edges:
+                before = len(linedefs)
+                _emit_edge(
+                    vertices=vertices,
+                    vindex=vindex,
+                    sidedefs=sidedefs,
+                    linedefs=linedefs,
+                    sectors=sectors,
+                    x1=ax,
+                    y1=ay,
+                    x2=bx,
+                    y2=by,
+                    front_sector=prop_sid,
+                    back_sector=parent_sid,
+                    wall=prop_wall,
+                )
+                # Raised props: show METAL/SUPPORT on the room-facing lower, not generic STEP.
+                ld = linedefs[before]
+                if "sideback" in ld:
+                    sidedefs[ld["sideback"]]["texturebottom"] = prop_wall
+                    sidedefs[ld["sidefront"]]["texturebottom"] = DEFAULT_OPEN
+                    # Soft barrier even for steppable rises helps reduce edge snags.
+                    ld["blocking"] = False
         count += 1
     return count
 
