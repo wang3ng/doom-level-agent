@@ -303,12 +303,12 @@
     },
     {
       "type": "pillar",
-      "x": 528,
-      "y": 176,
+      "x": 660,
+      "y": 280,
       "w": 64,
       "h": 64,
       "in_room": "plant_hub",
-      "design": "METAL pump stack"
+      "design": "METAL pump stack (off corridor axis)"
     },
     {
       "type": "cover_block",

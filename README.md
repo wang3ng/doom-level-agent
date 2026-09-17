@@ -113,6 +113,7 @@ doom-level-agent/
 
 **Changelog (newest first)**
 
+- *Hub pillars off corridor axis:* brine `pump_hub` (608,192)→(720,300); nuclear `plant_hub` (528,176)→(660,280). Rebuilt both WADs; `scripts/hull_audit.py` PASS. Notes in `patches/hub_pillar_off_axis.md`.
 - *Playtest writer / hull:* keep STEP bottoms on height-mismatched doors; tall cover/pillars as self-ref solids (no hollow one-sided void); L-outline portal punch (not AABB) for full doors on wing faces; layout: brine choke cover off corridor, nuclear start cover off spawn lane, nuclear `exit_bay` clear of arena closet. `scripts/hull_audit.py` PASS on brine (29/29) and nuclear (33/33). Notes in `patches/`.
 - *Classic design corpus:* detailed part-by-part refs for Entryway, Hangar, Nuclear Plant, Underhalls, House of Pain + design primer; injected into Stage 2 / path describer / strong-brief / corpus card generation (`data/corpus/classic/`, `scripts/dump_classic_guidance.py`, `configs/prompts/strong_describer.md`).
 - *Micro-design:* schema `part_designs` / `props` / `closets`; writer emits cover blocks, elevation, walk-open monster closets; strong brief + Stage 2 must describe each part; brine rebuilt with hallway cover, hub pillar, key pedestal, arena closet.

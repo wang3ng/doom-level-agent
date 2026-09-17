@@ -240,12 +240,12 @@
     },
     {
       "type": "pillar",
-      "x": 608,
-      "y": 192,
+      "x": 720,
+      "y": 300,
       "w": 64,
       "h": 64,
       "in_room": "pump_hub",
-      "design": "pump stack landmark"
+      "design": "pump stack landmark (off corridor axis)"
     },
     {
       "type": "cover_block",
