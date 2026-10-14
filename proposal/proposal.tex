@@ -12,7 +12,7 @@
 
 \begin{center}
 {\large\bfseries EN.601.762 Project Proposal}\\[0.35em]
-{\bfseries Multimodal Agents for Doom Level Design with UDB and GZDoom}\\[0.25em]
+{\bfseries Verified Doom Level Generation: A Playability-Checked Intermediate Representation for Language Agents}\\[0.25em]
 {\small Fall 2026 \quad$\cdot$\quad Due Sep~16}
 \end{center}
 
@@ -20,37 +20,54 @@
 
 \vspace{0.4em}
 \noindent\textbf{Abstract.}
-Procedural level tools and generative models solve different halves of the same problem.
-Editors such as Ultimate Doom Builder (UDB) produce playable, editable maps, but they are slow to drive from language.
-Image and language models sketch layouts quickly, yet they rarely emit geometry that a real engine will load.
-We build a multimodal pipeline that keeps both sides: a brief (and optional concept image) becomes constrained layout JSON, then a deterministic compiler writes UDMF \texttt{TEXTMAP} into a PWAD that opens in UDB and runs in GZDoom.
-Stage~1 is local image generation.
-Stage~2 is an Ollama coding or vision--language model that fills a fixed room--connection--thing schema.
-Stage~3 is code, not another sample: validated JSON becomes sectors, linedefs, and things.
-A critic scores connectivity, player start, and monster density, and can later judge top-down rasters or GZDoom screenshots with a local VLM before asking for repair edits.
-Inference stays on our workstation (RTX~5070, 16\,GB), with models loaded one at a time, using free assets such as Freedoom.
-By the mid checkpoint we will show a closed loop on axis-aligned rooms and corridors, with automatic metrics and UDB/GZDoom demos.
-The final study adds ablations (text-only vs.\ text plus concept image; with vs.\ without critic repair), rule-based and LLM-JSON baselines, and a small human preference study on playability, clarity, and style fit.
-We track schema-valid compile rate, geometric proxies, and human ratings.
+Language models can describe a good Doom level, but the maps they produce often cannot be finished: rooms overlap, props block doorways, lifts strand the player, and keys sit behind their own locks.
+Our pilot maps scored well on path-clarity heuristics yet failed fair play in GZDoom because of exactly these geometry errors.
+We argue the bottleneck is not the prompt but the absence of a \emph{checkable contract} between the model and the engine.
+We contribute (1)~an intermediate representation (IR) that encodes a level as a \emph{critical-path graph} (start, teach, key, lock, peak, exit, with precedence and optional branches) plus typed geometry (true L-shaped rooms, doors, lifts, cover props, monster closets);
+(2)~a deterministic compiler from IR to UDMF that is \emph{verified}: before writing a PWAD it runs a hull and walkability gate (room and closet overlap, hollow or portal-blocking props, incomplete door and lift openings, and a breadth-first search at Doom's 16-unit player radius from spawn to exit) and refuses to emit failing maps;
+(3)~a layered metric suite that separates \emph{playable} (binary, from the gate), \emph{trajectory} (key-before-lock, weapon-before-peak, early-combat cap, hub return, landmark clearance), and \emph{design} (a five-pillar rubric), so that a pretty but broken level scores zero;
+and (4)~a verifier-guided repair loop in which gate and trajectory failures are returned to the generator as structured, localized error messages instead of free-form critique.
+The generator itself is interchangeable: we evaluate local Ollama models and a rule-based baseline under the same IR, compiler, and metrics, so gains can be attributed to the representation and verifier rather than to prompting a particular model.
+Inference runs locally (RTX~5070, 16\,GB) with free assets (Freedoom).
 
-\vspace{0.15em}
+\vspace{0.3em}
+\noindent\textbf{Grounding.}
+The IR follows Riedl's view that in games, story is progression through space: experience management and GAME FORGE encode intended play as a plot graph of ordered events with optional branches, realized as ``islands'' (required rooms) joined by ``bridges'' (corridors), and we enforce that optional wings never sit on the only route between plot nodes.
+The repair loop follows Rockt\"aschel's framing of open-ended systems as producing novel but learnable artifacts through cheap, strict environments and self-improvement loops: our gate is the learnability filter, structured failures are the improvement signal, and a stretch goal is a quality--diversity archive of level patterns that keeps only maps passing the gate.
+
+\vspace{0.2em}
+\noindent\textbf{Research questions.}
+\begin{itemize}
+  \item \textbf{RQ1:} Does the critical-path IR raise the rate of finishable maps over generating raw room/connection JSON with the same model?
+  \item \textbf{RQ2:} Does structured verifier feedback repair more failures per iteration than free-form LLM or VLM critique?
+  \item \textbf{RQ3:} Do the automatic playable and trajectory metrics agree with human fair-play outcomes better than design heuristics alone?
+\end{itemize}
+
+\vspace{0.2em}
+\noindent\textbf{Evaluation.}
+Primary metric: \emph{verified-finishable rate} (passes the gate and the trajectory checks), confirmed on a subset by human fair play in GZDoom without cheats.
+Secondary: repairs needed to reach a pass, trajectory and design scores, and diversity across briefs.
+Baselines: rule-based generator; LLM emitting flat JSON without the IR; IR without the gate; IR with gate but free-form critique.
+Ablations remove one component at a time (IR, gate, structured feedback, classic-map few-shot references).
 
 \vspace{0.45em}
 \noindent\textbf{Planned mid deliverables (Oct~19)}
 \begin{itemize}
-  \item JSON layout schema, validator, and UDMF/PWAD builder for axis-aligned rooms (corridors as rooms or stitched openings).
-  \item Stage~2 layout generation from text briefs via Ollama (\texttt{qwen3-coder} family); concept-image stub or a first local diffusion pass if VRAM allows.
-  \item Automatic metrics (connectivity, player start, density) on at least 10 layouts, plus a short failure gallery.
-  \item End-to-end demo: brief $\rightarrow$ JSON $\rightarrow$ \texttt{.wad} in UDB and GZDoom (Freedoom).
+  \item IR schema and validator; UDMF compiler with L-rooms, doors, keyed locks, lifts, props, and closets.
+  \item Hull and walkability gate integrated as a hard build step, with unit tests on known failure cases from our playtests.
+  \item Layered metrics (playable / trajectory / design) on at least 10 generated maps, with a failure gallery that labels which check caught each bug.
+  \item End-to-end demo: brief $\rightarrow$ IR $\rightarrow$ verified \texttt{.wad} in UDB and GZDoom.
   \item Mid report (NeurIPS 2026 format, $\leq$4 pages) and in-class presentation.
 \end{itemize}
 
 \vspace{0.2em}
 \noindent\textbf{Planned final deliverables (Dec~9 poster; Dec~15 report)}
 \begin{itemize}
-  \item Full generate--critique--repair loop with a VLM critic on layout images and/or GZDoom screenshots.
-  \item Ablations, baselines, and a human preference study (Likert scores and pairwise comparisons).
-  \item Final poster and NeurIPS-style report ($\leq$8 pages main text).
+  \item Key-aware walkability (locks closed until the key is reached) and two-way lift checks in the gate.
+  \item Verifier-guided repair loop and comparison against free-form critique (RQ2).
+  \item Baselines and ablations on a fixed set of 30+ briefs (RQ1).
+  \item Small human fair-play study measuring metric--outcome agreement (RQ3).
+  \item Released IR, compiler, gate, metric code, and the brief set; final poster and NeurIPS-style report ($\leq$8 pages).
 \end{itemize}
 
 \end{document}

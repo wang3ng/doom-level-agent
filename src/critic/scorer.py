@@ -871,6 +871,25 @@ def score_layout(
         path_report = {"ok": False, "error": str(exc)}
         path_clarity = {"score": None, "notes": str(exc)}
 
+    # Hull / walkability dominates: unplayable geometry collapses overall.
+    hull_report: dict[str, Any] = {"ok": True, "n_issues": 0, "issues": []}
+    try:
+        from pipeline.hull_gate import audit_report
+
+        hull_report = audit_report(layout)
+    except Exception as exc:  # noqa: BLE001
+        hull_report = {
+            "ok": False,
+            "n_issues": 1,
+            "issues": [{"code": "HULL_AUDIT_ERROR", "message": str(exc)}],
+        }
+    if not hull_report.get("ok"):
+        summary = dict(summary)
+        summary["overall"] = 0.0
+        summary["overall_with_gaps"] = 0.0
+        summary["hull_failed"] = True
+        summary["calibration"] = f"{summary.get('calibration', 'v0.2')}+hull-gate"
+
     return {
         "layout_name": layout.get("name"),
         "rubric_version": rubric.get("version"),
@@ -878,6 +897,7 @@ def score_layout(
         "criteria": [r.as_dict() for r in results],
         "critical_path": path_report,
         "critical_path_score": path_clarity,
+        "hull_audit": hull_report,
     }
 
 
@@ -890,6 +910,18 @@ def format_score_report(report: dict[str, Any]) -> str:
         f"(4-5 needs annotation/VLM)",
         "",
     ]
+    hull = report.get("hull_audit") or {}
+    if hull:
+        if hull.get("ok"):
+            lines.append(f"Hull/walkability gate: PASS (r={hull.get('player_radius', 16)})")
+        else:
+            lines.append(
+                f"Hull/walkability gate: FAIL ({hull.get('n_issues', '?')} issues) "
+                "— overall collapsed to 0"
+            )
+            for iss in (hull.get("issues") or [])[:12]:
+                lines.append(f"  - {iss.get('code')}: {iss.get('message')}")
+        lines.append("")
     cp = report.get("critical_path_score") or {}
     if cp.get("score") is not None:
         lines.append(

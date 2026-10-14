@@ -23,9 +23,19 @@ from pipeline.validate import validate_layout  # noqa: E402
 
 
 def _brief_from_card(card: dict) -> str:
-    from pipeline.design_detail import PART_DESIGN_RULES, classic_guidance_for
+    from pipeline.design_detail import (
+        LAYOUT_JSON_COMPACT,
+        PART_DESIGN_RULES,
+        WRITER_PLAYTEST_HAZARDS,
+        classic_guidance_for,
+        load_layout_json_format,
+    )
 
     theme = str(card.get("theme") or card.get("brief") or card.get("id") or "techbase")
+    # Keep the full format guide available but truncated in the Ollama brief if huge.
+    format_guide = load_layout_json_format()
+    if len(format_guide) > 6000:
+        format_guide = LAYOUT_JSON_COMPACT + "\n\n" + WRITER_PLAYTEST_HAZARDS
     parts = [
         f"TITLE: {card.get('title') or card.get('id')}",
         f"THEME: {card.get('theme')}",
@@ -43,6 +53,8 @@ def _brief_from_card(card: dict) -> str:
         f"RUBRIC: {json.dumps(card.get('rubric_design') or card.get('rubric_hints') or {}, indent=2)}",
         f"CONSTRAINTS: {json.dumps(card.get('layout_constraints') or {}, indent=2)}",
         PART_DESIGN_RULES,
+        WRITER_PLAYTEST_HAZARDS,
+        "LAYOUT JSON FORMAT:\n" + format_guide,
         classic_guidance_for(theme, k=2),
         "Emit DoomLayoutV0 JSON implementing this design. Keep room ids close to the solution_path names where possible.",
         "Include part_designs, props (cover_block/pillar), and closets when the PART_DESIGNS call for them.",

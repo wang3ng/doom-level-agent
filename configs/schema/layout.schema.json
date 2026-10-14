@@ -12,22 +12,43 @@
     "objective_room": { "type": "string" },
     "part_designs": {
       "type": "array",
-      "description": "Per-room micro-design notes the strong describer / planner must honor.",
+      "description": "Per-room micro-design notes. Prefer measurable strings (sizes, light ints, named textures, kind=lift). See configs/prompts/layout_json_format.md.",
       "items": {
         "type": "object",
         "required": ["id", "detail"],
         "additionalProperties": false,
         "properties": {
-          "id": { "type": "string" },
-          "role": { "type": "string" },
-          "shape": { "type": "string" },
-          "elevation": { "type": "string" },
-          "cover": { "type": "string" },
+          "id": { "type": "string", "description": "Matches a room id when possible." },
+          "role": {
+            "type": "string",
+            "description": "start|teach|choke|hub|key|hazard|arena|secret|optional|exit|closet"
+          },
+          "shape": {
+            "type": "string",
+            "description": "Measurable footprint, e.g. '320x160 wide' or 'L: main 384x288 + east wing 160x160'."
+          },
+          "elevation": {
+            "type": "string",
+            "description": "Exact floor/ceil; STEP<=24 or kind=lift — no silent permanent drops."
+          },
+          "cover": {
+            "type": "string",
+            "description": "Prop type/size/placement; keep off walk midlines."
+          },
           "mobs": { "type": "string" },
-          "triggers": { "type": "string" },
-          "light": { "type": "string" },
-          "textures": { "type": "string" },
-          "detail": { "type": "string" }
+          "triggers": {
+            "type": "string",
+            "description": "lock color, walk closet, lift, exit — named explicitly."
+          },
+          "light": {
+            "type": "string",
+            "description": "Integers / hierarchy, e.g. '160 mid; maze 64+special 17'."
+          },
+          "textures": {
+            "type": "string",
+            "description": "Named wall+floor+ceil (BROWN96 / FLOOR1_1 / CEIL1_2)."
+          },
+          "detail": { "type": "string", "description": "One concrete player-experience sentence." }
         }
       }
     },
@@ -57,6 +78,7 @@
           "role": { "type": "string" },
           "shape": {
             "type": "string",
+            "description": "Use L with wing_side/wing_w/wing_h for true L polygons. Do not emit a separate *_wing room.",
             "enum": [
               "rect",
               "narrow",
@@ -71,7 +93,8 @@
           },
           "wing_side": {
             "type": "string",
-            "enum": ["north", "south", "east", "west"]
+            "enum": ["north", "south", "east", "west"],
+            "description": "Required when shape is L. Portal openings must sit inside the real wing face span with margins."
           },
           "wing_w": { "type": "integer", "minimum": 64 },
           "wing_h": { "type": "integer", "minimum": 64 },
@@ -91,7 +114,8 @@
           "kind": {
             "type": "string",
             "enum": ["corridor", "door", "open", "lift"],
-            "default": "open"
+            "default": "open",
+            "description": "Use lift for rideable height changes (>24 or return trip). door+lock for keyed gates."
           },
           "lock": {
             "type": "string",
@@ -114,7 +138,11 @@
           "y": { "type": "integer" },
           "w": { "type": "integer", "minimum": 16 },
           "h": { "type": "integer", "minimum": 16 },
-          "floor_raise": { "type": "integer", "default": 32 },
+          "floor_raise": {
+            "type": "integer",
+            "default": 32,
+            "description": "<=24 walk-up pedestal; >24 solid cover/pillar. Keep props off spawn and corridor midlines."
+          },
           "in_room": { "type": "string" },
           "design": { "type": "string" }
         }

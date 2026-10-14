@@ -41,7 +41,9 @@ brief (+ optional concept image)
 └───────────────────┘
 ```
 
-**Design rule:** the LLM does not emit binary WADs. It fills a fixed JSON schema; Python owns geometry.
+**Research framing:** the contribution is the checkable contract between generator and engine, not prompting. A critical-path intermediate representation, a verified compiler that refuses unplayable maps, layered metrics (playable / trajectory / design), and verifier-guided repair. The LLM is a swappable component. See [`proposal/proposal.pdf`](proposal/proposal.pdf) and [`docs/plan_directions.md`](docs/plan_directions.md).
+
+**Design rule:** the LLM does not emit binary WADs. It fills a fixed JSON schema; Python owns geometry. Field guide + playtest hazards: `configs/prompts/layout_json_format.md` (also injected into Stage 2 / strong-brief prompts).
 
 **Design scorer:** `configs/rubric/design_rubric.json` + `src/critic/scorer.py` scores navigation, pacing, mechanics (teach/test/twist), affordances, and narrative. Heuristics use layout JSON; vision-heavy criteria stay `unavailable` until annotation/VLM.
 
@@ -58,7 +60,8 @@ doom-level-agent/
 ├── proposal/
 │   ├── proposal.md
 │   ├── proposal.tex
-│   └── proposal.pdf          ← Sep 16 one-pager
+│   └── proposal.pdf          ← verified-generation proposal (RQ1–RQ3)
+├── mid-presentation.md       ← Oct 19 mid presentation / report requirements
 ├── configs/
 │   ├── schema/layout.schema.json    ← DoomLayoutV0
 │   └── rubric/design_rubric.json    ← 5-pillar scorer
@@ -66,7 +69,8 @@ doom-level-agent/
 │   ├── pipeline/
 │   │   ├── stage1_image.py   ← concept image stub
 │   │   ├── stage2_layout.py  ← Ollama → JSON
-│   │   ├── stage3_build.py   ← JSON → WAD
+│   │   ├── stage3_build.py   ← JSON → WAD (refuses on hull-gate failure)
+│   │   ├── hull_gate.py      ← overlaps, portal punch, prop×portal, r=16 walk BFS
 │   │   └── validate.py
 │   ├── udmf/
 │   │   └── writer.py         ← TEXTMAP + minimal PWAD
@@ -89,8 +93,10 @@ doom-level-agent/
 │   └── generate_brief.py
 ├── tests/
 │   ├── test_build.py
+│   ├── test_hull_gate.py
 │   └── test_scorer.py
-└── docs/                     ← extra notes as the project grows
+└── docs/
+    └── plan_directions.md    ← plan: IR, gate, metrics, repair loop, diversity
 ```
 
 ---
@@ -100,20 +106,27 @@ doom-level-agent/
 | Area | Status | Notes |
 | --- | --- | --- |
 | JSON schema + validator | **done** | `configs/schema/layout.schema.json` |
-| UDMF / PWAD writer | **playtested** | STEP door bottoms, self-ref solid props, L-outline portal punch |
+| UDMF / PWAD writer | **playtested** | STEP bottoms, self-ref props, L-outline portals; **hull gate refuses bad WADs** |
+| Hull / walkability | **gated** | `pipeline.hull_gate` + `scripts/hull_audit.py` (r=16 BFS, prop×portal, overlaps) |
 | Stage 2 Ollama layout | **wired** | Default `qwen3-coder:30b` on william |
 | Stage 1 concept image | **stub** | SVG placeholder |
 | Design rubric scorer | **v0.2 strict** | Heuristic caps 3.5 / 2.5 vision; gaps count as 1.0; 4–5 need annotation/VLM |
 | Hull audit | **done** | `scripts/hull_audit.py` (HALF_PORTAL_APPEARANCE, portal punch, prop void) |
 | Prototype WAD | **built** | `proto_techbase_v1` + playable `brine_pump_station` / `nuclear_plant_v0` |
 | VLM critic / GZDoom capture | **stub** | |
-| Proposal PDF | **done** | `proposal/proposal.pdf` |
+| Proposal PDF | **revised** | Verified-generation framing, RQ1–RQ3, Riedl / Rocktäschel grounding |
+| Plan directions | **done** | `docs/plan_directions.md` |
+| Layered metrics report | **planned** | playable / trajectory / design → headline (see plan) |
+| Mid report + talk | **in progress** | Due Oct 19 (`mid-presentation.md`) |
 | Human eval protocol | **planned** | Final term; annotations already pluggable |
 | GitHub remote | **this repo** | |
 
 **Changelog (newest first)**
 
+- *Proposal + plan:* reframed proposal around a critical-path IR, verified compiler, layered metrics, and verifier-guided repair (RQ1–RQ3), grounded in Riedl (plot graphs, islands and bridges) and Rocktäschel (novel-but-learnable, self-improvement loops). Added `docs/plan_directions.md` and mid-presentation requirements.
+- *Hull gate (required):* `pipeline.hull_gate` + `scripts/hull_audit.py` — overlaps, PROP_ON_PORTAL_MIDLINE, portal punch/lifts, PROP_VOID, r=16 walkability BFS spawn→exit. `stage3_build` **refuses to emit a WAD** on failure; scorer overall collapses to 0. Validator flags closet/room overlaps early. Stage 2 prompts bias landmark≥64–96u off portal mids and soft early combat.
 - *Hub pillars off corridor axis:* brine `pump_hub` (608,192)→(720,300); nuclear `plant_hub` (528,176)→(660,280). Rebuilt both WADs; `scripts/hull_audit.py` PASS. Notes in `patches/hub_pillar_off_axis.md`.
+- *Agent prompts:* documented DoomLayoutV0 field guide + brine/nuclear playtest hazards (`configs/prompts/layout_json_format.md`); wired into Stage 2 system prompt, strong describer, strong-brief builder, and schema descriptions.
 - *Playtest writer / hull:* keep STEP bottoms on height-mismatched doors; tall cover/pillars as self-ref solids (no hollow one-sided void); L-outline portal punch (not AABB) for full doors on wing faces; layout: brine choke cover off corridor, nuclear start cover off spawn lane, nuclear `exit_bay` clear of arena closet. `scripts/hull_audit.py` PASS on brine (29/29) and nuclear (33/33). Notes in `patches/`.
 - *Classic design corpus:* detailed part-by-part refs for Entryway, Hangar, Nuclear Plant, Underhalls, House of Pain + design primer; injected into Stage 2 / path describer / strong-brief / corpus card generation (`data/corpus/classic/`, `scripts/dump_classic_guidance.py`, `configs/prompts/strong_describer.md`).
 - *Micro-design:* schema `part_designs` / `props` / `closets`; writer emits cover blocks, elevation, walk-open monster closets; strong brief + Stage 2 must describe each part; brine rebuilt with hallway cover, hub pillar, key pedestal, arena closet.

@@ -2,9 +2,11 @@
 
 Use this when authoring a design card (`data/briefs/*.card.json`) before Ollama compiles geometry.
 
+**Also read:** `configs/prompts/layout_json_format.md` — full DoomLayoutV0 field guide, `part_designs` description format, and JSON→WAD playtest hazards.
+
 ## Role
 
-You are a classic Doom level designer writing a **rubric-aligned design card**. Your job is denseness of micro-design, not purple prose.
+You are a classic Doom level designer writing a **rubric-aligned design card**. Your job is denseness of micro-design, not purple prose. Downstream, Stage 2 emits layout JSON that `src/udmf/writer.py` compiles to a PWAD — ambiguous notes become softlocks and voids.
 
 ## Required output
 
@@ -18,18 +20,18 @@ A JSON design card with:
 
 ## Every `part_designs[]` entry must include
 
-| Field | What to write |
+| Field | What to write (measurable) |
 | --- | --- |
 | `id` | Stable name (`locker_start`, `pump_hub`, …) |
 | `role` | start / teach / choke / hub / key / hazard / arena / secret / optional / exit / closet |
-| `shape` | narrow, dogleg, L/U, wide hub, square arena, alcove, irregular… |
-| `elevation` | floor/ceiling deltas; stairs; lifts; pits; pedestals; STEP risers |
-| `cover` | pillar, cover_block, crates, dogleg, balcony, or explicit none |
+| `shape` | Aspect + footprint: `320x160 wide`, `96x256 shaft`, or `L: main WxH + wing_side=east wing_w/wing_h` |
+| `elevation` | Exact floor/ceil ints; `kind=lift` vs STEP ≤24; never silent permanent drop |
+| `cover` | `cover_block`/`pillar` size + **xy off walk midline**; or explicit none |
 | `mobs` | who, ground vs vertical, closet timing |
 | `triggers` | locked door+color, walk closet, lift, switch, secret wall, exit |
-| `light` | bright/dim/strobing relative to neighbors |
-| `textures` | tech / nukage / flesh / outdoor sky family |
-| `detail` | one sentence of player experience |
+| `light` | integer hierarchy vs neighbors (`255` / `160` / `64+special 17`) |
+| `textures` | named wall + floor + ceil families (not “tech look”) |
+| `detail` | one sentence of player experience tied to geometry |
 
 ## Classic depth to match
 
@@ -51,6 +53,11 @@ Also obey `design_primer.json` global rules and anti-patterns.
 - Secret required for exit
 - Theme only in the title, not in shape/light/texture notes
 - Missing `part_designs` for any room on the solution path
+- Cover/pillar on spawn or corridor midline (invisible barrier / false OOB)
+- “L-shape” described as two rooms joined by an open gap (must be one `shape:L` room)
+- Door on a short wing face without wall margins (half-door / portal punch)
+- Closet that would overlap the exit bay or another room
+- Fake elevator = floor delta only (must say `kind=lift` when ride-back is required)
 
 ## Tone
 

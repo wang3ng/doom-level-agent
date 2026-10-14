@@ -332,13 +332,13 @@
     },
     {
       "type": "cover_block",
-      "x": 820,
-      "y": -360,
+      "x": 900,
+      "y": -500,
       "w": 48,
       "h": 48,
       "floor_raise": 40,
       "in_room": "drop_arena",
-      "design": "arena flank cover"
+      "design": "arena flank cover (south of nukage portal approach)"
     }
   ],
   "closets": [

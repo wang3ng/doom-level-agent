@@ -59,6 +59,15 @@ def validate_layout(layout: dict[str, Any]) -> list[str]:
         if lock and lock not in present:
             errors.append(f"connection {c.get('a')}->{c.get('b')} locks with {lock} but no matching key thing")
 
+    # Geometry: room / closet AABB overlaps (hull gate also checks; fail early here).
+    try:
+        from pipeline.hull_gate import check_layout_overlaps
+
+        for iss in check_layout_overlaps(layout):
+            errors.append(str(iss))
+    except Exception as exc:  # noqa: BLE001
+        errors.append(f"overlap check failed: {exc}")
+
     return errors
 
 
