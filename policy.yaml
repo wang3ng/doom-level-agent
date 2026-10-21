@@ -1,0 +1,4 @@
+version: 1
+name: real-repo-policy
+extends: secrets
+ignore_paths: ['**/fixtures/**', '**/vendor/**']
