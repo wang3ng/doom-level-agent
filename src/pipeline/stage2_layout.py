@@ -89,6 +89,8 @@ def brief_to_layout(
     few_shot_k: int = 3,
     use_classic: bool = True,
     classic_k: int = 2,
+    use_lessons: bool = True,
+    lesson_k: int = 4,
 ) -> dict[str, Any]:
     user = f"Design a small playable Doom layout for this brief:\n{brief}\n"
     if use_classic:
@@ -114,6 +116,19 @@ def brief_to_layout(
                 user += "\nUse these corpus examples as style/structure references (do NOT copy room ids):\n"
                 user += format_few_shot_block(examples)
                 user += "\n"
+        except Exception:
+            pass
+    if use_lessons:
+        try:
+            from corpus.lessons import format_lessons_block
+
+            lessons = format_lessons_block(brief, k=lesson_k)
+            if lessons:
+                user += (
+                    "\nHonor these player-comment lessons (do NOT copy those maps):\n"
+                    + lessons
+                    + "\n"
+                )
         except Exception:
             pass
     if image_hint:

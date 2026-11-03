@@ -1,0 +1,16 @@
+{
+  "id": null,
+  "title": "Derceto",
+  "filename": "derceto.zip",
+  "dir": "levels/doom2/Ports/d-f/",
+  "author": "Mike MacDee",
+  "description": "Hired to search the cursed Derceto mansion for the cause of Jeremy Hartwood's suicide. Start in the attic and work down; the front doors slam and trap you inside. Reproduction of the Alone in the Dark mansion in Doom Builder 2.",
+  "votes": 8,
+  "url": "https://www.doomworld.com/idgames/levels/doom2/Ports/d-f/derceto",
+  "reviews": [
+    {"username": "Anonymous", "text": "Closest I got is the IOS teeth area. No exit? ~1/5 for some good made areas with detail.", "vote": 1},
+    {"username": "Zalewa", "text": "I felt tormented by this.", "vote": 2},
+    {"username": "Anonymous", "text": "Map layout is quite rectangular and a bit cramped. Gameplay is not good: monster popups/teleports get boring. After grabbing the yellow key I took the nearest unopened door and got killed instantly. 2/5 because of the gameplay.", "vote": 2},
+    {"username": "joe-ilya", "text": "This is very buggy and unfinished but at least it's fun and looks great at times.", "vote": 3}
+  ]
+}

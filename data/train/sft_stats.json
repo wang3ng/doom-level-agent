@@ -1,0 +1,16 @@
+{
+  "n": 38,
+  "by_source": {
+    "verified": 25,
+    "community": 13
+  },
+  "by_task": {
+    "layout": 12,
+    "repair": 2,
+    "brief": 12,
+    "critic": 12
+  },
+  "n_lessons": 12,
+  "jsonl": "/workspace/data/train/sft.jsonl",
+  "lessons": "/workspace/data/train/community_lessons.json"
+}
