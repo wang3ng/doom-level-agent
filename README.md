@@ -83,6 +83,7 @@ doom-level-agent/
 │   ├── layouts/              ← layout JSON
 │   ├── maps/                 ← generated .wad / .txt (often gitignored)
 │   ├── scores/               ← rubric JSON reports (gitignored)
+│   ├── train/                ← SFT JSONL (verified layouts + idgames comments)
 │   └── screenshots/
 ├── assets/free/              ← free textures / WADs only (no commercial IWADs)
 ├── patches/                  ← playtest writer / hull notes
@@ -90,7 +91,9 @@ doom-level-agent/
 │   ├── run_pipeline.py
 │   ├── hull_audit.py         ← geometry hull + portal/void probes
 │   ├── score_level.py
-│   └── generate_brief.py
+│   ├── generate_brief.py
+│   ├── scrape_idgames.py     ← idgames metadata + reviews (fixtures / live)
+│   └── build_sft_pack.py     ← verified + community → data/train/sft.jsonl
 ├── tests/
 │   ├── test_build.py
 │   ├── test_hull_gate.py
@@ -117,12 +120,14 @@ doom-level-agent/
 | Proposal PDF | **revised** | Verified-generation framing, RQ1–RQ3, Riedl / Rocktäschel grounding |
 | Plan directions | **done** | `docs/plan_directions.md` |
 | Layered metrics report | **planned** | playable / trajectory / design → headline (see plan) |
+| Training pack | **v0** | Verified layout SFT + idgames comment critic; `data/train/` |
 | Mid report + talk | **in progress** | Due Oct 19 (`mid-presentation.md`) |
 | Human eval protocol | **planned** | Final term; annotations already pluggable |
 | GitHub remote | **this repo** | |
 
 **Changelog (newest first)**
 
+- *Training pack:* hull-gated layouts + corpus cards → brief/layout/repair JSONL; idgames reviews (fixtures, live scrape when unblocked) → critic SFT and `community_lessons.json` injected into Stage 2. See `data/train/README.md`.
 - *Proposal + plan:* reframed proposal around a critical-path IR, verified compiler, layered metrics, and verifier-guided repair (RQ1–RQ3), grounded in Riedl (plot graphs, islands and bridges) and Rocktäschel (novel-but-learnable, self-improvement loops). Added `docs/plan_directions.md` and mid-presentation requirements.
 - *Hull gate (required):* `pipeline.hull_gate` + `scripts/hull_audit.py` — overlaps, PROP_ON_PORTAL_MIDLINE, portal punch/lifts, PROP_VOID, r=16 walkability BFS spawn→exit. `stage3_build` **refuses to emit a WAD** on failure; scorer overall collapses to 0. Validator flags closet/room overlaps early. Stage 2 prompts bias landmark≥64–96u off portal mids and soft early combat.
 - *Hub pillars off corridor axis:* brine `pump_hub` (608,192)→(720,300); nuclear `plant_hub` (528,176)→(660,280). Rebuilt both WADs; `scripts/hull_audit.py` PASS. Notes in `patches/hub_pillar_off_axis.md`.
@@ -170,6 +175,8 @@ python scripts/run_pipeline.py --layout data/layouts/brine_pump_station.json \
 python scripts/run_pipeline.py --layout data/layouts/nuclear_plant_v0.json \
   --out data/maps/nuclear_plant_v0.wad
 python scripts/hull_audit.py
+python tests/test_train_sft.py
+python scripts/build_sft_pack.py
 ```
 
 Play in GZDoom (Freedoom IWAD), e.g.:
@@ -217,6 +224,15 @@ python scripts/score_level.py --layout data/layouts/proto_two_rooms.json \
 ```
 
 Annotation shape: `{ "mechanic_utilization": { "subversion": { "score": 4, "notes": "..." } } }` (0–5 scale).
+
+### Training pack (SFT JSONL, no GPU)
+
+Verified layouts plus idgames comments. Details: [`data/train/README.md`](data/train/README.md).
+
+```bash
+python scripts/scrape_idgames.py
+python scripts/build_sft_pack.py
+```
 
 ## Layout JSON (v0)
 

@@ -65,7 +65,16 @@ Grounding: open-endedness as "novel but learnable" artifacts; self-improvement l
 - Compare against free-form LLM/VLM critique of the same map.
 - Supports **RQ2**: does structured feedback fix more failures per round than free-form critique?
 
-## 5. Diversity (stretch, after 1–4 are reliable)
+## 5. Training data (before GPU fine-tune)
+
+Two corpora, same JSONL (`data/train/sft.jsonl`):
+
+- **Content building:** every hull-gated layout is a brief→JSON target, plus pillar-off-axis repair and classic-homage pairs. This is the Stage 2 contract.
+- **Community comments:** idgames file metadata + player reviews mapped onto the five-pillar critic. Lessons sidecar feeds Stage 2. Live scrape is 1 req/s and does not download WADs; Cloudflare-blocked VMs use fixtures.
+
+Fine-tune on william is QLoRA on a 3B coder, not `qwen3-coder:30b`. Until an adapter exists, the pack still helps as few-shot/lessons.
+
+## 6. Diversity (stretch, after 1–4 are reliable)
 
 - Quality–diversity archive over level patterns (L-hub, lift return, key loop, nukage hero walk, closet ambush), keeping only maps that pass the gate.
 - Remix classic corpus parts (Guzdial & Riedl conceptual blending) as few-shot references.
@@ -86,7 +95,7 @@ Grounding: open-endedness as "novel but learnable" artifacts; self-improvement l
 | Date | Target |
 | --- | --- |
 | Oct 19 (mid) | IR schema + validator; gate as hard build step with regression tests; layered metrics on 10+ maps; failure gallery labeled by check; brief → IR → verified WAD demo |
-| Nov | Critical-path block in schema; key-aware BFS; repair loop v1; brief set frozen |
+| Nov | Critical-path block in schema; key-aware BFS; repair loop v1; brief set frozen; SFT pack + optional 3B QLoRA |
 | Dec 9 (poster) | Baselines + ablations (RQ1, RQ2); human fair-play study (RQ3) |
 | Dec 15 (report) | NeurIPS-style report; release IR, compiler, gate, metrics, briefs |
 

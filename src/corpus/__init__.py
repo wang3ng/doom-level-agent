@@ -1,5 +1,6 @@
 from .fewshot import format_few_shot_block, load_cards, select_few_shot
 from .classic import format_classic_block, load_classic_refs, select_classic_refs
+from .lessons import format_lessons_block, load_lessons, select_lessons
 
 __all__ = [
     "load_cards",
@@ -8,4 +9,7 @@ __all__ = [
     "load_classic_refs",
     "select_classic_refs",
     "format_classic_block",
+    "load_lessons",
+    "select_lessons",
+    "format_lessons_block",
 ]

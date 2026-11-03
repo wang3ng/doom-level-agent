@@ -1,0 +1,17 @@
+{
+  "id": 12444,
+  "title": "Trouble on Titan",
+  "filename": "trouble.zip",
+  "dir": "levels/doom2/s-u/",
+  "author": "Jim Flynn",
+  "description": "UAC keeps sending you to Titan to investigate strange occurrences. You reported aliens after the Mines, the Anomaly site, and Farside. Psychology still prefers space psychosis. You only get a pistol — just in case there aren't any aliens after all.",
+  "votes": 12,
+  "url": "https://www.doomworld.com/idgames/levels/doom2/s-u/trouble",
+  "reviews": [
+    {"username": "Anonymous", "text": "It's not fun.", "vote": 1},
+    {"username": "Anonymous", "text": "Opening section is a mentally fatiguing puzzle slog. Ugly, but very complex, with lots of height variation and switch puzzles.", "vote": 2},
+    {"username": "Anonymous", "text": "some errors found in jdoom, and not enough weapon", "vote": 2},
+    {"username": "Anonymous", "text": "A large, complex and very good map.", "vote": 4},
+    {"username": "Anonymous", "text": "bleh, not a something. 2/5", "vote": 2}
+  ]
+}
